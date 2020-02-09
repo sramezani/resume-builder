@@ -128,7 +128,7 @@ class Dnd extends Component {
 														provided.draggableProps.style
 													)}
 													className="testtt"
-													onClick={() => this.props.addtem()}
+													onClick={() => this.props.additem()}
 												>
 													A
 												</div>

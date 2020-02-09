@@ -11,7 +11,8 @@ import view from './view';
 const mapStateToProps = state => ({
     theme: state.theme,
     userData: state.userData,
-    workExperience: state.workExperience
+    workExperience: state.workExperience,
+    education: state.education
 });
 
 // Any actions to map to the component?

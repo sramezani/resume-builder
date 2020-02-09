@@ -23,8 +23,9 @@ export const updateWorkExperience = (data) => {
     }
 }
 
-export const addNewWorkExperience = (id) => {
-
+export const addNewWorkExperience = () => {
+    
+    const id = Util.randomId();
     const data = {
             id,
             date: '',
@@ -51,6 +52,43 @@ export const updateWorkExperienceData = (id, data) => {
 export const deleteWorkExperienceData = (id) => {
     return {
         type : actionTypes.DELETE_WORK_EXPERIENCE_DATA,
+        payload: id
+    }
+}
+
+export const addEducation = () => {
+
+    const id = Util.randomId();
+    const data = {
+            id,
+            date: '',
+            title: ''
+        };
+
+    return {
+        type : actionTypes.ADD_NEW_EDUCATION,
+        payload: data
+    }
+}
+
+export const updateEducation = (data) => {
+    return {
+        type : actionTypes.UPDATE_EDUCATION,
+        payload: data
+    }
+}
+
+export const updateEducationData = (id, data) => {
+    return {
+        type : actionTypes.UPDATE_EDUCATION_DATA,
+        payloadId: id,
+        payload: data
+    }
+}
+
+export const deleteEducationData = (id) => {
+    return {
+        type : actionTypes.DELETE_EDUCATION_DATA,
         payload: id
     }
 }

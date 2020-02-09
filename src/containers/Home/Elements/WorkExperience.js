@@ -16,20 +16,11 @@ class WorkExperience extends React.Component{
         super(props);
 
         this.state = {
-            lamp: [{id: '1'}]
         }
     }
 
     componentDidMount() {
-        
-        const randomId = Util.randomId();
-        appStore.dispatch(addNewWorkExperience(randomId));
-
-        // setTimeout(() => {
-        //     const randomId = Util.randomId();
-        //     appStore.dispatch(addNewWorkExperience(randomId));
-        //     console.log(12)
-        // }, 8000);
+        appStore.dispatch(addNewWorkExperience());
     }
 
     _mapOrder = (array, order, key) => {
@@ -51,13 +42,11 @@ class WorkExperience extends React.Component{
 
     _updateWorkExperience(data) {
         const storeReorder = this._mapOrder(this.props.data, data, 'id');
-        console.log(storeReorder)
         appStore.dispatch(updateWorkExperience(storeReorder));
     }
 
     _addNewItem = () => {
-        const randomId = Util.randomId();
-        appStore.dispatch(addNewWorkExperience(randomId));
+        appStore.dispatch(addNewWorkExperience());
     }
 
     _removeItem = (id) => {
@@ -70,7 +59,7 @@ class WorkExperience extends React.Component{
             <Dnd
                 data={data}
                 reorder={(e) => this._updateWorkExperience(e)}
-                addtem={this._addNewItem}
+                additem={this._addNewItem}
                 removeitem={(e) => this._removeItem(e)}
                 renderItem={(item) => (
                     <div className="workBox">
@@ -95,7 +84,7 @@ class WorkExperience extends React.Component{
                                 tag="div"
                             />
                             <Text
-                                // value={this.props.userData.workExperienceTitle}
+                                value={item.companyName}
                                 statename="workExperience.companyName"
                                 stateid={item.id}
                                 placeholder="Facebook"
@@ -103,7 +92,7 @@ class WorkExperience extends React.Component{
                                 tag="div"
                             />
                             <Text
-                                // value={this.props.userData.profile}
+                                value={item.companyText}
                                 statename="workExperience.companyText"
                                 stateid={item.id}
                                 customclass="companyExplain"
@@ -111,7 +100,7 @@ class WorkExperience extends React.Component{
                             />
                             <div className="experienceText">
                                 <Text
-                                    // value={this.props.userData.profile}
+                                    value={item.experienceText}
                                     statename="workExperience.experienceText"
                                     stateid={item.id}
                                     customclass="companyExplain"

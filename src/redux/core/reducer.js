@@ -11,6 +11,7 @@ const initialState = {
         infoTitle: 'Personal info',
         profileTitle: 'Profile',
         workExperienceTitle: 'Work experience',
+        educationTitle: 'Education',
     },
     workExperience: [],
     education: [],
@@ -94,6 +95,56 @@ export default function core(state = initialState, action) {
                     ...newWkE
                 ]
             };
+
+        case actionTypes.ADD_NEW_EDUCATION:
+            if (!action.payload) return state;    
+
+            return {
+                ...state,
+                education: [
+                    ...state.education,
+                    {
+                        ...action.payload
+                    }
+                ]
+            };
+
+        case actionTypes.UPDATE_EDUCATION:
+            if (!action.payload) return state;
+
+            return Object.assign({}, state, {
+                education: action.payload
+            });
+
+        case actionTypes.UPDATE_EDUCATION_DATA:
+            if (!action.payload || !action.payloadId) return state;
+
+            let neweducation = JSON.parse(JSON.stringify(state.education));
+            const ejuIndex = state.education.map((itm) => { return itm.id; }).indexOf(action.payloadId);
+            if (ejuIndex > -1) {
+                Object.keys(action.payload).forEach(function(key) {
+                    neweducation[ejuIndex][key]= action.payload[key];
+                });
+            }
+            return {
+                ...state,
+                education: [
+                    ...neweducation
+                ]
+            };
+
+        case actionTypes.DELETE_EDUCATION_DATA:
+            if (!action.payload) return state;
+
+            let newE = JSON.parse(JSON.stringify(state.education));
+            newE = state.education.filter(({ id }) => id !== action.payload);
+            return {
+                ...state,
+                education: [
+                    ...newE
+                ]
+            };
+    
 
 
         default:

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import Text from '../../components/Text';
 import WorkExperience from './Elements/WorkExperience';
+import Education from './Elements/Education';
 
 class Home extends React.Component{
     
@@ -106,50 +107,23 @@ class Home extends React.Component{
                                 data={this.props.workExperience}
                             />
 
-                            {/* <div className="workBox">
-                                <div className="leftWork">
-                                    <span className="workDate">
-                                    May 2019 – Present
-                                    </span>
-                                </div>
-                                <div className="RightWork">
-                                    <div className="workDot" />
-                                    <span className="workTitle">
-                                        Mobile App (React Native) Developer
-                                    </span>
-                                    <br />
-                                    <span className="workCompany">
-                                        Finology - Fintech Company - Malaysia
-                                    </span>
-                                    <p className="companyExplain">
-                                        Malaysian Fintech company driving change in the banking, property, and insurance industries
-                                    </p>
-                                    <ul className="xxx">
-                                        <li>
-                                            Refactor existing React Native App and add Redux to project, also good structure for codes
-                                        </li>
-                                        <li>
-                                            Developed new applications with React Native (for Loanplus project)
-                                        </li>
-                                        <li>
-                                        <span className="strong">Responsibility: </span>Bug fix, add new feature, also R&D about how can Integrate Blockchain into our projects (insurance)
-                                        </li>
-                                        <li>
-                                            <span className="strong">Technologies:</span> React Native, Redux, Redux-thunk, firebase, Image OCR
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div> */}
-
                         </div>
 
                         <div className="education box">
-                            <span className="title">
-                                Education
-                            </span>
-                            <p>
+                            <Text
+                                value={this.props.userData.educationTitle}
+                                statename="userData.educationTitle"
+                                placeholder="Education"
+                                customclass="title"
+                                tag="div"
+                            />
+
+                            <Education
+                                data={this.props.education}
+                            />
+                            {/* <p>
                                 BSc. Software Engineering (Bu-Ali Sina University) - Iran
-                            </p>
+                            </p> */}
                         </div>
 
                         <div className="skills box">
@@ -215,6 +189,7 @@ Home.propTypes = {
     theme: PropTypes.object.isRequired,
     userData: PropTypes.object.isRequired,
     workExperience: PropTypes.array.isRequired,
+    education: PropTypes.array.isRequired,
 };
 
 Home.defaultProps = {
