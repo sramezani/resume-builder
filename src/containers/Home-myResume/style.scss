@@ -1,0 +1,143 @@
+@import "../../theme/colors";
+@import "../../theme/fonts";
+
+body {
+	// background: #0789e0;
+// background: linear-gradient(0deg, rgba(7,137,224,1) 0%, rgba(83,167,224,1) 53%, rgba(142,205,249,1) 100%);
+	font-family: "Source Sans Pro";
+	// font-family: "minionpro";
+}
+
+.loading {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: #f4511e;
+    transition: .3s background ease;
+    transition-delay: .2s;
+    font-size: 0;
+    line-height: 0;
+}
+
+.loading_gradient {
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(180deg,rgba(255,255,255,1) 0,rgba(255,255,255,0) 100%);
+    opacity: .3;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.container{
+	// width: 595px;
+	// height: 842px;
+	/* height/width --> 1.4143 */
+	// height:297mm;
+    width:210mm;
+	background: #fff;
+	position: relative;
+	/* to centre page on screen*/
+	margin-left: auto;
+	margin-right: auto;
+	margin: 20px auto;
+	// -webkit-box-shadow: 0px 0px 19px 1px rgba(19,121,189,1);
+    // -moz-box-shadow: 0px 0px 19px 1px rgba(19,121,189,1);
+    // box-shadow: 0px 0px 19px 1px rgba(19,121,189,1);
+}
+
+.insideCon {
+    padding: 60px;
+}
+.name {
+    font-weight: bold;
+    font-size: 30px;
+}
+.underName {
+    width: 250px;
+    border-top: 2px solid #77b8ed;
+}
+a {
+    color :#2686d4;
+}
+.box {
+    margin: 17px 0;
+}
+.title {
+    font-weight: bold;
+    font-size: 20px;
+}
+p {
+    margin: 5px 0;
+    font-size: 16px;
+    line-height: 18px;
+}
+.workBox {
+    flex-direction: row;
+    display: flex;
+}
+.leftWork {
+    flex: 1;
+}
+.RightWork {
+    flex: 3;
+    border-left: 2px solid #dadada;
+    padding: 0 0 0 15px;
+}
+.workExperience .workBox:nth-child(n+2){
+    padding-top: 5px;
+}
+.workDot {
+    width: 16px;
+    height: 18px;
+    background: #fff;
+    position: absolute;
+    margin: 0 0 0 -24px;
+}
+.workDot:after {
+    width: 10px;
+    height: 10px;
+    content: "";
+    display: block;
+    border-radius: 100%;
+    margin: 3px auto;
+    background: #77b8ed;
+}
+.xxx {
+    padding-bottom: 10px;
+}
+.workTitle {
+    font-weight: bold;
+    font-size: 17px;
+}
+.workCompany {
+    font-weight: bold;
+    font-size: 16px;
+    margin-top: -4px;
+    display: block;
+}
+.workDate {
+    font-size: 14px;
+}
+.strong {
+    font-weight: bold;
+    font-style: italic;
+    color: #535151;
+}
+.companyExplain {
+    font-size: 14px;
+    color: #767373;
+}
+ul li {
+    margin: 2px 0;
+}
+.skillRow {
+    display: flex;
+    flex-direction: row;
+    margin: 0px auto;
+}
+.flex1 {
+    flex: 1
+}
