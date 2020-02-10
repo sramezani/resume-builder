@@ -92,3 +92,39 @@ export const deleteEducationData = (id) => {
         payload: id
     }
 }
+
+export const addSkill = () => {
+
+    const id = Util.randomId();
+    const data = {
+            id,
+            title: ''
+        };
+
+    return {
+        type : actionTypes.ADD_NEW_SKILL,
+        payload: data
+    }
+}
+
+export const updateSkill = (data) => {
+    return {
+        type : actionTypes.UPDATE_SKILL,
+        payload: data
+    }
+}
+
+export const updateSkillData = (id, data) => {
+    return {
+        type : actionTypes.UPDATE_SKILL_DATA,
+        payloadId: id,
+        payload: data
+    }
+}
+
+export const deleteSkillData = (id) => {
+    return {
+        type : actionTypes.DELETE_SKILL_DATA,
+        payload: id
+    }
+}

@@ -66,7 +66,8 @@ class Dnd extends Component {
 
 	static getDerivedStateFromProps(props, state) {
         
-        if (!equal(props.data.length, state.data.length)) {
+        // if (!equal(props.data.length, state.data.length)) {
+        if (!equal(props.data, state.data)) {
 			return {
                 data: props.data
             };

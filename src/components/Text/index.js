@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Util from '../../lib/Util';
 
 import { appStore } from '../../redux/store';
-import { updateUserData, updateWorkExperienceData, updateEducationData } from '../../redux/core/actions';
+import { updateUserData, updateWorkExperienceData, updateEducationData, updateSkillData } from '../../redux/core/actions';
 
 import styles from './style.scss';
 
@@ -37,6 +37,9 @@ class Text extends React.Component{
         }
         else if (storeComponents[0] === 'education') {
             appStore.dispatch(updateEducationData(stateid, data));
+        }
+        else if (storeComponents[0] === 'skills') {
+            appStore.dispatch(updateSkillData(stateid, data));
         }
     }
 

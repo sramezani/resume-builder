@@ -2,15 +2,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Dnd from '../../../components/Dnd';
+import Dnd2Column from '../../../components/Dnd2Column';
 import Text from '../../../components/Text';
 
 import { appStore } from '../../../redux/store';
-import { addEducation, updateEducation, deleteEducationData } from '../../../redux/core/actions';
+import { addSkill, updateSkill, deleteSkillData } from '../../../redux/core/actions';
 
 import Util from '../../../lib/Util';
 import styles from '../style.scss';
 
-class Education extends React.Component{
+class Skills extends React.Component{
     
     constructor(props) {
         super(props);
@@ -20,7 +21,7 @@ class Education extends React.Component{
     }
 
     componentDidMount() {
-        appStore.dispatch(addEducation());
+        appStore.dispatch(addSkill());
     }
 
     _mapOrder = (array, order, key) => {
@@ -40,43 +41,35 @@ class Education extends React.Component{
         return array;
     }
 
-    _updateEducation(data) {
+    _updateSkill(data) {
         const storeReorder = this._mapOrder(this.props.data, data, 'id');
-        appStore.dispatch(updateEducation(storeReorder));
+        appStore.dispatch(updateSkill(storeReorder));
     }
 
     _addNewItem = () => {
-        appStore.dispatch(addEducation());
+        appStore.dispatch(addSkill());
     }
 
     _removeItem = (id) => {
-        appStore.dispatch(deleteEducationData(id));
+        appStore.dispatch(deleteSkillData(id));
     }
 
     render(){
         let { data } = this.props;
         return (
-            <Dnd
+            <Dnd2Column
                 data={data}
-                reorder={(e) => this._updateEducation(e)}
+                reorder={(e) => this._updateSkill(e)}
                 additem={this._addNewItem}
                 removeitem={(e) => this._removeItem(e)}
                 renderItem={(item) => (
                     <div style={{ background: '#fff' }}>
                         <Text
                             value={item.title}
-                            statename="education.title"
+                            statename="skills.title"
                             stateid={item.id}
-                            placeholder="BSc. Software Engineering Harvard"
+                            placeholder="React Native"
                         />
-                        <Text
-                            value={item.date}
-                            statename="education.date"
-                            stateid={item.id}
-                            customclass="educationExplain"
-                            placeholder="2010 - 2014"
-                        />
-
                     </div>
 
                 )}
@@ -87,12 +80,12 @@ class Education extends React.Component{
 }
 
 
-Education.propTypes = {
+Skills.propTypes = {
     // value: PropTypes.string
 };
 
-Education.defaultProps = {
+Skills.defaultProps = {
 };
 
 /* Export Component =============================== */
-export default Education;
+export default Skills;

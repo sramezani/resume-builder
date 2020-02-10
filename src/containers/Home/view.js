@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import Text from '../../components/Text';
 import WorkExperience from './Elements/WorkExperience';
 import Education from './Elements/Education';
+import Skills from './Elements/Skills';
 
 class Home extends React.Component{
     
@@ -121,13 +122,21 @@ class Home extends React.Component{
                             <Education
                                 data={this.props.education}
                             />
-                            {/* <p>
-                                BSc. Software Engineering (Bu-Ali Sina University) - Iran
-                            </p> */}
                         </div>
 
                         <div className="skills box">
-                            <span className="title">
+                            <Text
+                                value={this.props.userData.skillsTitle}
+                                statename="userData.skillsTitle"
+                                placeholder="Skills"
+                                customclass="title"
+                                tag="div"
+                            />
+
+                            <Skills
+                                data={this.props.skills}
+                            />
+                            {/* <span className="title">
                                 Skills
                             </span>
                             <ul className="skillRow">
@@ -166,15 +175,12 @@ class Home extends React.Component{
                                 <li className="flex1">
                                     Git
                                 </li>
-                                {/* <li className="flex1">
-                                    
-                                </li> */}
                             </ul>
                             <ul className="skillRow">
                                 <li className="flex1">
                                     Familiar with: Python, Tensorflow, Lua, Coronalabs
                                 </li>
-                            </ul>
+                            </ul> */}
                         </div>
 
                     </div>
@@ -190,6 +196,7 @@ Home.propTypes = {
     userData: PropTypes.object.isRequired,
     workExperience: PropTypes.array.isRequired,
     education: PropTypes.array.isRequired,
+    skills: PropTypes.array.isRequired,
 };
 
 Home.defaultProps = {

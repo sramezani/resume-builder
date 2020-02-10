@@ -12,7 +12,8 @@ const mapStateToProps = state => ({
     theme: state.theme,
     userData: state.userData,
     workExperience: state.workExperience,
-    education: state.education
+    education: state.education,
+    skills: state.skills
 });
 
 // Any actions to map to the component?

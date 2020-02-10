@@ -12,6 +12,7 @@ const initialState = {
         profileTitle: 'Profile',
         workExperienceTitle: 'Work experience',
         educationTitle: 'Education',
+        skillsTitle: 'Skills',
     },
     workExperience: [],
     education: [],
@@ -142,6 +143,55 @@ export default function core(state = initialState, action) {
                 ...state,
                 education: [
                     ...newE
+                ]
+            };
+
+        case actionTypes.ADD_NEW_SKILL:
+            if (!action.payload) return state;    
+
+            return {
+                ...state,
+                skills: [
+                    ...state.skills,
+                    {
+                        ...action.payload
+                    }
+                ]
+            };
+
+        case actionTypes.UPDATE_SKILL:
+            if (!action.payload) return state;
+
+            return Object.assign({}, state, {
+                skills: action.payload
+            });
+
+        case actionTypes.UPDATE_SKILL_DATA:
+            if (!action.payload || !action.payloadId) return state;
+
+            let newSkills = JSON.parse(JSON.stringify(state.skills));
+            const skillsIndex = state.skills.map((itm) => { return itm.id; }).indexOf(action.payloadId);
+            if (skillsIndex > -1) {
+                Object.keys(action.payload).forEach(function(key) {
+                    newSkills[skillsIndex][key]= action.payload[key];
+                });
+            }
+            return {
+                ...state,
+                skills: [
+                    ...newSkills
+                ]
+            };
+
+        case actionTypes.DELETE_SKILL_DATA:
+            if (!action.payload) return state;
+
+            let newS = JSON.parse(JSON.stringify(state.skills));
+            newS = state.skills.filter(({ id }) => id !== action.payload);
+            return {
+                ...state,
+                skills: [
+                    ...newS
                 ]
             };
     
