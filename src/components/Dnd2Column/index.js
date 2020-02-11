@@ -53,7 +53,6 @@ const getListStyle = isDraggingOver => ({
   background: isDraggingOver ? "#efefef" : "#fff",
   padding: grid,
   flex: 1
-//   width: 250
 });
 
 class Dnd2Column extends Component {
@@ -67,40 +66,13 @@ class Dnd2Column extends Component {
 		this.onDragEnd = this.onDragEnd.bind(this);
 	}
 
-	componentDidMount() {
-		console.log(111111111111111)
-		// this._setItem();
-		// console.log(this.state.data)
-	}
-
-	_setItem = () => {
-		let { data } = this.state;
-		console.log(data)
-		let column1 =[];
-		let column2 =[];
-		if (data.length > 0){
-			data.map((item, index) => {
-				if (index % 2 === 0) {
-					column1.push(item);
-				}
-				else {
-					column2.push(item);
-				}
-			})
-			this.setState({
-				column1,
-				column2
-			})
-		}
-	}
-
 	static getDerivedStateFromProps(props, state) {
-        // console.log(props.data)
-        // console.log(state.data)
-        if (!equal(props.data, state.data)) {
+
+        // if (!equal(props.data, state.data)) {
+        if (props.data) {
 			let column1 =[];
 			let column2 =[];
-			console.log(12121212)
+			console.log(props.data)
 			if (props.data.length > 0){
 				props.data.map((item, index) => {
 					if (index % 2 === 0) {
@@ -116,9 +88,6 @@ class Dnd2Column extends Component {
 					data: props.data
 				}
 			}
-			// return {
-            //     data: props.data,
-            // };
 		}
 		return true;
 	}
@@ -157,7 +126,6 @@ class Dnd2Column extends Component {
 	};
 
 	onDragEnd(result) {
-		// dropped outside the list
 		const { source, destination } = result;
 
 		if (!result.destination) {
@@ -165,9 +133,7 @@ class Dnd2Column extends Component {
 		}
 
 		let c1 = this.state.column1;
-		let c2 = this.state.column2; 
-		console.log('0c1', c1)
-		console.log('0c2', c2)
+		let c2 = this.state.column2;
 		if (source.droppableId === destination.droppableId) {
             const column1 = this.reorder(
                 this.getList(source.droppableId),
@@ -175,41 +141,34 @@ class Dnd2Column extends Component {
                 destination.index
             );
 
-			let state = { column1 };
-			c1 = column1;
-			console.log(c1)
-            if (source.droppableId === 'droppable2') {
-				state = { column2: column1 };
+            if (source.droppableId === 'droppable') {
+				c1 = column1;
+			}
+            else {
 				c2 = column1;
-            }
-            this.setState(state);
-        } else {
-            const result = this.move(
+			}
+
+		}
+		else {
+			const ttt = this.move(
                 this.getList(source.droppableId),
                 this.getList(destination.droppableId),
                 source,
                 destination
 			);
-			c1 = result.droppable;
-			c2 = result.droppable2;
-            this.setState({
-                column1: result.droppable,
-                column2: result.droppable2
-            });
+			c1 = ttt.droppable;
+			c2 = ttt.droppable2;
 		}
-		
-		console.log('c1', c1)
-		console.log('c2', c2)
-		
 
 		let i = 1;
+		// let lamp = [];
+		// c1.map((item) => {
+		// 	lamp.push(item);
+		// })
 		c2.map((item) => {
-			// this.insert(lamp, i, item)
-			c1.splice(1, 0, item)
+			c1.splice(i, 0, item)
 			i = i + 2;
 		})
-		console.log('c3', this.state.data)
-		console.log('c4', c1)
 		if (!equal(this.state.data, c1)) {
 			this.props.reorder(c1);
 		}
@@ -219,15 +178,8 @@ class Dnd2Column extends Component {
 		});
 	}
 
-	insert = (arr, index, newItem) => [
-		...arr.slice(0, index),
-		newItem,
-		...arr.slice(index)
-	];
-
   	render() {
 		
-		console.log('a',this.state.column1)
 		return (
 			<div style={{ display: 'flex' }}>
 			<DragDropContext onDragEnd={this.onDragEnd}>
@@ -256,8 +208,8 @@ class Dnd2Column extends Component {
 												>
 													A
 												</div>
-												{/* {
-													this.state.data.length > 1 && */}
+												{
+													this.state.data.length > 1 &&
 														<div
 															{...provided.draggableProps}
 															{...provided.dragHandleProps}
@@ -270,9 +222,9 @@ class Dnd2Column extends Component {
 															{/* {item.id} */}
 															X
 														</div>
-												{/* } */}
-												{/* {
-													this.state.data.length > 1 && */}
+												}
+												{
+													this.state.data.length > 1 &&
 														<div
 															style={getItemStyle3(
 																snapshot.isDragging,
@@ -283,7 +235,7 @@ class Dnd2Column extends Component {
 														>
 															R
 														</div>
-												{/* } */}
+												}
 											</div>
 										</div>
 									</div>
@@ -320,8 +272,8 @@ class Dnd2Column extends Component {
 												>
 													A
 												</div>
-												{/* {
-													this.state.data.length > 1 && */}
+												{
+													this.state.data.length > 1 &&
 														<div
 															{...provided.draggableProps}
 															{...provided.dragHandleProps}
@@ -334,9 +286,9 @@ class Dnd2Column extends Component {
 															{/* {item.id} */}
 															X
 														</div>
-												{/* } */}
-												{/* {
-													this.state.data.length > 1 && */}
+												}
+												{
+													this.state.data.length > 1 &&
 														<div
 															style={getItemStyle3(
 																snapshot.isDragging,
@@ -347,7 +299,7 @@ class Dnd2Column extends Component {
 														>
 															R
 														</div>
-												{/* } */}
+												}
 											</div>
 										</div>
 									</div>
