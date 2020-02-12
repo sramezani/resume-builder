@@ -2,57 +2,51 @@ import React, { Component } from "react";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import equal from 'deep-equal';
 
-const grid = 8;
-
-const getItemStyle = (isDragging, draggableStyle) => ({
-  // some basic styles to make the items look a bit nicer
-  userSelect: "none",
-  width: '26px',
-  height: '26px',
-  background: 'red',
-  position: 'absolute',
-  borderRadius: '100%',
-  top: -13,
-  right: 30,
-//   padding: grid * 2,
-//   margin: `0 0 ${grid}px 0`,
-// transform: isDragging ? 'scale(1.1)' : 'scale(1)'
-  // change background colour if dragging
-//   background: isDragging ? "#fff" : "#9a9",
-
-  // styles we need to apply on draggables
-//   ...draggableStyle
+const getDragIconStyle = (isDragging, draggableStyle) => ({
+	userSelect: "none",
+	width: '26px',
+	height: '26px',
+	background: '#03a9f4',
+	position: 'absolute',
+	borderRadius: '100%',
+	top: -13,
+	right: 30,
 });
-const getItemStyle2 = (isDragging, draggableStyle) => ({
-  // some basic styles to make the items look a bit nicer
-  userSelect: "none",
-  width: '26px',
-  height: '26px',
-  background: 'green',
-  position: 'absolute',
-  borderRadius: '100%',
-  top: -13,
-  right: 0,
-  cursor: 'pointer'
-//   display: 'none'
+const getAddIconStyle = (isDragging, draggableStyle) => ({
+	userSelect: "none",
+	width: '26px',
+	height: '26px',
+	background: '#03a9f4',
+	position: 'absolute',
+	borderRadius: '100%',
+	top: -13,
+	right: 0,
+	cursor: 'pointer'
 });
-const getItemStyle3 = (isDragging, draggableStyle) => ({
-  // some basic styles to make the items look a bit nicer
-  userSelect: "none",
-  width: '26px',
-  height: '26px',
-  background: 'blue',
-  position: 'absolute',
-  borderRadius: '100%',
-  top: -13,
-  right: 60,
-  cursor: 'pointer'
+const getRemoveIconStyle = (isDragging, draggableStyle) => ({
+	userSelect: "none",
+	width: '26px',
+	height: '26px',
+	background: '#03a9f4',
+	position: 'absolute',
+	borderRadius: '100%',
+	top: -13,
+	right: 60,
+	cursor: 'pointer'
+});
+const getdragedStyle = (isDragging) => ({
+	position: 'relative',
+	// transform: isDragging ? 'scale(1.07)' : 'scale(1)',
+	'-webkit-box-shadow': isDragging ? '0px 0px 24px 0px rgba(0,0,0,0.16)' : 'none',
+	'-moz-box-shadow': isDragging ? '0px 0px 24px 0px rgba(0,0,0,0.16)' : 'none',
+	'box-shadow': isDragging ? '0px 0px 24px 0px rgba(0,0,0,0.16)' : 'none'
 });
 
 const getListStyle = isDraggingOver => ({
-  background: isDraggingOver ? "#efefef" : "#fff",
-//   padding: grid,
-//   width: 250
+	'-webkit-box-shadow': isDraggingOver ? 'inset 0px 0px 18px 0px rgba(0,0,0,0.08)' : 'none',
+	'-moz-box-shadow': isDraggingOver ? 'inset 0px 0px 18px 0px rgba(0,0,0,0.08)' : 'none',
+	'box-shadow': isDraggingOver ? 'inset 0px 0px 18px 0px rgba(0,0,0,0.08)' : 'none',
+	background: isDraggingOver ? 'rgba(250,250,250,1)' : '#fff'
 });
 
 class Dnd extends Component {
@@ -111,9 +105,10 @@ class Dnd extends Component {
 				<Droppable droppableId="droppable">
 				{(provided, snapshot) => (
 					<div
-					{...provided.droppableProps}
-					ref={provided.innerRef}
-					style={getListStyle(snapshot.isDraggingOver)}
+						{...provided.droppableProps}
+						ref={provided.innerRef}
+						style={getListStyle(snapshot.isDraggingOver)}
+						className={snapshot.isDraggingOver ? 'selectedDragItems' : 'unselectedDragItems'}
 					>
 					{
 						this.state.data.map((item, index) => (
@@ -121,44 +116,43 @@ class Dnd extends Component {
 								{(provided, snapshot) => (
 									<div ref={provided.innerRef} >
 										<div {...provided.draggableProps}>
-											<div className="xxxx" style={{ position: 'relative' }}>
+											<div className="dragBox" style={getdragedStyle(snapshot.isDragging)}>
 												{this.props.renderItem(item)}
 												<div
-													style={getItemStyle2(
+													style={getAddIconStyle(
 														snapshot.isDragging,
 														provided.draggableProps.style
 													)}
-													className="testtt"
+													className="dragBoxIcon"
 													onClick={() => this.props.additem()}
 												>
-													A
+													<i class="material-icons dndIcon">add</i>
 												</div>
 												{
 													this.state.data.length > 1 &&
 														<div
 															{...provided.draggableProps}
 															{...provided.dragHandleProps}
-															style={getItemStyle(
+															style={getDragIconStyle(
 																snapshot.isDragging,
 																provided.draggableProps.style
 															)}
-															className="testtt"
+															className="dragBoxIcon"
 														>
-															{/* {item.id} */}
-															X
+															<i class="material-icons dndIcon">drag_handle</i>
 														</div>
 												}
 												{
 													this.state.data.length > 1 &&
 														<div
-															style={getItemStyle3(
+															style={getRemoveIconStyle(
 																snapshot.isDragging,
 																provided.draggableProps.style
 															)}
-															className="testtt"
+															className="dragBoxIcon"
 															onClick={() => this.props.removeitem(item.id)}
 														>
-															R
+															<i class="material-icons dndIcon">remove</i>
 														</div>
 												}
 											</div>

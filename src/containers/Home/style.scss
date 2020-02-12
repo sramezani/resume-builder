@@ -79,22 +79,32 @@ p {
     flex-direction: row;
     display: flex;
     background: #fff;
-    // border: 1px dashed rgba(255,255,255,0);
     padding: 0 5px;
 }
-.xxxx {
-    border: 1px dashed rgba(255,255,255,0);
-    // transition: all .2s ease-in-out;
+.unselectedDragItems .dragBox {
+    border: 2px dashed rgba(255,255,255,0);
+    transition: all .2s ease-in-out;
 }
-.xxxx:hover {
-    border: 1px dashed #777;
-    // transform: scale(1.1);
+.unselectedDragItems .dragBox:hover {
+    border: 2px dashed #d0d0d0;
+    transition-delay: .1s;
 }
-.testtt {
-    display: none;
+.dragBoxIcon {
+    opacity: 0;
+    text-align: center;
 }
-.xxxx:hover > .testtt {
-    display: block;
+.unselectedDragItems .dragBox:hover > .dragBoxIcon {
+    transition-delay: .2s;
+    // display: block;
+    opacity: 1;
+}
+.selectedDragItems .dragBox {
+    border: 2px dashed rgba(255,255,255,0);
+}
+.dndIcon {
+    color: #fff;
+    font-size: 20px;
+    margin-top: 2px;
 }
 .leftWork {
     flex: 1;
