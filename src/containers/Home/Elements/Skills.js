@@ -24,25 +24,8 @@ class Skills extends React.Component{
         appStore.dispatch(addSkill());
     }
 
-    _mapOrder = (array, order, key) => {
-        let arr = [];
-        order.map((item) => arr.push(item.id));
-        array.sort((a, b) => {
-            let A = a[key], B = b[key];
-        
-            if (arr.indexOf(A) > arr.indexOf(B)) {
-                return 1;
-            } else {
-                return -1;
-            }
-        
-        });
-        
-        return array;
-    }
-
     _updateSkill(data) {
-        const storeReorder = this._mapOrder(this.props.data, data, 'id');
+        const storeReorder = Util.mapOrder(this.props.data, data, 'id');
         appStore.dispatch(updateSkill(storeReorder));
     }
 

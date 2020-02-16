@@ -33,7 +33,7 @@ export default function core(state = initialState, action) {
                 ...state,
                 userData: {
                     ...state.userData,
-                    ...action.payload,
+                    ...action.payload
                 },
             };
 
@@ -44,7 +44,7 @@ export default function core(state = initialState, action) {
                 ...state,
                 theme: {
                     ...state.theme,
-                    ...action.payload,
+                    ...action.payload
                 },
             };
 
@@ -94,6 +94,17 @@ export default function core(state = initialState, action) {
                 ...state,
                 workExperience: [
                     ...newWkE
+                ]
+            };
+
+        case actionTypes.ADD_DELETED_WORK_EXPERIENCE_ITEM:
+            if (!action.payload) return state;
+
+            return {
+                ...state,
+                workExperience: [
+                    ...state.workExperience,
+                    ...action.payload
                 ]
             };
 

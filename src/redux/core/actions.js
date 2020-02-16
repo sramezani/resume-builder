@@ -56,6 +56,13 @@ export const deleteWorkExperienceData = (id) => {
     }
 }
 
+export const addDeletedWorkExperienceItem = (data) => {
+    return {
+        type : actionTypes.ADD_DELETED_WORK_EXPERIENCE_ITEM,
+        payload: data
+    }
+}
+
 export const addEducation = () => {
 
     const id = Util.randomId();

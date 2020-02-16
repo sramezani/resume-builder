@@ -68,7 +68,6 @@ class Dnd2Column extends Component {
         if (props.data) {
 			let column1 =[];
 			let column2 =[];
-			console.log(props.data)
 			if (props.data.length > 0){
 				props.data.map((item, index) => {
 					if (index % 2 === 0) {

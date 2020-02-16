@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 
 import Dnd from '../../../components/Dnd';
 import Text from '../../../components/Text';
+import ToastUndo from '../../../components/ToastUndo';
+import Toast from '../../../lib/Toast';
 
 import { appStore } from '../../../redux/store';
 import { addNewWorkExperience, updateWorkExperience, deleteWorkExperienceData } from '../../../redux/core/actions';
@@ -23,25 +25,8 @@ class WorkExperience extends React.Component{
         appStore.dispatch(addNewWorkExperience());
     }
 
-    _mapOrder = (array, order, key) => {
-        let arr = [];
-        order.map((item) => arr.push(item.id));
-        array.sort((a, b) => {
-            let A = a[key], B = b[key];
-        
-            if (arr.indexOf(A) > arr.indexOf(B)) {
-                return 1;
-            } else {
-                return -1;
-            }
-        
-        });
-        
-        return array;
-    }
-
     _updateWorkExperience(data) {
-        const storeReorder = this._mapOrder(this.props.data, data, 'id');
+        const storeReorder = Util.mapOrder(this.props.data, data, 'id');
         appStore.dispatch(updateWorkExperience(storeReorder));
     }
 
@@ -49,7 +34,9 @@ class WorkExperience extends React.Component{
         appStore.dispatch(addNewWorkExperience());
     }
 
-    _removeItem = (id) => {
+    _removeItem = (id, data) => {
+        Toast.dismiss();
+        Toast.show(<ToastUndo itemId={id} data={data} message="Work Item Removed" />);
         appStore.dispatch(deleteWorkExperienceData(id));
     }
 
@@ -60,7 +47,7 @@ class WorkExperience extends React.Component{
                 data={data}
                 reorder={(e) => this._updateWorkExperience(e)}
                 additem={this._addNewItem}
-                removeitem={(e) => this._removeItem(e)}
+                removeitem={(e) => this._removeItem(e, data)}
                 renderItem={(item) => (
                     <div className="workBox">
                         <div className="leftWork">

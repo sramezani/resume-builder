@@ -136,51 +136,6 @@ class Home extends React.Component{
                             <Skills
                                 data={this.props.skills}
                             />
-                            {/* <span className="title">
-                                Skills
-                            </span>
-                            <ul className="skillRow">
-                                <li className="flex1">
-                                    javascript
-                                </li>
-                                <li className="flex1">
-                                    Reactjs, React Native
-                                </li>
-                            </ul>
-                            <ul className="skillRow">
-                                <li className="flex1">
-                                    jQuery, ES6, Tweenmax
-                                </li>
-                                <li className="flex1">
-                                    Redux, Redux-Thunk
-                                </li>
-                            </ul>
-                            <ul className="skillRow">
-                                <li className="flex1">
-                                    HTML/HTML5, CSS/CSS3
-                                </li>
-                                <li className="flex1">
-                                    PHP
-                                </li>
-                            </ul>
-                            <ul className="skillRow">
-                                <li className="flex1">
-                                    Wordpress, Woocommerce
-                                </li>
-                                <li className="flex1">
-                                    MySQL, PostgreSQL
-                                </li>
-                            </ul>
-                            <ul className="skillRow">
-                                <li className="flex1">
-                                    Git
-                                </li>
-                            </ul>
-                            <ul className="skillRow">
-                                <li className="flex1">
-                                    Familiar with: Python, Tensorflow, Lua, Coronalabs
-                                </li>
-                            </ul> */}
                         </div>
 
                     </div>

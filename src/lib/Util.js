@@ -27,6 +27,23 @@ const Util = {
 		return decodeURIComponent(results[2].replace(/\+/g, ' '));
 	},
 
+	mapOrder: (array, order, key) => {
+        let arr = [];
+        order.map((item) => arr.push(item.id));
+        array.sort((a, b) => {
+            let A = a[key], B = b[key];
+        
+            if (arr.indexOf(A) > arr.indexOf(B)) {
+                return 1;
+            } else {
+                return -1;
+            }
+        
+        });
+        
+        return array;
+    }
+
 };
 
 /* Export ================================ */
