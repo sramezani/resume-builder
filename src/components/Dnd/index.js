@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import equal from 'deep-equal';
+import { Tooltip } from 'react-tippy';
 
 const getDragIconStyle = (isDragging, draggableStyle) => ({
 	userSelect: "none",
@@ -126,7 +127,13 @@ class Dnd extends Component {
 													className="dragBoxIcon"
 													onClick={() => this.props.additem()}
 												>
-													<i class="material-icons dndIcon">add</i>
+													<Tooltip
+														title="Add New Item"
+														arrow
+														distance={20}
+													>
+														<i class="material-icons dndIcon">add</i>
+													</Tooltip>
 												</div>
 												{
 													this.state.data.length > 1 &&
@@ -139,7 +146,13 @@ class Dnd extends Component {
 															)}
 															className="dragBoxIcon"
 														>
-															<i class="material-icons dndIcon">drag_handle</i>
+															<Tooltip
+																title="Change Position"
+																arrow
+																distance={20}
+															>
+																<i class="material-icons dndIcon">drag_handle</i>
+															</Tooltip>
 														</div>
 												}
 												{
@@ -152,7 +165,13 @@ class Dnd extends Component {
 															className="dragBoxIcon"
 															onClick={() => this.props.removeitem(item.id)}
 														>
-															<i class="material-icons dndIcon">remove</i>
+															<Tooltip
+																title="Remove"
+																arrow
+																distance={20}
+															>
+																<i class="material-icons dndIcon">remove</i>
+															</Tooltip>
 														</div>
 												}
 											</div>

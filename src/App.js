@@ -6,6 +6,7 @@ import { appStore } from './redux/store';
 import { Provider } from 'react-redux';
 
 import './theme';
+import 'react-tippy/dist/tippy.css';
 
 
 import Home from './containers/Home';
