@@ -2,16 +2,25 @@ import React from 'react';
 
 
 import { appStore } from '../../redux/store';
-import { addDeletedWorkExperienceItem } from '../../redux/core/actions';
+import { addDeletedWorkExperienceItem, addDeletedEducationItem, addDeletedSkillItem } from '../../redux/core/actions';
 
 import styles from './style.scss';
   
-const ToastUndo = ({ itemId, message, closeToast, data }) => {
+const ToastUndo = ({ itemId, message, closeToast, data, type }) => {
     
-    const deletedWkE = data.filter(({ id }) => id === itemId);
+    const deletedItem = data.filter(({ id }) => id === itemId);
     const findIndex = data.findIndex(e => e.id === itemId);
-    function handleClick(){
-        appStore.dispatch(addDeletedWorkExperienceItem(deletedWkE));
+    function handleClick() {
+		if (type === 'workExperience') {
+			appStore.dispatch(addDeletedWorkExperienceItem(deletedItem));
+		}
+        else if (type === 'education') {
+			appStore.dispatch(addDeletedEducationItem(deletedItem));
+		}
+        else if (type === 'skills') {
+			appStore.dispatch(addDeletedSkillItem(deletedItem));
+		}
+        
         closeToast();
     }
   

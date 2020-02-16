@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import Dnd from '../../../components/Dnd';
 import Text from '../../../components/Text';
+import Toast from '../../../lib/Toast';
 
 import { appStore } from '../../../redux/store';
 import { addEducation, updateEducation, deleteEducationData } from '../../../redux/core/actions';
@@ -32,7 +33,8 @@ class Education extends React.Component{
         appStore.dispatch(addEducation());
     }
 
-    _removeItem = (id) => {
+    _removeItem = (id, data) => {
+        Toast.showUndo(id, data, 'education', 'Education Item Removed');
         appStore.dispatch(deleteEducationData(id));
     }
 
@@ -43,7 +45,7 @@ class Education extends React.Component{
                 data={data}
                 reorder={(e) => this._updateEducation(e)}
                 additem={this._addNewItem}
-                removeitem={(e) => this._removeItem(e)}
+                removeitem={(e) => this._removeItem(e, data)}
                 renderItem={(item) => (
                     <div style={{ background: '#fff' }}>
                         <Text

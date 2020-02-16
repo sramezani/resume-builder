@@ -100,6 +100,13 @@ export const deleteEducationData = (id) => {
     }
 }
 
+export const addDeletedEducationItem = (data) => {
+    return {
+        type : actionTypes.ADD_DELETED_WORK_EDUCATION_ITEM,
+        payload: data
+    }
+}
+
 export const addSkill = () => {
 
     const id = Util.randomId();
@@ -133,5 +140,12 @@ export const deleteSkillData = (id) => {
     return {
         type : actionTypes.DELETE_SKILL_DATA,
         payload: id
+    }
+}
+
+export const addDeletedSkillItem = (data) => {
+    return {
+        type : actionTypes.ADD_DELETED_WORK_SKILL_ITEM,
+        payload: data
     }
 }

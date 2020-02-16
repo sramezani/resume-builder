@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import Dnd from '../../../components/Dnd';
 import Dnd2Column from '../../../components/Dnd2Column';
 import Text from '../../../components/Text';
+import Toast from '../../../lib/Toast';
 
 import { appStore } from '../../../redux/store';
 import { addSkill, updateSkill, deleteSkillData } from '../../../redux/core/actions';
@@ -33,7 +34,8 @@ class Skills extends React.Component{
         appStore.dispatch(addSkill());
     }
 
-    _removeItem = (id) => {
+    _removeItem = (id, data) => {
+        Toast.showUndo(id, data, 'skills', 'Skills Item Removed');
         appStore.dispatch(deleteSkillData(id));
     }
 
@@ -44,7 +46,7 @@ class Skills extends React.Component{
                 data={data}
                 reorder={(e) => this._updateSkill(e)}
                 additem={this._addNewItem}
-                removeitem={(e) => this._removeItem(e)}
+                removeitem={(e) => this._removeItem(e, data)}
                 renderItem={(item) => (
                     <div style={{ background: '#fff' }}>
                         <Text

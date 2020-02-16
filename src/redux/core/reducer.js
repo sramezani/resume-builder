@@ -157,6 +157,17 @@ export default function core(state = initialState, action) {
                 ]
             };
 
+        case actionTypes.ADD_DELETED_WORK_EDUCATION_ITEM:
+            if (!action.payload) return state;
+
+            return {
+                ...state,
+                education: [
+                    ...state.education,
+                    ...action.payload
+                ]
+            };
+
         case actionTypes.ADD_NEW_SKILL:
             if (!action.payload) return state;    
 
@@ -206,7 +217,16 @@ export default function core(state = initialState, action) {
                 ]
             };
     
+        case actionTypes.ADD_DELETED_WORK_SKILL_ITEM:
+            if (!action.payload) return state;
 
+            return {
+                ...state,
+                skills: [
+                    ...state.skills,
+                    ...action.payload
+                ]
+            };
 
         default:
             return {...state}

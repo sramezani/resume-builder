@@ -1,4 +1,6 @@
+import React from 'react';
 import { toast, Slide, Zoom, Flip, Bounce } from 'react-toastify';
+import ToastUndo from '../components/ToastUndo';
 
 const config = {
     position: "bottom-left",
@@ -12,10 +14,14 @@ const config = {
 
 const Toast = {
 
+	showUndo: (id, data, type, message = 'item removed') => {
+        toast.dismiss();
+        toast(<ToastUndo itemId={id} data={data} message={message} type={type} />, config)
+    },
+
 	show: (message = '...') => {
-        return (
-            toast(message, config)
-        )
+        toast.dismiss();
+        toast(message, config)
     },
 
 	dismiss: () => {

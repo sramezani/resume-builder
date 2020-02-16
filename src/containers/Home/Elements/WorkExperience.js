@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 
 import Dnd from '../../../components/Dnd';
 import Text from '../../../components/Text';
-import ToastUndo from '../../../components/ToastUndo';
 import Toast from '../../../lib/Toast';
 
 import { appStore } from '../../../redux/store';
@@ -35,8 +34,7 @@ class WorkExperience extends React.Component{
     }
 
     _removeItem = (id, data) => {
-        Toast.dismiss();
-        Toast.show(<ToastUndo itemId={id} data={data} message="Work Item Removed" />);
+        Toast.showUndo(id, data, 'workExperience', 'Education Item Removed');
         appStore.dispatch(deleteWorkExperienceData(id));
     }
 
