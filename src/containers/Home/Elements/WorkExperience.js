@@ -34,7 +34,7 @@ class WorkExperience extends React.Component{
     }
 
     _removeItem = (id, data) => {
-        Toast.showUndo(id, data, 'workExperience', 'Education Item Removed');
+        Toast.showUndo(id, data, 'workExperience', 'Work Item Removed');
         appStore.dispatch(deleteWorkExperienceData(id));
     }
 

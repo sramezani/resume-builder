@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Text from '../../components/Text';
+import TopNavbar from '../../components/TopNavbar';
+
 import WorkExperience from './Elements/WorkExperience';
 import Education from './Elements/Education';
 import Skills from './Elements/Skills';
@@ -22,6 +24,9 @@ class Home extends React.Component{
                     <div className="loading_gradient">
                     </div>
                 </div>
+
+                <TopNavbar />
+
                 <div className="container">
                     <div className="insideCon">
 

@@ -61,6 +61,7 @@ class Text extends React.Component{
                 dangerouslySetInnerHTML={{ __html: value }}
                 className={"contentEditableContainer " + customclass}
                 {...this.props}
+                // placeholder=""
             />
             //     {this.props.value}
             // </p>
