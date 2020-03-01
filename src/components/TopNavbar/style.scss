@@ -10,6 +10,7 @@
     z-index: 3;
     transform: translate(-50%,-50%);
     border-radius: 15px;
+    display: flex;
 }
 
 .bg-complete {
@@ -44,4 +45,63 @@
     position: absolute;
     top: -10px;
     left: 67px;
+}
+
+.xxsxsxs {
+    width: 40px;
+    height: 40px;
+    background: red;
+    border-radius: 100%;
+}
+
+.tonNavbar-felx1 {
+    flex: 1;
+    padding: 10px;
+}
+.tonNavbar-felx2 {
+    flex: 2;
+    padding: 10px;
+}
+
+.tonNavbar-border-right {
+    border-right: 2px solid #515151;
+    height: 100%;
+}
+
+.tonNavbar-color {
+
+}
+
+// .topNavbar-typography select {
+//     width: 130px;
+//     height: 30px;
+//     cursor: pointer;
+//     background: #fff;
+//     border: 0;
+//     font-size: 14px;
+// }
+
+// .topNavbar-typography option {
+//     padding: 5px 0;
+//     font-size: 14px;
+// }
+
+.topNavbar-section {
+    
+}
+
+.topNavbar-save {
+
+}
+
+.topNavbar-load {
+
+}
+
+.topNavbar-downlaod {
+
+}
+
+.topNavbar-preview {
+
 }

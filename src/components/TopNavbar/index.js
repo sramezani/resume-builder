@@ -5,6 +5,8 @@ import { SketchPicker, ChromePicker, BlockPicker, PhotoshopPicker, TwitterPicker
 import Util from '../../lib/Util';
 import AppConfig from '../../constants/config';
 
+import SelectFont from '../SelectFont';
+
 import { appStore } from '../../redux/store';
 import { updateTheme } from '../../redux/core/actions';
 
@@ -33,7 +35,6 @@ class TopNavbar extends React.Component{
     };
 
     _colorBtnPress = () => {
-        // this._bgPress();
         this.setState({
             bgComplete: true,
             colorPicker: true
@@ -56,9 +57,55 @@ class TopNavbar extends React.Component{
                     <div className="bg-complete" onClick={this._bgPress} />
             }
             <div className="TopNavbar">
-                <div className="tonNavbar-color-btn" onClick={this._colorBtnPress}>
-                    color
+    
+                <div className="tonNavbar-felx1" onClick={this._colorBtnPress}>
+                    <div className="tonNavbar-border-right tonNavbar-color">
+                        <div className="xxsxsxs">
+
+                        </div>
+                        color
+                    </div>
                 </div>
+
+                <div className="tonNavbar-felx2">
+                    <div className="tonNavbar-border-right topNavbar-typography">
+                        <div>
+                            <SelectFont />
+                        </div>
+                        typography
+                    </div>
+                </div>
+
+                <div className="tonNavbar-felx1">
+                    <div className="tonNavbar-border-right topNavbar-section">
+                        xxx
+                    </div>
+                </div>
+
+                <div className="tonNavbar-felx1">
+                    <div className="tonNavbar-border-right topNavbar-save">
+                        xxx
+                    </div>
+                </div>
+
+                <div className="tonNavbar-felx1">
+                    <div className="tonNavbar-border-right topNavbar-load">
+                        xxx
+                    </div>
+                </div>
+
+                <div className="tonNavbar-felx1">
+                    <div className="tonNavbar-border-right topNavbar-downlaod">
+                        xxx
+                    </div>
+                </div>
+
+                <div className="tonNavbar-felx1">
+                    <div className="topNavbar-preview">
+                        xxx
+                    </div>
+                </div>
+
                 {
                     colorPicker &&
                         <CirclePicker

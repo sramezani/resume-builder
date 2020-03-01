@@ -19,7 +19,7 @@ class Home extends React.Component{
 
     render(){
         return(
-            <>
+            <div style={{ fontFamily: this.props.theme.fontFamily }}>
                 <div className="loading" style={{ background: this.props.theme.color }}>
                     <div className="loading_gradient">
                     </div>
@@ -145,7 +145,7 @@ class Home extends React.Component{
 
                     </div>
                 </div>
-            </>
+            </div>
         )
      }
 }
