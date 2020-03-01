@@ -1,48 +1,4 @@
 
-@font-face {
-  font-family: 'minionpro';
-  font-style: normal;
-  font-weight: normal;
-  src: url('../assets/fonts/minionproregular/minionproregular.eot');
-  src: url( '../assets/fonts/minionproregular/minionproregular.eot?#iefix') format('embedded-opentype'), /* IE6-8 */
-  url('../assets/fonts/minionproregular/minionproregular.woff2') format('woff2'), /* FF39+,Chrome36+, Opera24+*/
-  url('../assets/fonts/minionproregular/minionproregular.woff') format('woff'), /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
-  url('../assets/fonts/minionproregular/minionproregular.ttf') format('truetype');
-}
-
-@font-face {
-  font-family: 'minionpro';
-  font-style: normal;
-  font-weight: bold;
-  src: url('../assets/fonts/minionprobold/minionprobold.eot');
-  src: url( '../assets/fonts/minionprobold/minionprobold.eot?#iefix') format('embedded-opentype'), /* IE6-8 */
-  url('../assets/fonts/minionprobold/minionprobold.woff2') format('woff2'), /* FF39+,Chrome36+, Opera24+*/
-  url('../assets/fonts/minionprobold/minionprobold.woff') format('woff'), /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
-  url('../assets/fonts/minionprobold/minionprobold.ttf') format('truetype');
-}
-
-@font-face {
-  font-family: 'gotham-narrow';
-  font-style: normal;
-  font-weight: bold;
-  src: url('../assets/fonts/gotham-narrow-bold/gotham-narrow-bold.eot');
-  src: url( '../assets/fonts/gotham-narrow-bold/gotham-narrow-bold.eot?#iefix') format('embedded-opentype'), /* IE6-8 */
-  url('../assets/fonts/gotham-narrow-bold/gotham-narrow-bold.woff2') format('woff2'), /* FF39+,Chrome36+, Opera24+*/
-  url('../assets/fonts/gotham-narrow-bold/gotham-narrow-bold.woff') format('woff'), /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
-  url('../assets/fonts/gotham-narrow-bold/gotham-narrow-bold.ttf') format('truetype');
-}
-
-@font-face {
-  font-family: 'gotham-narrow';
-  font-style: italic;
-  font-weight: bold;
-  src: url('../assets/fonts/gotham-narrow-bold-italic/gotham-narrow-bold-italic.eot');
-  src: url( '../assets/fonts/gotham-narrow-bold-italic/gotham-narrow-bold-italic.eot?#iefix') format('embedded-opentype'), /* IE6-8 */
-  url('../assets/fonts/gotham-narrow-bold-italic/gotham-narrow-bold-italic.woff2') format('woff2'), /* FF39+,Chrome36+, Opera24+*/
-  url('../assets/fonts/gotham-narrow-bold-italic/gotham-narrow-bold-italic.woff') format('woff'), /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
-  url('../assets/fonts/gotham-narrow-bold-italic/gotham-narrow-bold-italic.ttf') format('truetype');
-}
-
 // font-family: 'Source Sans Pro'
 @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:regular,bold,italic&subset=latin,latin-ext');
 
