@@ -1,7 +1,7 @@
 @import '../../theme/colors';
 
 .TopNavbar {
-    width: 190mm;
+    width: 200mm;
     background: #252525;
     position: fixed;
     height: 80px;
@@ -11,6 +11,15 @@
     transform: translate(-50%,-50%);
     border-radius: 10px;
     display: flex;
+}
+
+.item {
+    color: #787878;
+    cursor: pointer;
+}
+
+.item:hover {
+    color: #efefef;
 }
 
 .bgComplete {
@@ -49,29 +58,35 @@
     left: 67px;
 }
 
-.xxsxsxs {
-    width: 40px;
-    height: 40px;
+.colorCircle {
+    width: 35px;
+    height: 35px !important;
     background: red;
+    margin: 0 0 0 13px;
     border-radius: 100%;
 }
 
 .tonNavbarFelx1 {
-    flex: 1;
+    flex: 0.8;
     padding: 10px;
+    text-align: center;
 }
 .tonNavbarFelx2 {
-    flex: 2;
+    flex: 1.9;
     padding: 10px;
+    text-align: center;
 }
 
 .tonNavbarBorderRight {
-    border-right: 2px solid #515151;
+    border-right: 2px solid #424242;
+}
+
+.topNavbarColor {
     height: 100%;
 }
 
-.tonNavbarColor {
-
+.topNavbarTypography {
+    height: 100%;
 }
 
 // .topNavbarTypography select {
@@ -89,21 +104,33 @@
 // }
 
 .topNavbarSection {
-    
+    height: 100%;
 }
 
 .topNavbarSave {
-
+    height: 100%;
 }
 
 .topNavbarLoad {
-
-}
-
-.topNavbarDownlaod {
-
+    height: 100%;
 }
 
 .topNavbarPreview {
+    height: 100%;
+}
 
+.topNavbarDownlaod {
+    height: 100%;
+}
+
+.topPart {
+    height: 60%;
+}
+
+.topPart i {
+    font-size: 32px;
+}
+
+.bottomPart {
+    height: 40%;
 }

@@ -6,7 +6,7 @@
 .selectBoxForm select {
 	border: 0 ;
 	border-radius: 1px;
-	width: 125px;
+	width: 146px;
     height: 30px;
 	-webkit-appearance:none;
 	appearance:none;
@@ -37,8 +37,8 @@
 
 .selectDown {
 	position: absolute;
-	right: 15px;
-	top: 4px;
+	right: -5px;
+	top: 0px;
 	color: #3c3a3a;
 	cursor: pointer;
 	text-align: center;

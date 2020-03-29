@@ -56,51 +56,85 @@ class TopNavbar extends React.Component<IProps, IState> {
             }
             <div className={styles.TopNavbar}>
     
-                <div className={styles.tonNavbarFelx1} onClick={this._colorBtnPress}>
-                    <div className={styles.tonNavbarBorderRight + ' ' + styles.tonNavbarColor}>
-                        <div className={styles.xxsxsxs}>
+                <div className={[styles.item, styles.tonNavbarBorderRight, styles.tonNavbarFelx1].join(' ')} onClick={this._colorBtnPress}>
+                    <div className={[styles.topNavbarColor].join(' ')}>
+
+                        <div className={[styles.topPart, styles.colorCircle].join(' ')}>
 
                         </div>
-                        color
+                        <div className={styles.bottomPart}>
+                            Color
+                        </div>
                     </div>
                 </div>
 
-                <div className={styles.tonNavbarFelx2}>
-                    <div className={styles.tonNavbarBorderRight + ' ' + styles.topNavbarTypography}>
-                        <div>
+                <div className={[styles.item, styles.tonNavbarBorderRight, styles.tonNavbarFelx2].join(' ')}>
+                    <div className={[styles.topNavbarTypography].join(' ')}>
+                        <div className={styles.topPart}>
                             <SelectFont />
                         </div>
-                        typography
+                        <div className={styles.bottomPart}>
+                        Typography
+                        </div>
                     </div>
                 </div>
 
-                <div className={styles.tonNavbarFelx1}>
-                    <div className={styles.tonNavbarBorderRight + ' ' + styles.topNavbarSection}>
-                        xxx
+                <div className={[styles.item, styles.tonNavbarBorderRight, styles.tonNavbarFelx1].join(' ')}>
+                    <div className={styles.topNavbarSection}>
+                        <div className={styles.topPart}>
+                            <i className="material-icons">vertical_split</i>
+                        </div>
+                        <div className={styles.bottomPart}>
+                            Section
+                        </div>
+                        
                     </div>
                 </div>
 
-                <div className={styles.tonNavbarFelx1}>
-                    <div className={styles.tonNavbarBorderRight + ' ' + styles.topNavbarSave}>
-                        xxx
+                <div className={[styles.item, styles.tonNavbarBorderRight, styles.tonNavbarFelx1].join(' ')}>
+                    <div className={styles.topNavbarSave}>
+                        <div className={styles.topPart}>
+                            <i className="material-icons">save</i>
+                        </div>
+                        <div className={styles.bottomPart}>
+                            Save
+                        </div>
                     </div>
                 </div>
 
-                <div className={styles.tonNavbarFelx1}>
-                    <div className={styles.tonNavbarBorderRight + ' ' + styles.topNavbarLoad}>
-                        xxx
+                <div className={[styles.item, styles.tonNavbarBorderRight, styles.tonNavbarFelx1].join(' ')}>
+                    <div className={styles.topNavbarLoad}>
+                        <div className={styles.topPart}>
+                            <i className="material-icons">insert_drive_file</i>
+                        </div>
+                        <div className={styles.bottomPart}>
+                            Load
+                        </div>
+                        
                     </div>
                 </div>
 
-                <div className={styles.tonNavbarFelx1}>
-                    <div className={styles.tonNavbarBorderRight + ' ' + styles.topNavbarDownlaod}>
-                        xxx
-                    </div>
-                </div>
-
-                <div className={styles.tonNavbarFelx1}>
+                <div className={[styles.item, styles.tonNavbarBorderRight, styles.tonNavbarFelx1].join(' ')}>
                     <div className={styles.topNavbarPreview}>
-                        xxx
+                        <div className={styles.topPart}>
+                            <i className="material-icons">visibility</i>
+                        </div>
+                        <div className={styles.bottomPart}>
+                            Preview
+                        </div>
+                        
+                    </div>
+                </div>
+
+                <div className={[styles.item, styles.tonNavbarFelx2].join(' ')}>
+                    <div className={styles.topNavbarDownlaod}>
+                        <div className={styles.topPart}>
+                            <i className="material-icons">picture_as_pdf</i>
+                        </div>
+                        <div className={styles.bottomPart}>
+                            Download PDF
+                        </div>
+                        
                     </div>
                 </div>
 
