@@ -1,6 +1,7 @@
 import React from 'react';
 import { toast, Slide, Zoom, Flip, Bounce } from 'react-toastify';
-import ToastUndo from '../components/ToastUndo';
+// import ToastUndo from '../components/ToastUndo';
+import { ToastUndo } from '@component';
 
 const config = {
     position: "bottom-left",

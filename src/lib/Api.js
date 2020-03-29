@@ -1,6 +1,6 @@
 
 // Consts and Libs
-import { Labels, APIConfig } from '../constants';
+import { Labels, APIConfig } from '../constant';
 
 
 // Config

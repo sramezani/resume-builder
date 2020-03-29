@@ -1,0 +1,26 @@
+html,body,div,span,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,video,audio,section,article,nav,footer,header,aside{margin:0;padding:0;border:0;outline:0;background:transparent}
+ol,ul{list-style:none}
+table{border-collapse:collapse;border-spacing:0}
+
+/* @font-face  {
+    font-family: 'Roboto-Regular';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../assets/fonts/Roboto/Roboto-Regular.ttf') format('truetype');
+}
+@font-face  {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: bold;
+    src: url('../assets/fonts/Roboto/Roboto-Bold.ttf') format('truetype');
+}
+@font-face  {
+    font-family: 'Roboto-Black';
+    font-style: normal;
+    font-weight: 900;
+    src: url('../assets/fonts/Roboto/Roboto-Black.ttf') format('truetype');
+} */
+
+body {
+    font-family: 'Roboto-Regular';
+}

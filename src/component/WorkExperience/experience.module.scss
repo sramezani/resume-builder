@@ -1,0 +1,62 @@
+@import '../../theme/colors';
+
+.workDate {
+    font-size: 14px;
+    width: fit-content;
+    padding: 0 6px 0 0;
+}
+
+.workTitle {
+    font-weight: bold;
+    font-size: 17px;
+}
+.workCompany {
+    font-weight: bold;
+    font-size: 16px;
+    margin-top: -4px;
+    display: block;
+}
+
+.companyExplain {
+    font-size: 14px;
+    color: #767373;
+}
+
+.workBox {
+    flex-direction: row;
+    display: flex;
+    background: #fff;
+    padding: 0 5px;
+}
+
+.leftWork {
+    flex: 1;
+}
+.RightWork {
+    flex: 3;
+    border-left: 2px solid #dadada;
+    padding: 0 0 0 15px;
+}
+.workExperience .workBox:nth-child(n+2){
+    padding-top: 5px;
+}
+
+.workDot {
+    width: 16px;
+    height: 18px;
+    background: #fff;
+    position: absolute;
+    margin: 0 0 0 -24px;
+}
+.workDot:after {
+    width: 10px;
+    height: 10px;
+    content: "";
+    display: block;
+    border-radius: 100%;
+    margin: 3px auto;
+    background: #77b8ed;
+}
+.experienceText {
+    padding: 0 0 10px 20px;
+}
