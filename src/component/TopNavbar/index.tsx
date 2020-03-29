@@ -1,29 +1,29 @@
 import React from 'react';
-import { SketchPicker, ChromePicker, BlockPicker, PhotoshopPicker, TwitterPicker, CirclePicker } from 'react-color';
+import { CirclePicker } from 'react-color';
 
 import AppConfig from '../../constant/config';
-
 import SelectFont from '../SelectFont';
-
 import { appStore } from '../../redux/store';
 import { updateTheme } from '../../redux/core/actions';
 
-
 import styles from './topNavbar.module.scss';
 
-class TopNavbar extends React.Component{
+import { IProps, IState } from "./topNavbar";
+
+class TopNavbar extends React.Component<IProps, IState> {
     
-    constructor(props) {
+    constructor(props: IProps) {
         super(props);
 
         this.state = {
             colorPicker: false,
-            bgComplete: false
+            bgComplete: false,
+            background: ''
         }
 
     }
 
-    handleChangeComplete = (color) => {
+    handleChangeComplete = (color: { hex: string}) => {
         this._bgPress();
         this.setState({ background: color.hex });
         const data = {
@@ -106,13 +106,14 @@ class TopNavbar extends React.Component{
 
                 {
                     colorPicker &&
+                        <div className={styles.topNavbarCirclePicker}>
                         <CirclePicker
                             color={ this.state.background }
-                            width={134}
-                            className={styles.topNavbarCirclePicker}
+                            width={'134'}
                             colors={AppConfig.materialColors}
                             onChangeComplete={ this.handleChangeComplete }
                         />
+                        </div>
                 }
             </div>
             </>
