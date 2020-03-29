@@ -8,3 +8,34 @@ body {
   color: $black_light;
   background-color: $white;
 }
+
+[contenteditable=true]:empty:before {
+	content: attr(placeholder);
+	display: block;
+	color: #aaa;
+	cursor: text;
+}
+
+.Toastify__toast.Toastify__toast--default{
+    background: #222;
+}
+  
+.Toastify__progress-bar.Toastify__progress-bar--default{
+    background: #000;
+}
+
+.Toastify__close-button--default {
+    color: #eee;
+}
+
+a {
+    color :#2686d4;
+}
+p {
+    margin: 1px 0;
+    font-size: 16px;
+    line-height: 18px;
+}
+ul li {
+    margin: 2px 0;
+}

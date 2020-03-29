@@ -24,6 +24,3 @@ $gray: map-get($colors, Gallery);
 $white: map-get($colors, White);
 $red: map-get($colors, Pomegranate);
 
-/*EXPORT ==============================================================*/
-:export { primaryColor: $primary; } //for loader component
-
