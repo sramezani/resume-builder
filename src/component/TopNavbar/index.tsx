@@ -1,6 +1,8 @@
 import React from 'react';
 import { CirclePicker } from 'react-color';
 
+import download from 'downloadjs';
+
 import AppConfig from '../../constant/config';
 import SelectFont from '../SelectFont';
 import { appStore } from '../../redux/store';
@@ -44,6 +46,14 @@ class TopNavbar extends React.Component<IProps, IState> {
             colorPicker: false,
             bgComplete: false
         });
+    }
+
+    _downloadPDFBtnPress = async () => {
+
+        const res = await fetch('http://localhost:3007/download');
+        const blob = await res.blob();
+        download(blob, 'test.pdf');
+
     }
 
     render(){
@@ -126,7 +136,7 @@ class TopNavbar extends React.Component<IProps, IState> {
                     </div>
                 </div>
 
-                <div className={[styles.item, styles.tonNavbarFelx2].join(' ')}>
+                <div className={[styles.item, styles.tonNavbarFelx2].join(' ')} onClick={this._downloadPDFBtnPress}>
                     <div className={styles.topNavbarDownlaod}>
                         <div className={styles.topPart}>
                             <i className="material-icons">picture_as_pdf</i>

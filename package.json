@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "deep-equal": "^2.0.1",
+    "downloadjs": "^1.4.7",
     "next": "^9.3.4",
     "react": "16.13.1",
     "react-beautiful-dnd": "^13.0.0",
@@ -29,6 +30,7 @@
   "devDependencies": {
     "@testing-library/jest-dom": "^5.1.1",
     "@testing-library/react": "^10.0.1",
+    "@types/downloadjs": "^1.4.1",
     "@types/node": "^13.9.2",
     "@types/react": "^16.9.25",
     "@types/react-color": "^3.0.1",
