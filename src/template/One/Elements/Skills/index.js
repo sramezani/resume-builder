@@ -1,16 +1,12 @@
 import React from 'react';
 
-// import Dnd from '../../../components/Dnd';
-// import Dnd2Column from '../../../components/Dnd2Column';
-// import Text from '../../../components/Text';
-import Toast from '../../lib/Toast';
+import { Toast, Util } from '@lib';
 
 import { Text, Dnd2Column } from '@component';
 
-import { appStore } from '../../redux/store';
-import { addSkill, updateSkill, deleteSkillData } from '../../redux/core/actions';
+import { appStore } from '../../../../redux/store';
+import { addSkill, updateSkill, deleteSkillData } from '../../../../redux/core/actions';
 
-import Util from '../../lib/Util';
 // import styles from './skills.module.scss';
 
 class Skills extends React.Component{

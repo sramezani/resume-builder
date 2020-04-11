@@ -1,15 +1,11 @@
 import React from 'react';
 
-// import Dnd from '../../../components/Dnd';
-// import Text from '../../../components/Text';
-import Toast from '../../lib/Toast';
-
+import { Toast, Util } from '@lib';
 import { Text, Dnd } from '@component';
 
-import { appStore } from '../../redux/store';
-import { addEducation, updateEducation, deleteEducationData } from '../../redux/core/actions';
+import { appStore } from '../../../../redux/store';
+import { addEducation, updateEducation, deleteEducationData } from '../../../../redux/core/actions';
 
-import Util from '../../lib/Util';
 import styles from './education.module.scss';
 
 class Education extends React.Component{

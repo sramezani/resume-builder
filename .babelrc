@@ -6,6 +6,8 @@
             "root": ["."],
             "alias": {
               "@component": "./src/component",
+              "@template": "./src/template",
+              "@lib": "./src/lib",
               "@colors": "./src/theme/colors"
             }
         }],
