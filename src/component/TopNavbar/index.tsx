@@ -1,12 +1,14 @@
 import React from 'react';
 import { CirclePicker } from 'react-color';
+import Tippy from '@tippyjs/react';
+import Switch from "react-switch";
 
 import download from 'downloadjs';
 
 import AppConfig from '../../constant/config';
 import SelectFont from '../SelectFont';
 import { appStore } from '../../redux/store';
-import { updateTheme } from '../../redux/core/actions';
+import { updateTheme, updateItemStatus } from '../../redux/core/actions';
 
 import styles from './topNavbar.module.scss';
 
@@ -20,7 +22,9 @@ class TopNavbar extends React.Component<IProps, IState> {
         this.state = {
             colorPicker: false,
             bgComplete: false,
-            background: ''
+            background: '',
+            checked: false,
+            sectionStatus: false
         }
 
     }
@@ -56,6 +60,89 @@ class TopNavbar extends React.Component<IProps, IState> {
 
     }
 
+    _updateItemStatus = (name: string, status: boolean) => {
+        const data = {
+            [name]: status
+        }
+        appStore.dispatch(updateItemStatus(data));
+    }
+
+    _switchBtnClick = (name: string) => {
+        const { itemStatus } = this.props;
+        this._updateItemStatus(name, !itemStatus[name]);
+    }
+
+    _switchBtn = (name: string) => {
+        const { itemStatus, theme } = this.props;
+        return (
+            <Switch
+                onChange={() => this._updateItemStatus(name, !itemStatus[name])}
+                checked={itemStatus[name]}
+                uncheckedIcon={false}
+                checkedIcon={false}
+                activeBoxShadow="0px 0px 0px 0px #ffffff00"
+                width={40}
+                height={20}
+                offColor="#aaa"
+                onColor={theme.color}
+            /> 
+        )
+    }
+
+    _sectionBtnPress = () => {
+        this.setState({
+            bgComplete: !this.state.bgComplete,
+            sectionStatus: !this.state.sectionStatus
+        })
+    }
+
+    _setcionTippyContent = () => {
+        return (
+            <div className={styles.sectionBox}>
+                <div className={styles.sectionLeft}>
+                    <div className={styles.sectionItem}>
+                        {this._switchBtn('picture')}
+                        <span className={styles.sectionItemText} onClick={() => this._switchBtnClick('picture')}>
+                            Picture
+                        </span>
+                    </div>
+                    <div className={styles.sectionItem}>
+                        {this._switchBtn('info')}
+                        <span className={styles.sectionItemText} onClick={() => this._switchBtnClick('info')}>
+                            Info
+                        </span>
+                    </div>
+                    <div className={styles.sectionItem}>
+                        {this._switchBtn('profile')}
+                        <span className={styles.sectionItemText} onClick={() => this._switchBtnClick('profile')}>
+                            Profile
+                        </span>
+                    </div>
+                </div>
+                <div className={styles.sectionRight}>
+                    <div className={styles.sectionItem}>
+                        {this._switchBtn('workExperience')}
+                        <span className={styles.sectionItemText} onClick={() => this._switchBtnClick('workExperience')}>
+                            WorkExperience
+                        </span>
+                    </div>
+                    <div className={styles.sectionItem}>
+                        {this._switchBtn('education')}
+                        <span className={styles.sectionItemText} onClick={() => this._switchBtnClick('education')}>
+                            Education
+                        </span>
+                    </div>
+                    <div className={styles.sectionItem}>
+                        {this._switchBtn('skills')}
+                        <span className={styles.sectionItemText} onClick={() => this._switchBtnClick('skills')}>
+                            Skills
+                        </span>
+                    </div>
+                </div>
+            </div>
+        )
+    }
+
     render(){
         let { colorPicker, bgComplete } = this.state;
         return (
@@ -88,8 +175,33 @@ class TopNavbar extends React.Component<IProps, IState> {
                         </div>
                     </div>
                 </div>
-
-                <div className={[styles.item, styles.tonNavbarBorderRight, styles.tonNavbarFelx1].join(' ')}>
+                
+                <Tippy
+                    visible={this.state.sectionStatus}
+                    onClickOutside={() => this.setState({ sectionStatus: false })}
+                    className="sectionTippy"
+                    content={this._setcionTippyContent()}
+                    interactive={true}
+                    delay={200}
+                    placement='bottom'
+                    arrow
+                >
+                    <div
+                        className={[styles.item, styles.tonNavbarBorderRight, styles.tonNavbarFelx1].join(' ')}
+                        onClick={this._sectionBtnPress}
+                    >
+                        <div className={styles.topNavbarSection}>
+                            <div className={styles.topPart}>
+                                <i className="material-icons">vertical_split</i>
+                            </div>
+                            <div className={styles.bottomPart}>
+                                Section
+                            </div>
+                            
+                        </div>
+                    </div>
+                </Tippy>
+                {/* <div className={[styles.item, styles.tonNavbarBorderRight, styles.tonNavbarFelx1].join(' ')}>
                     <div className={styles.topNavbarSection}>
                         <div className={styles.topPart}>
                             <i className="material-icons">vertical_split</i>
@@ -99,7 +211,7 @@ class TopNavbar extends React.Component<IProps, IState> {
                         </div>
                         
                     </div>
-                </div>
+                </div> */}
 
                 <div className={[styles.item, styles.tonNavbarBorderRight, styles.tonNavbarFelx1].join(' ')}>
                     <div className={styles.topNavbarSave}>

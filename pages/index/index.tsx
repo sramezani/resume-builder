@@ -28,7 +28,10 @@ class Home extends React.Component<IProps, IState> {
                     </div>
                 </div>
 
-                <TopNavbar />
+                <TopNavbar
+                    itemStatus={this.props.itemStatus}
+                    theme={this.props.theme}
+                />
 
                 <div className={styles.container}>
 
@@ -40,8 +43,9 @@ class Home extends React.Component<IProps, IState> {
 	}
 }
 
-const mapStateToProps = (state:any) => ({
-    theme: state.theme
+const mapStateToProps = (store:any) => ({
+    theme: store.theme,
+    itemStatus: store.itemStatus
 });
 
 const mapDispatchToProps = () => ({

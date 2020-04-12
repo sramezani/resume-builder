@@ -18,7 +18,7 @@ class Education extends React.Component{
     }
 
     componentDidMount() {
-        appStore.dispatch(addEducation());
+        // appStore.dispatch(addEducation());
     }
 
     _updateEducation(data) {

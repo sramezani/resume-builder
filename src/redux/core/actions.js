@@ -16,6 +16,13 @@ export const updateTheme = (data) => {
     }
 }
 
+export const updateItemStatus = (data) => {
+    return {
+        type : actionTypes.UPDATE_ITEM_STATUS,
+        payload: data
+    }
+}
+
 export const updateWorkExperience = (data) => {
     return {
         type : actionTypes.UPDATE_WORK_EXPERIENCE,

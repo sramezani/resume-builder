@@ -19,7 +19,7 @@ class Skills extends React.Component{
     }
 
     componentDidMount() {
-        appStore.dispatch(addSkill());
+        // appStore.dispatch(addSkill());
     }
 
     _updateSkill(data) {

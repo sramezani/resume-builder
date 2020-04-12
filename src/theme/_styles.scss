@@ -39,3 +39,14 @@ p {
 ul li {
     margin: 2px 0;
 }
+
+.sectionTippy {
+    background-color: #fff;
+    min-width: 500px !important;
+    max-width: 600px !important;
+    // max-width: 400px;
+    // min-height: 250px;
+}
+.sectionTippy .tippy-arrow {
+    color: #fff;
+}

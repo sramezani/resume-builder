@@ -18,8 +18,10 @@ export interface IProps {
     },
     workExperience: [],
     education: [],
-    skills: []
+    skills: [],
+    itemStatus: {
+          [key: string]: boolean
+      },
 }
 export interface IState {
-    
 }

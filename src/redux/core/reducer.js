@@ -14,12 +14,20 @@ const initialState = {
         educationTitle: 'Education',
         skillsTitle: 'Skills',
     },
-    workExperience: [],
-    education: [],
-    skills: [],
+    workExperience: [{id: "1"}],
+    education: [{id: "1"}],
+    skills: [{id: "1"}],
     theme: {
         color: '#4CAF50',
         fontFamily: 'Source Sans Pro'
+    },
+    itemStatus: {
+        picture: false,
+        info: true,
+        profile: true,
+        workExperience: true,
+        education: true,
+        skills: true
     }
 }
 
@@ -44,6 +52,16 @@ export default function core(state = initialState, action) {
                 ...state,
                 theme: {
                     ...state.theme,
+                    ...action.payload
+                },
+            };
+        case actionTypes.UPDATE_ITEM_STATUS:
+            if (!action.payload) return state;
+
+            return {
+                ...state,
+                itemStatus: {
+                    ...state.itemStatus,
                     ...action.payload
                 },
             };

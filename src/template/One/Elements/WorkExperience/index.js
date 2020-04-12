@@ -18,7 +18,7 @@ class WorkExperience extends React.Component{
     }
 
     componentDidMount() {
-        appStore.dispatch(addNewWorkExperience());
+        // appStore.dispatch(addNewWorkExperience());
     }
 
     _updateWorkExperience(data) {
