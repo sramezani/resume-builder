@@ -183,6 +183,8 @@ class TopNavbar extends React.Component<IProps, IState> {
                     content={this._setcionTippyContent()}
                     interactive={true}
                     delay={200}
+                    duration={[400, 200]}
+                    maxWidth={600}
                     placement='bottom'
                     arrow
                 >
@@ -201,17 +203,6 @@ class TopNavbar extends React.Component<IProps, IState> {
                         </div>
                     </div>
                 </Tippy>
-                {/* <div className={[styles.item, styles.tonNavbarBorderRight, styles.tonNavbarFelx1].join(' ')}>
-                    <div className={styles.topNavbarSection}>
-                        <div className={styles.topPart}>
-                            <i className="material-icons">vertical_split</i>
-                        </div>
-                        <div className={styles.bottomPart}>
-                            Section
-                        </div>
-                        
-                    </div>
-                </div> */}
 
                 <div className={[styles.item, styles.tonNavbarBorderRight, styles.tonNavbarFelx1].join(' ')}>
                     <div className={styles.topNavbarSave}>

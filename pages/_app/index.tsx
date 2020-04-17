@@ -7,7 +7,10 @@ import withReduxStore from '../../src/lib/with-redux-store';
 import { ToastContainer } from 'react-toastify';
 
 import 'tippy.js/dist/tippy.css';
+import 'tippy.js/animations/scale.css';
+
 import 'react-tippy/dist/tippy.css';
+
 import 'react-toastify/dist/ReactToastify.css';
 import '../../src/theme/main.scss';
 

@@ -25,6 +25,7 @@
 			"@component": ["src/component"],
 			"@template": ["src/template"],
 			"@lib": ["src/lib"],
+			"@types": ["src/types"],
 			"@colors": ["src/theme/colors"],
 		}
 	},
