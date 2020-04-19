@@ -20,11 +20,11 @@ class TopNavbar extends React.Component<IProps, IState> {
 
         this.state = {
             colorPicker: false,
-            bgComplete: true,
+            bgComplete: false,
             checked: false,
             sectionStatus: false,
             colorStatus: false,
-            typoStatus: true
+            typoStatus: false
         }
 
         this.fonts = [
