@@ -15,7 +15,8 @@ export interface IProps {
 export interface IState {
     colorPicker: boolean,
     bgComplete: boolean,
-    background: string,
     checked: boolean,
-    sectionStatus: boolean
+    sectionStatus: boolean,
+    colorStatus: boolean,
+    typoStatus: boolean
 }

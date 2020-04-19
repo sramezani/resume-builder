@@ -1,5 +1,5 @@
 import React from 'react';
-import { CirclePicker } from 'react-color';
+// import { CirclePicker } from 'react-color';
 import Tippy from '@tippyjs/react';
 import Switch from "react-switch";
 
@@ -22,38 +22,35 @@ class TopNavbar extends React.Component<IProps, IState> {
         this.state = {
             colorPicker: false,
             bgComplete: false,
-            background: '',
             checked: false,
-            sectionStatus: false
+            sectionStatus: false,
+            colorStatus: false,
+            typoStatus: false
         }
 
     }
 
-    handleChangeComplete = (color: { hex: string}) => {
-        this._bgPress();
-        this.setState({ background: color.hex });
+    handleChangeComplete = (color: string) => {
         const data = {
-            color: color.hex
+            color: color
         }
         appStore.dispatch(updateTheme(data));
     };
 
     _colorBtnPress = () => {
         this.setState({
-            bgComplete: true,
-            colorPicker: true
+            bgComplete: !this.state.bgComplete,
+            colorStatus: !this.state.colorStatus
         })
     }
 
     _bgPress = () => {
         this.setState({
-            colorPicker: false,
             bgComplete: false
         });
     }
 
     _downloadPDFBtnPress = async () => {
-
         const res = await fetch('http://localhost:3007/download');
         const blob = await res.blob();
         download(blob, 'test.pdf');
@@ -94,6 +91,38 @@ class TopNavbar extends React.Component<IProps, IState> {
             bgComplete: !this.state.bgComplete,
             sectionStatus: !this.state.sectionStatus
         })
+    }
+
+    _colorStatusTippyContent = () => {
+        let { theme } = this.props;
+        return (
+            <div className={styles.topNavbarCirclePicker}>
+                {
+                    AppConfig.materialColors.map((item, index) => {
+                        return (
+                            <div
+                                key={index}
+                                className={[styles.colorCircleItem, item === theme.color &&  styles.colorCircleItemActive].join(' ')}
+                                style={{
+                                    background: item,
+                                    borderColor: item
+                                }}
+                                onClick={() => this.handleChangeComplete(item)}
+                            />
+                        )
+                    })
+                }
+                
+                <div className={styles.colorInput}>
+                    <input
+                        type="text"
+                        value={theme.color}
+                        style={{ color: theme.color }}
+                        onChange={(e) => this.handleChangeComplete(e.target.value)}
+                    />
+                </div>
+            </div>
+        )
     }
 
     _setcionTippyContent = () => {
@@ -144,7 +173,8 @@ class TopNavbar extends React.Component<IProps, IState> {
     }
 
     render(){
-        let { colorPicker, bgComplete } = this.state;
+        let { theme } = this.props;
+        let { bgComplete } = this.state;
         return (
             <>
             {
@@ -153,17 +183,32 @@ class TopNavbar extends React.Component<IProps, IState> {
             }
             <div className={styles.TopNavbar}>
     
-                <div className={[styles.item, styles.tonNavbarBorderRight, styles.tonNavbarFelx1].join(' ')} onClick={this._colorBtnPress}>
-                    <div className={[styles.topNavbarColor].join(' ')}>
+                <Tippy
+                    visible={this.state.colorStatus}
+                    onClickOutside={() => this.setState({ colorStatus: false, bgComplete: !this.state.bgComplete })}
+                    className="customTippy colorTippy"
+                    content={this._colorStatusTippyContent()}
+                    interactive={true}
+                    delay={200}
+                    duration={[400, 200]}
+                    maxWidth={160}
+                    placement='bottom'
+                    arrow
+                >
+                    <div className={[styles.item, styles.tonNavbarBorderRight, styles.tonNavbarFelx1].join(' ')} onClick={this._colorBtnPress}>
+                        <div className={[styles.topNavbarColor].join(' ')}>
 
-                        <div className={[styles.topPart, styles.colorCircle].join(' ')}>
+                            <div
+                                className={[styles.topPart, styles.colorCircle].join(' ')}
+                                style={{ background: theme.color }}
+                            />
 
-                        </div>
-                        <div className={styles.bottomPart}>
-                            Color
+                            <div className={styles.bottomPart}>
+                                Color
+                            </div>
                         </div>
                     </div>
-                </div>
+                </Tippy>
 
                 <div className={[styles.item, styles.tonNavbarBorderRight, styles.tonNavbarFelx2].join(' ')}>
                     <div className={[styles.topNavbarTypography].join(' ')}>
@@ -178,8 +223,8 @@ class TopNavbar extends React.Component<IProps, IState> {
                 
                 <Tippy
                     visible={this.state.sectionStatus}
-                    onClickOutside={() => this.setState({ sectionStatus: false })}
-                    className="sectionTippy"
+                    onClickOutside={() => this.setState({ sectionStatus: false, bgComplete: !this.state.bgComplete })}
+                    className="customTippy sectionTippy"
                     content={this._setcionTippyContent()}
                     interactive={true}
                     delay={200}
@@ -251,17 +296,6 @@ class TopNavbar extends React.Component<IProps, IState> {
                     </div>
                 </div>
 
-                {
-                    colorPicker &&
-                        <div className={styles.topNavbarCirclePicker}>
-                        <CirclePicker
-                            color={ this.state.background }
-                            width={'134'}
-                            colors={AppConfig.materialColors}
-                            onChangeComplete={ this.handleChangeComplete }
-                        />
-                        </div>
-                }
             </div>
             </>
         )

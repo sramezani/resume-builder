@@ -43,10 +43,21 @@ ul li {
     margin: 2px 0;
 }
 
-.sectionTippy {
+.customTippy {
     background-color: #fff;
+    border-radius: 10px;
+    -webkit-box-shadow: 0px 0px 28px 0px rgba(82,82,82,1);
+    -moz-box-shadow: 0px 0px 28px 0px rgba(82,82,82,1);
+    box-shadow: 0px 0px 28px 0px rgba(82,82,82,1);
+}
+.customTippy .tippy-arrow {
+    color: #fff;
+}
+
+.sectionTippy {
     min-width: 500px;
 }
-.sectionTippy .tippy-arrow {
-    color: #fff;
+
+.colorTippy {
+    width: 160px;
 }
