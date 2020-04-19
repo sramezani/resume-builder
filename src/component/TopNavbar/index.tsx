@@ -6,7 +6,6 @@ import Switch from "react-switch";
 import download from 'downloadjs';
 
 import AppConfig from '../../constant/config';
-import SelectFont from '../SelectFont';
 import { appStore } from '../../redux/store';
 import { updateTheme, updateItemStatus } from '../../redux/core/actions';
 
@@ -21,14 +20,25 @@ class TopNavbar extends React.Component<IProps, IState> {
 
         this.state = {
             colorPicker: false,
-            bgComplete: false,
+            bgComplete: true,
             checked: false,
             sectionStatus: false,
             colorStatus: false,
-            typoStatus: false
+            typoStatus: true
         }
 
+        this.fonts = [
+            'Source Sans Pro',
+            'Josefin Sans',
+            'Calibri',
+            'Cambria',
+            'Garamond',
+            'Georgia'
+        ];
+
     }
+
+    fonts: string[]
 
     handleChangeComplete = (color: string) => {
         const data = {
@@ -37,10 +47,31 @@ class TopNavbar extends React.Component<IProps, IState> {
         appStore.dispatch(updateTheme(data));
     };
 
+    handleTypoChange = (font: string) => {
+        const data = {
+            fontFamily: font
+        }
+        appStore.dispatch(updateTheme(data));
+    };
+
     _colorBtnPress = () => {
         this.setState({
             bgComplete: !this.state.bgComplete,
             colorStatus: !this.state.colorStatus
+        })
+    }
+
+    _sectionBtnPress = () => {
+        this.setState({
+            bgComplete: !this.state.bgComplete,
+            sectionStatus: !this.state.sectionStatus
+        })
+    }
+
+    _typoBtnPress = () => {
+        this.setState({
+            bgComplete: !this.state.bgComplete,
+            typoStatus: !this.state.typoStatus
         })
     }
 
@@ -86,13 +117,6 @@ class TopNavbar extends React.Component<IProps, IState> {
         )
     }
 
-    _sectionBtnPress = () => {
-        this.setState({
-            bgComplete: !this.state.bgComplete,
-            sectionStatus: !this.state.sectionStatus
-        })
-    }
-
     _colorStatusTippyContent = () => {
         let { theme } = this.props;
         return (
@@ -121,6 +145,33 @@ class TopNavbar extends React.Component<IProps, IState> {
                         onChange={(e) => this.handleChangeComplete(e.target.value)}
                     />
                 </div>
+            </div>
+        )
+    }
+
+    _typoStatusTippyContent = () => {
+        let { theme } = this.props;
+        return (
+            <div className={styles.typoContent}>
+                {
+                    this.fonts.map((item, index) => {
+                        return (
+                            <div
+                                key={index}
+                                className={styles.typoContentItem}
+                                style={{
+                                    fontFamily: item,
+                                    color: theme.fontFamily === item ? '#000' : '#444',
+                                    fontWeight: theme.fontFamily === item ? 700 : 400,
+                                    fontSize: theme.fontFamily === item ? '19px' : '17px'
+                                }}
+                                onClick={() => this.handleTypoChange(item)}
+                            >
+                                {item}
+                            </div>
+                        )
+                    })
+                }
             </div>
         )
     }
@@ -198,10 +249,11 @@ class TopNavbar extends React.Component<IProps, IState> {
                     <div className={[styles.item, styles.tonNavbarBorderRight, styles.tonNavbarFelx1].join(' ')} onClick={this._colorBtnPress}>
                         <div className={[styles.topNavbarColor].join(' ')}>
 
-                            <div
-                                className={[styles.topPart, styles.colorCircle].join(' ')}
-                                style={{ background: theme.color }}
-                            />
+                            <div className={styles.topPart} style={{ color: theme.color }}>
+                                {/* <i className="material-icons">color_lens</i> */}
+                                <i className="material-icons">colorize</i>
+                                {/* <i className="material-icons">brush</i> */}
+                            </div>
 
                             <div className={styles.bottomPart}>
                                 Color
@@ -210,7 +262,35 @@ class TopNavbar extends React.Component<IProps, IState> {
                     </div>
                 </Tippy>
 
-                <div className={[styles.item, styles.tonNavbarBorderRight, styles.tonNavbarFelx2].join(' ')}>
+                <Tippy
+                    visible={this.state.typoStatus}
+                    onClickOutside={() => this.setState({ typoStatus: false, bgComplete: !this.state.bgComplete })}
+                    className="customTippy typoTippy"
+                    content={this._typoStatusTippyContent()}
+                    interactive={true}
+                    delay={200}
+                    duration={[400, 200]}
+                    maxWidth={250}
+                    placement='bottom'
+                    arrow
+                >
+                    <div
+                        className={[styles.item, styles.tonNavbarBorderRight, styles.tonNavbarFelx1].join(' ')}
+                        onClick={this._typoBtnPress}
+                        style={{ flex: 1.2 }}
+                    >
+                        <div className={[styles.topNavbarTypography].join(' ')}>
+                            <div className={styles.topPart}>
+                                <i className="material-icons">font_download</i>
+                            </div>
+                            <div className={styles.bottomPart}>
+                            Typography
+                            </div>
+                        </div>
+                    </div>
+                </Tippy>
+
+                {/* <div className={[styles.item, styles.tonNavbarBorderRight, styles.tonNavbarFelx1].join(' ')}>
                     <div className={[styles.topNavbarTypography].join(' ')}>
                         <div className={styles.topPart}>
                             <SelectFont />
@@ -219,7 +299,7 @@ class TopNavbar extends React.Component<IProps, IState> {
                         Typography
                         </div>
                     </div>
-                </div>
+                </div> */}
                 
                 <Tippy
                     visible={this.state.sectionStatus}

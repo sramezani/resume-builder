@@ -112,6 +112,19 @@
     height: 100%;
 }
 
+.typoContent {
+    padding: 10px;
+}
+
+.typoContentItem {
+    margin: 5px 0;
+    cursor: pointer;
+}
+
+.typoContentItem:hover {
+    color: #222 !important;
+}
+
 // .topNavbarTypography select {
 //     width: 130px;
 //     height: 30px;
