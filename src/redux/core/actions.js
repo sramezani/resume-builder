@@ -2,6 +2,8 @@ import { actionTypes } from './actionTypes';
 import { AppAPI } from '../../lib';
 import Util from '../../lib/Util';
 
+import { appStore } from '../store';
+
 export const updateUserData = (data) => {
     return {
         type : actionTypes.UPDATE_USER_DATA,
@@ -155,4 +157,34 @@ export const addDeletedSkillItem = (data) => {
         type : actionTypes.ADD_DELETED_WORK_SKILL_ITEM,
         payload: data
     }
+}
+
+export const exportUserData = () => {
+    return (dispatch, getState) => {
+
+        const userData = getState().userData;
+        const workExperience = getState().workExperience;
+        const education = getState().education;
+        const skills = getState().skills;
+        const theme = getState().theme;
+        const itemStatus = getState().itemStatus;
+
+        let data = [];
+        data = {userData, workExperience, education, skills, theme, itemStatus};
+        
+        return data;
+    };
+}
+
+export const importUserData = (data) => {
+
+        const obj = JSON.parse(data)
+        
+        appStore.dispatch(updateUserData(obj.userData));
+        appStore.dispatch(updateWorkExperience(obj.workExperience));
+        appStore.dispatch(updateEducation(obj.education));
+        appStore.dispatch(updateSkill(obj.skills));
+        appStore.dispatch(updateTheme(obj.theme));
+        appStore.dispatch(updateItemStatus(obj.itemStatus));
+
 }

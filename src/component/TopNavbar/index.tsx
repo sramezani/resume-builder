@@ -2,12 +2,13 @@ import React from 'react';
 // import { CirclePicker } from 'react-color';
 import Tippy from '@tippyjs/react';
 import Switch from "react-switch";
+import Link from 'next/link';
 
 import download from 'downloadjs';
 
 import AppConfig from '../../constant/config';
 import { appStore } from '../../redux/store';
-import { updateTheme, updateItemStatus } from '../../redux/core/actions';
+import { updateTheme, updateItemStatus, exportUserData } from '../../redux/core/actions';
 
 import styles from './topNavbar.module.scss';
 
@@ -98,6 +99,22 @@ class TopNavbar extends React.Component<IProps, IState> {
     _switchBtnClick = (name: string) => {
         const { itemStatus } = this.props;
         this._updateItemStatus(name, !itemStatus[name]);
+    }
+
+    _saveBtnPress = async () => {
+
+        const data = appStore.dispatch(exportUserData());
+        const fileName = "file";
+        const json = JSON.stringify(data);
+        const blob = new Blob([json],{type:'application/json'});
+        const href = URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = href;
+        link.download = fileName + ".json";
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+
     }
 
     _switchBtn = (name: string) => {
@@ -329,7 +346,7 @@ class TopNavbar extends React.Component<IProps, IState> {
                     </div>
                 </Tippy>
 
-                <div className={[styles.item, styles.tonNavbarBorderRight, styles.tonNavbarFelx1].join(' ')}>
+                <div className={[styles.item, styles.tonNavbarBorderRight, styles.tonNavbarFelx1].join(' ')} onClick={this._saveBtnPress}>
                     <div className={styles.topNavbarSave}>
                         <div className={styles.topPart}>
                             <i className="material-icons">save</i>
@@ -352,17 +369,19 @@ class TopNavbar extends React.Component<IProps, IState> {
                     </div>
                 </div>
 
-                <div className={[styles.item, styles.tonNavbarBorderRight, styles.tonNavbarFelx1].join(' ')}>
-                    <div className={styles.topNavbarPreview}>
-                        <div className={styles.topPart}>
-                            <i className="material-icons">visibility</i>
+                <Link href="/preview">
+                    <div className={[styles.item, styles.tonNavbarBorderRight, styles.tonNavbarFelx1].join(' ')}>
+                        <div className={styles.topNavbarPreview}>
+                            <div className={styles.topPart}>
+                                <i className="material-icons">visibility</i>
+                            </div>
+                            <div className={styles.bottomPart}>
+                                Preview
+                            </div>
+                            
                         </div>
-                        <div className={styles.bottomPart}>
-                            Preview
-                        </div>
-                        
                     </div>
-                </div>
+                </Link>
 
                 <div className={[styles.item, styles.tonNavbarFelx2].join(' ')} onClick={this._downloadPDFBtnPress}>
                     <div className={styles.topNavbarDownlaod}>
