@@ -44,10 +44,7 @@ function fetcher(method, inputEndpoint, inputParams, body, token, endpointKey, t
 	let endpoint = inputEndpoint;
 	const params = inputParams;
 
-	return new Promise(async (resolve, reject) => {
-
-		requestCounter += 1;
-		const requestNum = requestCounter;
+	return new Promise((resolve, reject) => {
 
         // After x seconds, let's call it a day!
 		const timeoutAfter = 45;
@@ -109,7 +106,6 @@ function fetcher(method, inputEndpoint, inputParams, body, token, endpointKey, t
 		}
 
 		const thisUrl = HOSTNAME + endpoint + urlParams;
-
         // Make the request
 		return fetch(thisUrl, req)
 			.then(async (rawResponse) => {

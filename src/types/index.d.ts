@@ -1,1 +1,2 @@
-// declare module 'react-page-scroller';
+declare module 'gsap/dist/gsap';
+declare module 'react-awesome-modal';

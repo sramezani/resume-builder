@@ -10,6 +10,9 @@ export interface IProps {
     },
     theme: {
         [key: string]: string
+    },
+    userData: {
+        [key: string]: string
     }
 }
 export interface IState {
@@ -18,5 +21,8 @@ export interface IState {
     checked: boolean,
     sectionStatus: boolean,
     colorStatus: boolean,
-    typoStatus: boolean
+    typoStatus: boolean,
+    saveModal: boolean,
+    loadModal: boolean,
+    uploadErrMsg: boolean
 }

@@ -3,6 +3,8 @@ import React from 'react';
 import { appStore } from '../../redux/store';
 import { updateUserData, updateWorkExperienceData, updateEducationData, updateSkillData } from '../../redux/core/actions';
 
+import { Util } from '@lib'
+
 import styles from './text.module.scss';
 
 class Text extends React.Component{
@@ -11,8 +13,18 @@ class Text extends React.Component{
         super(props);
 
         this.state = {
+            editable: true
         }
 
+    }
+
+    componentDidMount() {
+		
+		if (Util.editable()) {
+            this.setState({ editable: true });
+            return;
+		}
+		this.setState({ editable: false });
     }
 
     _onChange = (e) => {
@@ -53,7 +65,7 @@ class Text extends React.Component{
         return (
             <>
             <TagName
-                contentEditable="true"
+                contentEditable={this.state.editable}
                 suppressContentEditableWarning="true"
                 // onInput={(e) => this._onChange(e.currentTarget.textContent)}
                 onBlur={(e) => this._onBlur(e.currentTarget)}

@@ -42,7 +42,16 @@ const Util = {
         });
         
         return array;
-    }
+	},
+	
+	editable: () => {
+		const pageName = window.location.pathname.replace('/', '');
+		
+		if (pageName === 'resume-builder') {
+			return true;
+		}
+		return false;
+	}
 
 };
 

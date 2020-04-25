@@ -6,11 +6,10 @@
 export default {
 
     // The URL we're connecting to
-    hostname: 'http://192.168.1.58:3001',
-    // hostname: 'http://localhost:3001',  // staging
+    hostname: 'http://localhost:3007',
 
     endpoints: [
-        { key: 'test'         , url: '/test'    , method: 'POST'     },
+        { key: 'save'         , url: '/save'    , method: 'POST'     },
     ],
 
 };

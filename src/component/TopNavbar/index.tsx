@@ -3,12 +3,14 @@ import React from 'react';
 import Tippy from '@tippyjs/react';
 import Switch from "react-switch";
 import Link from 'next/link';
+// import ReactModal from 'react-modal';
+import Modal from 'react-awesome-modal';
 
 import download from 'downloadjs';
 
 import AppConfig from '../../constant/config';
 import { appStore } from '../../redux/store';
-import { updateTheme, updateItemStatus, exportUserData } from '../../redux/core/actions';
+import { updateTheme, updateItemStatus, exportUserData, importUserData } from '../../redux/core/actions';
 
 import styles from './topNavbar.module.scss';
 
@@ -25,7 +27,10 @@ class TopNavbar extends React.Component<IProps, IState> {
             checked: false,
             sectionStatus: false,
             colorStatus: false,
-            typoStatus: false
+            typoStatus: false,
+            saveModal: false,
+            loadModal: false,
+            uploadErrMsg: false
         }
 
         this.fonts = [
@@ -83,9 +88,12 @@ class TopNavbar extends React.Component<IProps, IState> {
     }
 
     _downloadPDFBtnPress = async () => {
+        const { userData } = this.props;
+        const fileName = `CV-${userData.name}.pdf`;
+
         const res = await fetch('http://localhost:3007/download');
         const blob = await res.blob();
-        download(blob, 'test.pdf');
+        download(blob, fileName);
 
     }
 
@@ -102,9 +110,10 @@ class TopNavbar extends React.Component<IProps, IState> {
     }
 
     _saveBtnPress = async () => {
+        const { userData } = this.props;
 
         const data = appStore.dispatch(exportUserData());
-        const fileName = "file";
+        const fileName = `CV-${userData.name}`;
         const json = JSON.stringify(data);
         const blob = new Blob([json],{type:'application/json'});
         const href = URL.createObjectURL(blob);
@@ -114,7 +123,6 @@ class TopNavbar extends React.Component<IProps, IState> {
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
-
     }
 
     _switchBtn = (name: string) => {
@@ -240,6 +248,31 @@ class TopNavbar extends React.Component<IProps, IState> {
         )
     }
 
+    uploadFile = async (e: any) => {
+
+        const reg = /(.*?)\.(json)$/;
+        e.preventDefault();
+
+        if(!e.target.files[0].name.match(reg)) {
+            this.setState({
+                uploadErrMsg: true
+            })
+            return;
+        }
+
+        const reader = new FileReader()
+        reader.onload = async (e: any) => { 
+            const text = (e.target.result)
+            console.log(text)
+            importUserData(text);
+            this.setState({
+                loadModal: false
+            })
+        };
+        reader.onerror = error => console.log(error)
+        reader.readAsText(e.target.files[0]);
+    }
+
     render(){
         let { theme } = this.props;
         let { bgComplete } = this.state;
@@ -306,17 +339,6 @@ class TopNavbar extends React.Component<IProps, IState> {
                         </div>
                     </div>
                 </Tippy>
-
-                {/* <div className={[styles.item, styles.tonNavbarBorderRight, styles.tonNavbarFelx1].join(' ')}>
-                    <div className={[styles.topNavbarTypography].join(' ')}>
-                        <div className={styles.topPart}>
-                            <SelectFont />
-                        </div>
-                        <div className={styles.bottomPart}>
-                        Typography
-                        </div>
-                    </div>
-                </div> */}
                 
                 <Tippy
                     visible={this.state.sectionStatus}
@@ -346,7 +368,7 @@ class TopNavbar extends React.Component<IProps, IState> {
                     </div>
                 </Tippy>
 
-                <div className={[styles.item, styles.tonNavbarBorderRight, styles.tonNavbarFelx1].join(' ')} onClick={this._saveBtnPress}>
+                <div className={[styles.item, styles.tonNavbarBorderRight, styles.tonNavbarFelx1].join(' ')} onClick={() => this.setState({ saveModal: true })}>
                     <div className={styles.topNavbarSave}>
                         <div className={styles.topPart}>
                             <i className="material-icons">save</i>
@@ -357,7 +379,7 @@ class TopNavbar extends React.Component<IProps, IState> {
                     </div>
                 </div>
 
-                <div className={[styles.item, styles.tonNavbarBorderRight, styles.tonNavbarFelx1].join(' ')}>
+                <div className={[styles.item, styles.tonNavbarBorderRight, styles.tonNavbarFelx1].join(' ')} onClick={() => this.setState({ loadModal: true })}>
                     <div className={styles.topNavbarLoad}>
                         <div className={styles.topPart}>
                             <i className="material-icons">insert_drive_file</i>
@@ -396,6 +418,75 @@ class TopNavbar extends React.Component<IProps, IState> {
                 </div>
 
             </div>
+
+            <Modal 
+                visible={this.state.saveModal}
+                width="300"
+                height="280"
+                effect="fadeInDown"
+                onClickAway={() => this.setState({ saveModal: false })}
+            >
+                <div className={styles.saveModal}>
+                    <h3>
+                        Save Your Data
+                    </h3>
+                    <p>
+                        By storing your information, in the future you can use it to edit your resume.
+                    </p>
+
+                    <div
+                        className={styles.saveModalBtn}
+                        onClick={() => {
+                            this._saveBtnPress();
+                            this.setState({ saveModal: false });
+                        }}
+                    >
+                        SAVE
+                    </div>
+                </div>
+            </Modal>
+
+            <Modal 
+                visible={this.state.loadModal}
+                width="300"
+                height="280"
+                effect="fadeInDown"
+                onClickAway={() => this.setState({ loadModal: false })}
+            >
+                <div className={styles.loadModal}>
+                    <h3>
+                        Upload Your Data
+                    </h3>
+                    <p>
+                        You can re-edit your information by uploading your saved file.
+                    </p>
+                    <div className={styles.uploadModalBtn}>
+                        <label htmlFor="uploadFile" >
+                            CHOOSE FILE
+                        </label> 
+                    </div>
+                    <input
+                        type="file"
+                        id="uploadFile"
+                        className={styles.uploadModalFileType}
+                        accept="application/JSON"
+                        onChange={(e) => {
+                            this.setState({ uploadErrMsg: false });
+                            this.uploadFile(e);
+                        }}
+                        onClick={(e: any)=> { 
+                            e.target.value = null
+                       }}
+                    />
+                    {
+                        this.state.uploadErrMsg &&
+                            <span>
+                                Uploaded file format is wrong 
+                            </span>
+                    }
+                </div>
+            </Modal>
+
             </>
         )
      }
