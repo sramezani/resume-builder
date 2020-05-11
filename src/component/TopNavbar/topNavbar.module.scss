@@ -64,6 +64,7 @@
     cursor: pointer;
     border-radius: 100%;
     float: left;
+    box-sizing: content-box;
 }
 .colorCircleItemActive {
     background: #fff !important;
@@ -87,6 +88,7 @@
     border: 1px solid #999999;
     border-radius: 3px;
     outline: 0;
+    box-sizing: content-box;
 }
 
 .tonNavbarFelx1 {

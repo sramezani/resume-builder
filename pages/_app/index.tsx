@@ -12,6 +12,7 @@ import 'tippy.js/dist/tippy.css';
 import 'tippy.js/animations/scale.css';
 
 import 'react-tippy/dist/tippy.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 import 'react-toastify/dist/ReactToastify.css';
 import '../../src/theme/main.scss';

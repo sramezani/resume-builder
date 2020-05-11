@@ -8,8 +8,20 @@ import { TopNavbar } from '@component';
 import { One } from '@template';
 // import { Text, TopNavbar, WorkExperience, Education, Skills } from '@component';
 
-import { IProps, IState } from "./indexType";
-
+// import { IProps, IState } from "./indexType";
+interface IProps {
+	theme: {
+		color: string,
+		fontFamily: string
+	},
+	itemStatus: {
+		[key: string]: boolean
+    },
+    userData: {
+        [key: string]: string
+    },
+}
+interface IState {}
 
 class Home extends React.Component<IProps, IState> {
 	
@@ -31,6 +43,7 @@ class Home extends React.Component<IProps, IState> {
                 <TopNavbar
                     itemStatus={this.props.itemStatus}
                     theme={this.props.theme}
+                    userData={this.props.userData}
                 />
 
                 <div className={styles.container}>
@@ -45,6 +58,7 @@ class Home extends React.Component<IProps, IState> {
 
 const mapStateToProps = (store:any) => ({
     theme: store.theme,
+    userData: store.userData,
     itemStatus: store.itemStatus
 });
 

@@ -1,11 +1,22 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { TweenLite } from "gsap";
-import Link from 'next/link'
+import { TweenLite } from "gsap/dist/gsap";
+import Link from 'next/link';
 
-import styles from './style.module.scss';
+import styles from './style-old.module.scss';
 
-import { IProps, IState } from "./home";
+// import { IProps, IState } from "./home";
+interface IProps {
+	theme: {
+		color: string,
+		fontFamily: string
+	}
+}
+interface IState {
+	currentPage: number,
+	activeSlide: number,
+	canScroll: boolean
+}
 
 class Home extends React.Component<IProps, IState> {
     
@@ -19,6 +30,7 @@ class Home extends React.Component<IProps, IState> {
 
         this.prev = 0;
         this.bgImage = null;
+        this.slide1Box = null;
         this.slide2Text = null;
         this.slide3All = null;
         this.slide3Img = null;
@@ -31,6 +43,7 @@ class Home extends React.Component<IProps, IState> {
     prev: number;
     touchYStart: number;
     bgImage: HTMLDivElement | null;
+    slide1Box: HTMLDivElement | null;
     slide2Text: HTMLDivElement | null;
     slide3All: HTMLDivElement | null;
     slide3Img: HTMLDivElement | null;
@@ -61,8 +74,9 @@ class Home extends React.Component<IProps, IState> {
     }
 
     _animeDown1to2 = () => {
-        this.myTween = TweenLite.to(this.bgImage, .5, {transform: 'scale(1.8)', top: '45vh', left: '400px'});
-        this.myTween = TweenLite.to(this.slide2Text, .6, {bottom: '30%', opacity: 1});
+        this.myTween = TweenLite.to(this.slide1Box, .3, {y: 300, opacity: 0 });
+        this.myTween = TweenLite.to(this.bgImage, .5, {transform: 'scale(1.8)', top: '45vh', left: '400px', filter: 'brightness(1)'});
+        this.myTween = TweenLite.to(this.slide2Text, .6, {bottom: '35%', opacity: 1});
         this._canScroll(true, 600);
     }
     _animeDown2to3 = () => {
@@ -71,12 +85,13 @@ class Home extends React.Component<IProps, IState> {
 
         // this.myTween = TweenLite.to(this.slide3All, .5, {top: '25%', opacity: 1});
         this.myTween = TweenLite.to(this.slide3Text, .7, {bottom: '50%', opacity: 1});
-        this.myTween = TweenLite.to(this.slide3Img, .5, {bottom: '15%', opacity: 1});
+        this.myTween = TweenLite.to(this.slide3Img, .5, {bottom: '0%', opacity: 1});
         this._canScroll(true, 600);
     }
 
     _animeUp2to1 = () => {
-        this.myTween = TweenLite.to(this.bgImage, .4, {transform: 'scale(1)', top: '15vh', left: '0px'});
+        this.myTween = TweenLite.to(this.bgImage, .4, {transform: 'scale(1)', top: '15vh', left: '0px', filter: 'brightness(0.7)'});
+        this.myTween = TweenLite.to(this.slide1Box, .5, {y: 0, opacity: 1 });
         this.myTween = TweenLite.to(this.slide2Text, .4, {bottom: '-30%', opacity: 0});
         this._canScroll(true, 500);
     }
@@ -84,7 +99,7 @@ class Home extends React.Component<IProps, IState> {
     _animeUp3to2 = () => {
 
         this.myTween = TweenLite.to(this.bgImage, .5, { top: '45vh', left: '400px', opacity: 1});
-        this.myTween = TweenLite.to(this.slide2Text, .5, {bottom: '30%', opacity: 1});
+        this.myTween = TweenLite.to(this.slide2Text, .5, {bottom: '35%', opacity: 1});
 
         // this.myTween = TweenLite.to(this.slide3All, .5, {top: '100%', opacity: 0});
         this.myTween = TweenLite.to(this.slide3Text, .5, {bottom: '-100%', opacity: 0});
@@ -176,6 +191,14 @@ class Home extends React.Component<IProps, IState> {
             this._animationDownChecking();
         }
     }
+
+    _scrollDown = () => {
+        const { canScroll } = this.state;
+        if (!canScroll) {
+            return;
+        }
+        this._animationDownChecking();
+    }
     
     _touchStartHandle = (e: any) => {
         e.preventDefault();
@@ -213,12 +236,17 @@ class Home extends React.Component<IProps, IState> {
                                 EN
                             </div>
                             <div className={styles.navItem}>
+                                <a href="https://github.com/sramezani/resume-builder" target="_blank" rel="noopener noreferrer">
                                 github
+                                </a>
                             </div>
                         </div>
                     </div>
                 </nav>
 
+                {/* <div className={styles.xxxxx}>
+
+                </div> */}
 
                 <div
                     className={[styles.slide, styles.slide1].join(' ')}
@@ -227,27 +255,74 @@ class Home extends React.Component<IProps, IState> {
                     <div className={styles.container}>
                         
                         <div ref={e => this.bgImage = e} className={styles.firstImg}>
-                            <img src="/images/bg2.png" alt="first slide image home page" />
+                            <img src="/images/bg.png" alt="first slide image home page" />
+                        </div>
+                        <div className={styles.slide1Box} ref={e => this.slide1Box = e}>
+                            <div className={styles.slide1Text}>
+                                <h1>
+                                Who cares who you are
+                                </h1>
+                                <p>
+                                design your resume and prove yourself
+                                </p>
+                            </div>
+                            <div className={styles.slide1crBtn}>
+                                <div className={styles.crBtn}>
+                                    <Link href="/resume-builder">
+                                    Build My Resume
+                                    </Link>
+                                </div>
+                            </div>
+                            <div className={styles.slide1scrollDown}>
+                                <div className={styles.scrollDown} onClick={() => this._scrollDown()}>
+                                    <i className="material-icons">arrow_downward</i>
+                                </div>
+                            </div>
                         </div>
     
                         <div className={[styles.slide2].join(' ')} ref={e => this.slide2Text = e}>
-                            <h2>Second Component</h2>
+                            <h2>why trying us?</h2>
                             <p>
-                            test test test test test test test test test test test test test test test 
-                            test test test test test test test test test test test test test test test
-                            test test test test test test test test
+                                It's 100% free
                             </p>
+                            <p>
+                                It's easy to use
+                            </p>
+                            <p>
+                                It makes a minute
+                            </p>
+                            <p>
+                                No need register
+                            </p>
+                            <p>
+                                real time design
+                            </p>
+                            <div className={styles.slide1scrollDown}>
+                                <div className={styles.scrollDown} onClick={() => this._scrollDown()}>
+                                    <i className="material-icons">arrow_downward</i>
+                                </div>
+                            </div>
                         </div>
 
                         <div className={[styles.slide3].join(' ')} ref={e => this.slide3All = e}>
                             <div className={styles.slide3ImgBox} ref={e => this.slide3Img = e}>
-                                <img src="/images/resume.png" alt="resume image" />
+                                {/* <img src="/images/resume-pic.jpg" alt="resume image" /> */}
+                                <video autoPlay loop poster="/images/resume-pic.jpg" controls>
+                                    <source src="video/resume.mp4" type="video/mp4" />
+                                    <source src="video/resume.webm" type="video/webm" />
+                                </video>
                             </div>
                             <div ref={e => this.slide3Text = e} className={styles.slide3text}>
                                 <p>
-                                test test test test test test test test test test test test test test test 
-                                test test test test test test test test test test test test test test test 
+                                You can save your data and use in the future.
+                                what do you think! its amazing?
                                 </p>
+                    
+                                <div className={styles.crBtn}>
+                                    <Link href="/resume-builder">
+                                    WTF! Show me how
+                                    </Link>
+                                </div>
                             </div>
                         </div>
 

@@ -33,8 +33,8 @@ class Home extends React.Component<IProps, IState> {
     // this.props.importUserData(data)
   }
 
-  render() {
-		return (
+  render() { 
+    return (
 			<div style={{ fontFamily: this.props.theme.fontFamily }}>
                 <div className={styles.loading}>
                     <div className={styles.loading_gradient}>
