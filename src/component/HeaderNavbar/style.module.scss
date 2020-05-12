@@ -1,9 +1,7 @@
 .nav {
-    // position: fixed !important;
-    // width: 100%;
     height: 60px;
-    // z-index: 999;
-    background: rgba(50,50,50,1);
+    background: #1976D2;
+    background: linear-gradient(90deg, #1976D2 0%, #1565C0 100%);
     font-family: 'Roboto';
     font-size: 14px;
     letter-spacing: -0.02em;
@@ -20,13 +18,14 @@
     outline: 0 !important;
 }
 .navItem {
-    margin: 22px 15px;
+    margin: 12px 15px;
     color: #fff;
     font-weight: bold;
 }
 .navItem a {
     color: #fff;
     text-decoration: none;
+    display: block;
 }
 .navItem a:hover {
     background-color: #08AEEA;

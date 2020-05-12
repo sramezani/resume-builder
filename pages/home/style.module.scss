@@ -81,7 +81,7 @@
 .second::after {
     position: absolute;
     z-index: 2;
-    bottom: -38rem;
+    bottom: -54rem;
     right: 4rem;
     display: block;
     width: 8rem;
@@ -284,6 +284,9 @@
     .firstLeft p {
         line-height: 36px;
     }
+    // .second::after {
+    //     bottom: -54rem;
+    // }
 }
 
 @media (max-width: 991px) {
@@ -294,20 +297,87 @@
         left: 65%;
         top: -12%;
     }
-}
-
-@media (max-width: 767px) {
+    .firstLeft h1 {
+        font-size: 60px;
+    }
+    .secondItem {
+        flex: 0 0 50% !important;
+        max-width: 50% !important;
+    }
+    .item p {
+        font-size: 20px;
+    }
     
 }
 
+@media (max-width: 767px) {
+    .thirdVideo video {
+        max-width: 100%;
+        margin: 0 auto;
+    }
+    .firstRight img {
+        max-height: 320px;
+    }
+    .firstLeft {
+        text-align: center;
+    }
+    .crBtn {
+        margin: 0 auto;
+    }
+    .secondItem {
+        flex: 0 0 70% !important;
+        max-width: 70% !important;
+        margin: 15px auto;
+    }
+    .item p {
+        font-size: 24px;
+    }
+    .itemsRow {
+        margin: 0;
+    }
+}
+
 @media (max-width: 640px) {
-	
+	.firstRight::before {
+        left: 73%;
+        top: -5%;
+    }
+    .firstLeft h1 {
+        font-size: 55px;
+        margin: 30px 0 0 0;
+    }
+    .firstRight img {
+        max-height: 290px;
+    }
 }
 
 @media (max-width: 480px) {
-	
+	.firstRight::before {
+        left: 55%;
+        top: -2%;
+    }
+    .secondItem {
+        flex: 0 0 80% !important;
+        max-width: 80% !important;
+        padding-right: 0 !important;
+    }
+    .itemImg {
+        width: 70px;
+        height: 70px;
+    }
+    .item p {
+        font-size: 20px;
+    }
 }
 
-@media (max-width: 320px) {
-	
+@media (max-width: 330px) {
+	.firstRight img {
+        max-height: 230px;
+    }
+    .item p {
+        font-size: 16px;
+    }
+    .firstLeft h1 {
+        font-size: 52px;
+    }
 }

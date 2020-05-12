@@ -20,7 +20,7 @@ export default function HeaderNavbar() {
                     <i className="material-icons">menu</i>
                 </Navbar.Toggle>
 
-                <Navbar.Collapse>
+                <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="ml-auto">
                         <div className={styles.navItem}>
                             <Link href="/resume-builder">

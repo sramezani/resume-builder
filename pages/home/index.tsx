@@ -41,7 +41,7 @@ export default function Home() {
 
                     <div className={["row justify-content-md-center", styles.itemsRow].join(' ')}>
                         <div className="col-md-10 row justify-content-md-center">
-                            <div className="col-md-7">
+                            <div className={["col-md-7", styles.secondItem].join(' ')}>
                                 <article className={['row', styles.item].join(' ')}>
                                     <div className={[styles.itemImg, styles.itemImgBg1].join(' ')}>
                                         <img src="images/icons/signs.png" alt="100% free" className="imgResponsive verticalCenter" />
@@ -51,7 +51,7 @@ export default function Home() {
                                     </p>
                                 </article>
                             </div>
-                            <div className="col-md-5">
+                            <div className={["col-md-5", styles.secondItem].join(' ')}>
                                 <article className={['row', styles.item].join(' ')}>
                                     <div className={[styles.itemImg, styles.itemImgBg4].join(' ')}>
                                         <img src="images/icons/body.png" alt="easy to use" className="imgResponsive verticalCenter" />
@@ -66,7 +66,7 @@ export default function Home() {
 
                     <div className={["row justify-content-md-center", styles.itemsRow].join(' ')}>
                         <div className="col-md-10 row justify-content-md-center">
-                            <div className="col-md-7">
+                            <div className={["col-md-7", styles.secondItem].join(' ')}>
                                 <article className={['row', styles.item].join(' ')}>
                                     <div className={[styles.itemImg, styles.itemImgBg2].join(' ')}>
                                         <img src="images/icons/time.png" alt="makes a minute" className="imgResponsive verticalCenter" />
@@ -76,7 +76,7 @@ export default function Home() {
                                     </p>
                                 </article>
                             </div>
-                            <div className="col-md-5">
+                            <div className={["col-md-5", styles.secondItem].join(' ')}>
                                 <article className={['row', styles.item].join(' ')}>
                                     <div className={[styles.itemImg, styles.itemImgBg3].join(' ')}>
                                         <img src="images/icons/register.png" alt="No need register" className="imgResponsive verticalCenter" />
@@ -91,7 +91,7 @@ export default function Home() {
 
                     <div className={["row justify-content-md-center", styles.itemsRow].join(' ')}>
                         <div className="col-md-10 row justify-content-md-center">
-                            <div className="col-md-7">
+                            <div className={["col-md-7", styles.secondItem].join(' ')}>
                                 <article className={['row', styles.item].join(' ')}>
                                     <div className={[styles.itemImg, styles.itemImgBg5].join(' ')}>
                                         <img src="images/icons/real-time.png" alt="real time design" className="imgResponsive verticalCenter" />
@@ -101,7 +101,7 @@ export default function Home() {
                                     </p>
                                 </article>
                             </div>
-                            <div className="col-md-5">
+                            <div className={["col-md-5", styles.secondItem].join(' ')}>
                                 <article className={['row', styles.item].join(' ')}>
                                     <div className={[styles.itemImg, styles.itemImgBg6].join(' ')}>
                                         <img src="images/icons/github.png" alt="open source" className="imgResponsive verticalCenter" />
