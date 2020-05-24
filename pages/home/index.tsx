@@ -35,7 +35,7 @@ export default function Home() {
                 <section className={[styles.second].join(' ')}>
                     <div className={styles.secondTitle}>
                         <h2>
-                            why trying us?
+                            Why trying WTFResume?
                         </h2>
                     </div>
 
@@ -47,7 +47,7 @@ export default function Home() {
                                         <img src="images/icons/signs.png" alt="100% free" className="imgResponsive verticalCenter" />
                                     </div>
                                     <p>
-                                        It's 100% free
+                                        100% free
                                     </p>
                                 </article>
                             </div>
@@ -57,7 +57,7 @@ export default function Home() {
                                         <img src="images/icons/body.png" alt="easy to use" className="imgResponsive verticalCenter" />
                                     </div>
                                     <p>
-                                        It's easy to use
+                                        Easy to use
                                     </p>
                                 </article>
                             </div>
@@ -72,7 +72,7 @@ export default function Home() {
                                         <img src="images/icons/time.png" alt="makes a minute" className="imgResponsive verticalCenter" />
                                     </div>
                                     <p>
-                                    It makes a minute
+                                        It makes a minute
                                     </p>
                                 </article>
                             </div>
@@ -82,7 +82,7 @@ export default function Home() {
                                         <img src="images/icons/register.png" alt="No need register" className="imgResponsive verticalCenter" />
                                     </div>
                                     <p>
-                                    No need register
+                                        No need to register
                                     </p>
                                 </article>
                             </div>
@@ -97,7 +97,7 @@ export default function Home() {
                                         <img src="images/icons/real-time.png" alt="real time design" className="imgResponsive verticalCenter" />
                                     </div>
                                     <p>
-                                    real time design
+                                        Real time design
                                     </p>
                                 </article>
                             </div>
@@ -107,7 +107,7 @@ export default function Home() {
                                         <img src="images/icons/github.png" alt="open source" className="imgResponsive verticalCenter" />
                                     </div>
                                     <p>
-                                    It's open source
+                                        Open-source
                                     </p>
                                 </article>
                             </div>
@@ -117,24 +117,26 @@ export default function Home() {
 
                 <section className={[styles.third].join(' ')}>
                     <h2>
-                        How its work?
+                        How does it work?
                     </h2>
                     <div className="row justify-content-md-center">
                         <article className={["col-md-6 row justify-content-md-center", styles.thirdVideo].join(' ')}>
-                            <video loop poster="/images/resume-pic.jpg" controls>
+                            {/* <video loop poster="/images/resume-pic.jpg" controls>
                                 <source src="video/resume.mp4" type="video/mp4" />
                                 <source src="video/resume.webm" type="video/webm" />
-                            </video>
+                            </video> */}
+                            <iframe width="100%" height="600" src="https://www.youtube.com/embed/U5LdPoz5QAk" frameBorder="0" allowFullScreen>
+                            </iframe>
                         </article>
                     </div>
                 </section>
 
                 <section className={[styles.forth].join(' ')}>
                     <p>
-                    You can save your data and use in the future.
+                    You can save your data and use it in the future.
                     </p>
                     <p className={styles.bold}>
-                    what do you think! its amazing?
+                    what do you think! isn't it amazing?
                     </p>
                     <div className={styles.crBtn}>
                         <Link href="/resume-builder">

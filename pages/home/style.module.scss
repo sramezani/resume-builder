@@ -138,8 +138,8 @@
 
 .crBtn {
     width: 240px;
-    height: 60px;
-    border: 1px solid #02AAB0;
+    // height: 60px;
+    // border: 1px solid #02AAB0;
     border-radius: 5px;
     cursor: pointer;
     text-align: center;
@@ -156,10 +156,11 @@
     font-size: 20px;
     margin: 15px 0 0 0;
     text-transform: uppercase;
+    padding: 15px 0;
 }
 
 .crBtn:hover {
-    border: 1px solid #00CDAC;
+    // border: 1px solid #00CDAC;
     background-position: right center;
 }
 
