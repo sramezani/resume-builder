@@ -1,10 +1,8 @@
 import React from 'react';
-// import { CirclePicker } from 'react-color';
 import Tippy from '@tippyjs/react';
 import Switch from "react-switch";
 import Link from 'next/link';
-// import ReactModal from 'react-modal';
-import Modal from 'react-awesome-modal';
+import Modal from 'react-bootstrap/Modal';
 
 import download from 'downloadjs';
 
@@ -418,75 +416,82 @@ class TopNavbar extends React.Component<IProps, IState> {
                 </div>
 
             </div>
-
-            <Modal 
-                visible={this.state.saveModal}
-                width="300"
-                height="280"
-                effect="fadeInDown"
-                onClickAway={() => this.setState({ saveModal: false })}
+            
+            <Modal
+                show={this.state.saveModal}
+                onHide={() => this.setState({ saveModal: false })}
+                dialogClassName="modal-90w"
+                aria-labelledby="contained-modal-title-vcenter"
+                centered
             >
-                <div className={styles.saveModal}>
-                    <h3>
+                <Modal.Header closeButton>
+                    <h3 className="modal-title w-100 text-center">
                         Save Your Data
                     </h3>
-                    <p>
-                        By storing your information, in the future you can use it to edit your resume.
-                    </p>
+                </Modal.Header>
+                <Modal.Body>
+                    <div className={styles.saveModal}>
+                        <p>
+                            By storing your information, in the future you can use it to edit your resume.
+                        </p>
 
-                    <div
-                        className={styles.saveModalBtn}
-                        onClick={() => {
-                            this._saveBtnPress();
-                            this.setState({ saveModal: false });
-                        }}
-                    >
-                        SAVE
+                        <div
+                            className={styles.saveModalBtn}
+                            onClick={() => {
+                                this._saveBtnPress();
+                                this.setState({ saveModal: false });
+                            }}
+                        >
+                            SAVE
+                        </div>
                     </div>
-                </div>
+                </Modal.Body>
             </Modal>
 
-            <Modal 
-                visible={this.state.loadModal}
-                width="300"
-                height="280"
-                effect="fadeInDown"
-                onClickAway={() => this.setState({ loadModal: false })}
+            <Modal
+                show={this.state.loadModal}
+                onHide={() => this.setState({ loadModal: false })}
+                dialogClassName="modal-90w"
+                aria-labelledby="contained-modal-title-vcenter"
+                centered
             >
-                <div className={styles.loadModal}>
-                    <h3>
+                <Modal.Header closeButton>
+                    <h3 className="modal-title w-100 text-center">
                         Upload Your Data
                     </h3>
-                    <p>
-                        You can re-edit your information by uploading your saved file.
-                    </p>
-                    <div className={styles.uploadModalBtn}>
-                        <label htmlFor="uploadFile" >
-                            CHOOSE FILE
-                        </label> 
-                    </div>
-                    <input
-                        type="file"
-                        id="uploadFile"
-                        className={styles.uploadModalFileType}
-                        accept="application/JSON"
-                        onChange={(e) => {
-                            this.setState({ uploadErrMsg: false });
-                            this.uploadFile(e);
+                </Modal.Header>
+                <Modal.Body>
+                    <div className={styles.loadModal}>
+                        <p>
+                            You can re-edit your information by uploading your saved file.
+                        </p>
+                        <div className={styles.uploadModalBtn}>
+                            <label htmlFor="uploadFile" >
+                                CHOOSE FILE
+                            </label> 
+                        </div>
+                        <input
+                            type="file"
+                            id="uploadFile"
+                            className={styles.uploadModalFileType}
+                            accept="application/JSON"
+                            onChange={(e) => {
+                                this.setState({ uploadErrMsg: false });
+                                this.uploadFile(e);
+                            }}
+                            onClick={(e: any)=> { 
+                                e.target.value = null
                         }}
-                        onClick={(e: any)=> { 
-                            e.target.value = null
-                       }}
-                    />
-                    {
-                        this.state.uploadErrMsg &&
-                            <span>
-                                Uploaded file format is wrong 
-                            </span>
-                    }
-                </div>
+                        />
+                        {
+                            this.state.uploadErrMsg &&
+                                <span>
+                                    Uploaded file format is wrong 
+                                </span>
+                        }
+                    </div>
+                </Modal.Body>
             </Modal>
-
             </>
         )
      }
