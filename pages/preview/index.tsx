@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import styles from './style.module.scss';
 import { One } from '@template';
 
+import Router from 'next/router';
+
 import { importUserData } from '../../src/redux/core/actions';
 
 interface IProps {
@@ -36,8 +38,18 @@ class Home extends React.Component<IProps, IState> {
   render() { 
     return (
 			<div style={{ fontFamily: this.props.theme.fontFamily }}>
-                <div className={styles.loading}>
-                    <div className={styles.loading_gradient}>
+                
+                <div className={styles.bgLayer} />
+
+                <div className={styles.topNav}>
+                    <div className={styles.left}>
+                        <i className="material-icons" onClick={() => Router.back()}>keyboard_backspace</i>
+                    </div>
+
+                    <div className={["verticalCenter", styles.right].join(" ")}>
+                        <span>
+                        Download as PDF
+                        </span>
                     </div>
                 </div>
 
