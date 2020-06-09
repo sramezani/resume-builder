@@ -30,7 +30,7 @@ class Template extends React.Component<IProps, IState> {
                         customclass={styles.name}
                     />
                 </div>
-                <div className={styles.underName} />
+                <div className={styles.underName} style={{ borderTopColor: this.props.theme.color }} />
 
                 {
                     itemStatus.info &&
@@ -95,6 +95,7 @@ class Template extends React.Component<IProps, IState> {
                             />
                             <WorkExperience
                                 data={this.props.workExperience}
+                                color={this.props.theme.color}
                             />
                         </div>
                 }

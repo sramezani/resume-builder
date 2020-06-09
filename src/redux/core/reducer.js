@@ -18,7 +18,7 @@ const initialState = {
     education: [{id: "1"}],
     skills: [{id: "1"}],
     theme: {
-        color: '#4CAF50',
+        color: '#03A9F4',
         fontFamily: 'Source Sans Pro'
     },
     itemStatus: {

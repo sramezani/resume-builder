@@ -55,7 +55,8 @@
     display: block;
     border-radius: 100%;
     margin: 3px auto;
-    background: #77b8ed;
+    background: var(--circle-color);
+    opacity: 0.7;
 }
 .experienceText {
     padding: 0 0 10px 20px;

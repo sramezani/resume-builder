@@ -411,7 +411,7 @@ class TopNavbar extends React.Component<IProps, IState> {
                             <i className="material-icons">picture_as_pdf</i>
                         </div>
                         <div className={styles.bottomPart}>
-                            Download PDF
+                            Export PDF
                         </div>
                         
                     </div>

@@ -72,7 +72,7 @@ export default function Home() {
                                         <img src="images/icons/time.png" alt="makes a minute" className="imgResponsive verticalCenter" />
                                     </div>
                                     <p>
-                                        It makes a minute
+                                        It take a minute
                                     </p>
                                 </article>
                             </div>
