@@ -23,7 +23,9 @@ export default function Home() {
 
                         <div className={styles.crBtn}>
                             <Link href="/resume-builder">
-                            Build My Resume
+                                <a>
+                                    Build My Resume
+                                </a>
                             </Link>
                         </div>
                     </div>
@@ -140,7 +142,9 @@ export default function Home() {
                     </p>
                     <div className={styles.crBtn}>
                         <Link href="/resume-builder">
-                        WTF! Show me how
+                            <a>
+                                WTF! Show me how
+                            </a>
                         </Link>
                     </div>
                 </section>

@@ -4,6 +4,7 @@ import Dnd from './Dnd';
 import Dnd2Column from './Dnd2Column';
 import ToastUndo from './ToastUndo';
 import HeaderNavbar from './HeaderNavbar';
+import Loading from './Loading';
 
 export {
     Text,
@@ -11,5 +12,6 @@ export {
     Dnd,
     Dnd2Column,
     ToastUndo,
-    HeaderNavbar
+    HeaderNavbar,
+    Loading
 }

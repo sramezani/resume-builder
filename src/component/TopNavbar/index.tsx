@@ -9,6 +9,7 @@ import download from 'downloadjs';
 import AppConfig from '../../constant/config';
 import { appStore } from '../../redux/store';
 import { updateTheme, updateItemStatus, exportUserData, importUserData } from '../../redux/core/actions';
+import { Loading } from '@component';
 
 import styles from './topNavbar.module.scss';
 
@@ -28,7 +29,8 @@ class TopNavbar extends React.Component<IProps, IState> {
             typoStatus: false,
             saveModal: false,
             loadModal: false,
-            uploadErrMsg: false
+            uploadErrMsg: false,
+            gifGenerateStatus: false
         }
 
         this.fonts = [
@@ -87,10 +89,23 @@ class TopNavbar extends React.Component<IProps, IState> {
 
     _downloadPDFBtnPress = async () => {
         const { userData } = this.props;
+        const data = appStore.dispatch(exportUserData());
         const fileName = `CV-${userData.name}.pdf`;
+        
+        this.setState({ gifGenerateStatus: true });
 
-        const res = await fetch('http://localhost:3007/download');
+        const req = {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        };
+
+        const res = await fetch('http://localhost:3007/download', req);
         const blob = await res.blob();
+        this.setState({ gifGenerateStatus: false });
         download(blob, fileName);
 
     }
@@ -261,8 +276,7 @@ class TopNavbar extends React.Component<IProps, IState> {
         const reader = new FileReader()
         reader.onload = async (e: any) => { 
             const text = (e.target.result)
-            console.log(text)
-            importUserData(text);
+            importUserData(JSON.parse(text));
             this.setState({
                 loadModal: false
             })
@@ -492,6 +506,8 @@ class TopNavbar extends React.Component<IProps, IState> {
                     </div>
                 </Modal.Body>
             </Modal>
+            
+            <Loading show={this.state.gifGenerateStatus} />
             </>
         )
      }

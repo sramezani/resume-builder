@@ -178,7 +178,8 @@ export const exportUserData = () => {
 
 export const importUserData = (data) => {
 
-        const obj = JSON.parse(data)
+        // const obj = JSON.parse(data)
+        const obj = data
         
         appStore.dispatch(updateUserData(obj.userData));
         appStore.dispatch(updateWorkExperience(obj.workExperience));

@@ -1,12 +1,16 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import download from 'downloadjs';
 
 import styles from './style.module.scss';
 import { One } from '@template';
 
+import { Util } from '@lib';
 import Router from 'next/router';
 
-import { importUserData } from '../../src/redux/core/actions';
+import { importUserData, exportUserData } from '../../src/redux/core/actions';
+import { Loading } from '@component';
+import { appStore } from '../../src/redux/store';
 
 interface IProps {
 	theme: {
@@ -16,48 +20,94 @@ interface IProps {
 	itemStatus: {
 		[key: string]: boolean
     },
-    importUserData: any
+    userData: {
+        [key: string]: string
+    }
 }
-interface IState {}
+interface IState {
+    exportStatus: any,
+    gifGenerateStatus: Boolean
+    // exportStatus: Boolean | string | null
+}
 
 class Home extends React.Component<IProps, IState> {
 	
 	constructor(props: IProps) {
 		super(props);
 		this.state = { 
-			
+            exportStatus: false,
+            gifGenerateStatus: false
 		};
-  }
-
-  componentDidMount() {
+    }
     
-    // const data = {};
-    // this.props.importUserData(data)
-  }
+    componentDidMount() {
+        const exportStatus = Util.getQueryString(window.location, 'export');
+        this.setState({ exportStatus });
 
-  render() { 
+        const data = Util.getQueryString(window.location, 'data');
+        if (exportStatus === 'true' && data) {
+
+            fetch(`http://localhost:3007/download?data=${data}`)
+            .then(response => response.json())
+            .then(res => {
+                importUserData(JSON.parse(JSON.stringify(res)))
+            });
+
+
+        }
+    }
+
+    _downloadPDFBtnPress = async () => {
+        const { userData } = this.props;
+        const data = appStore.dispatch(exportUserData());
+        const fileName = `CV-${userData.name}.pdf`;
+
+        this.setState({ gifGenerateStatus: true });
+
+        const req = {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        };
+
+        const res = await fetch('http://localhost:3007/download', req);
+        const blob = await res.blob();
+        this.setState({ gifGenerateStatus: false });
+        download(blob, fileName);
+    }
+    
+    render() { 
     return (
 			<div style={{ fontFamily: this.props.theme.fontFamily }}>
-                
-                <div className={styles.bgLayer} />
+                {
+                    this.state.exportStatus !== 'true' &&
+                        <>
+                            <div className={styles.bgLayer} />
 
-                <div className={styles.topNav}>
-                    <div className={styles.left}>
-                        <i className="material-icons" onClick={() => Router.back()}>keyboard_backspace</i>
-                    </div>
+                            <div className={styles.topNav}>
+                                <div className={styles.left}>
+                                    <i className="material-icons" onClick={() => Router.back()}>keyboard_backspace</i>
+                                </div>
 
-                    <div className={["verticalCenter", styles.right].join(" ")}>
-                        <span>
-                        Download as PDF
-                        </span>
-                    </div>
-                </div>
+                                <div className={["verticalCenter", styles.right].join(" ")}>
+                                    <span onClick={this._downloadPDFBtnPress}>
+                                    Download as PDF
+                                    </span>
+                                </div>
+                            </div>
+                        </>
+                }
 
-                <div className={styles.container}>
+                <div className={[styles.container, this.state.exportStatus !== 'true' && styles.previewContainer].join(' ')}>
 
                     <One />
 
                 </div>
+
+                <Loading show={this.state.gifGenerateStatus} />
             </div>
 		);
 	}
@@ -65,7 +115,8 @@ class Home extends React.Component<IProps, IState> {
 
 const mapStateToProps = (store:any) => ({
     theme: store.theme,
-    itemStatus: store.itemStatus
+    itemStatus: store.itemStatus,
+    userData: store.userData
 });
 
 const mapDispatchToProps = () => ({

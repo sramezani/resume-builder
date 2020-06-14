@@ -24,5 +24,6 @@ export interface IState {
     typoStatus: boolean,
     saveModal: boolean,
     loadModal: boolean,
-    uploadErrMsg: boolean
+    uploadErrMsg: boolean,
+    gifGenerateStatus: boolean
 }
