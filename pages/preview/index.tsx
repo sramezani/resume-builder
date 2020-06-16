@@ -47,7 +47,7 @@ class Home extends React.Component<IProps, IState> {
         const data = Util.getQueryString(window.location, 'data');
         if (exportStatus === 'true' && data) {
 
-            fetch(`https://wtfresume.com/api/download?data=${data}`)
+            fetch(`https://api.wtfresume.com/download?data=${data}`)
             .then(response => response.json())
             .then(res => {
                 importUserData(JSON.parse(JSON.stringify(res)))
@@ -73,7 +73,7 @@ class Home extends React.Component<IProps, IState> {
             body: JSON.stringify(data)
         };
 
-        const res = await fetch('https://wtfresume.com/api/download', req);
+        const res = await fetch('https://api.wtfresume.com/download', req);
         const blob = await res.blob();
         this.setState({ gifGenerateStatus: false });
         download(blob, fileName);
