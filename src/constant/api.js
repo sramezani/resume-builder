@@ -6,7 +6,7 @@
 export default {
 
     // The URL we're connecting to
-    hostname: 'http://localhost:3007',
+    hostname: 'https://wtfresume.com/api',
 
     endpoints: [
         { key: 'save'         , url: '/save'    , method: 'POST'     },

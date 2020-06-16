@@ -103,7 +103,7 @@ class TopNavbar extends React.Component<IProps, IState> {
             body: JSON.stringify(data)
         };
 
-        const res = await fetch('http://localhost:3007/download', req);
+        const res = await fetch('https://wtfresume.com/api/download', req);
         const blob = await res.blob();
         this.setState({ gifGenerateStatus: false });
         download(blob, fileName);
