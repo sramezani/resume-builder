@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 // import { Text } from '@component';
 
 import styles from './style.module.scss';
-import { TopNavbar } from '@component';
+import { TopNavbar, Footer } from '@component';
 import { One } from '@template';
 // import { Text, TopNavbar, WorkExperience, Education, Skills } from '@component';
 
@@ -34,7 +34,8 @@ class Home extends React.Component<IProps, IState> {
 
   render() {
 		return (
-			<div style={{ fontFamily: this.props.theme.fontFamily }}>
+			<>
+            <div style={{ fontFamily: this.props.theme.fontFamily }}>
                 <div className={styles.loading} style={{ background: this.props.theme.color }}>
                     <div className={styles.loading_gradient}>
                     </div>
@@ -51,7 +52,10 @@ class Home extends React.Component<IProps, IState> {
                     <One />
 
                 </div>
+
             </div>
+                <Footer />
+                </>
 		);
 	}
 }

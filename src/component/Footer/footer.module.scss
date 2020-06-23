@@ -1,0 +1,38 @@
+@import '../../theme/colors';
+
+.footer {
+	background: #2f3c42;
+	color: $white;
+	position: relative;
+	margin-top: 100px;
+}
+
+.logo {
+	width: 60%;
+    // height: 100%;
+}
+
+.footerCopyright {
+	background: #263238;
+	text-align: center;
+	font-size: 14px;
+	padding: 20px 0;
+}
+
+.footerNav {
+	padding: 40px 0;
+}
+
+.footerNav li{
+	list-style-type: none;
+	// margin: 5px 0;
+}
+
+.footerNav li a{
+	color: $white;
+}
+
+.footerNavTitle {
+	font-weight: bold;
+    margin-bottom: 20px;
+}
