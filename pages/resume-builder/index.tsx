@@ -7,7 +7,7 @@ import styles from './style.module.scss';
 import { TopNavbar, Footer } from '@component';
 import { One } from '@template';
 // import { Text, TopNavbar, WorkExperience, Education, Skills } from '@component';
-
+import Head from 'next/head';
 // import { IProps, IState } from "./indexType";
 interface IProps {
 	theme: {
@@ -35,6 +35,9 @@ class Home extends React.Component<IProps, IState> {
   render() {
 		return (
 			<>
+            <Head>
+                <title>resmue builder | wtfresume</title>
+            </Head>
             <div style={{ fontFamily: this.props.theme.fontFamily }}>
                 <div className={styles.loading} style={{ background: this.props.theme.color }}>
                     <div className={styles.loading_gradient}>

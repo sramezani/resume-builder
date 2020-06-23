@@ -8,6 +8,8 @@ import { ToastContainer } from 'react-toastify';
 import { persistStore } from 'redux-persist';
 import { PersistGate } from 'redux-persist/integration/react';
 
+import Head from 'next/head';
+
 import 'tippy.js/dist/tippy.css';
 import 'tippy.js/animations/scale.css';
 
@@ -38,6 +40,10 @@ class MyApp extends App {
 		const { Component, pageProps } = this.props
 		return (
 			<>
+				<Head>
+					<title>wtfresume | free resmue builder</title>
+					<meta name="description" content="A modern real time design and 100% free resume builder."></meta>
+				</Head>
 				<Provider store={appStore}>
 					<PersistGate
     					loading={<Component {...pageProps} />}

@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import download from 'downloadjs';
-
+import Head from 'next/head';
 import styles from './style.module.scss';
 import { One } from '@template';
 
@@ -81,7 +81,11 @@ class Home extends React.Component<IProps, IState> {
     
     render() { 
     return (
-			<div style={{ fontFamily: this.props.theme.fontFamily }}>
+			<>
+            <Head>
+                <title>preview | wtfresume</title>
+            </Head>
+            <div style={{ fontFamily: this.props.theme.fontFamily }}>
                 {
                     this.state.exportStatus !== 'true' &&
                         <>
@@ -109,6 +113,7 @@ class Home extends React.Component<IProps, IState> {
 
                 <Loading show={this.state.gifGenerateStatus} />
             </div>
+            </>
 		);
 	}
 }
