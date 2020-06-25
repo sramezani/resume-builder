@@ -1,0 +1,63 @@
+@import '../../../../theme/colors';
+
+.box {
+    width: 115px;
+    height: 125px;
+    border: 1px dashed #c2c2c2;
+}
+
+.image {
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+
+
+.saveModal {
+    padding: 0 20px;
+    text-align: center;
+}
+.loadModal {
+    padding: 0 20px;
+    text-align: center;
+}
+.loadModal h3 {
+    font-size: 30px;
+}
+.loadModal p {
+    margin: 20px auto;
+    font-size: 18px;
+    line-height: 28px;
+}
+.loadModal span {
+    font-size: 14px;
+    color: red;
+    position: relative;
+    width: 100%;
+    top: 0px;
+}
+
+.uploadModalBtn {
+    width: 100%;
+}
+.uploadModalBtn label{
+    width: 100%;
+    display: block;
+    padding: 15px 0;
+    margin: 50px 0 0 0;
+    cursor: pointer;
+    border-radius: 5px;
+    font-weight: bold;
+    color: #fff;
+    font-size: 20px;
+    letter-spacing: 3px;
+    background-image: linear-gradient(to right, #02AAB0 0%, #00CDAC 51%, #02AAB0 100%);
+    transition: 0.5s;
+    background-size: 200% auto;
+}
+.uploadModalBtn label:hover {
+    background-position: right center;
+}
+.uploadModalFileType {
+    display: none;
+}

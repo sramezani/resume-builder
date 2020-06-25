@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import { Text } from '@component';
-import { WorkExperience, Education, Skills } from './Elements';
+import { WorkExperience, Education, Skills, Photo } from './Elements';
 import styles from './one.module.scss';
 
 import { IProps, IState } from "./one";
@@ -31,6 +31,15 @@ class Template extends React.Component<IProps, IState> {
                     />
                 </div>
                 <div className={styles.underName} style={{ borderTopColor: this.props.theme.color }} />
+
+                {
+                    itemStatus.picture &&
+                        <div className={styles.image}>
+                            <Photo
+                                userData={this.props.userData}
+                            />
+                        </div>
+                }
 
                 {
                     itemStatus.info &&

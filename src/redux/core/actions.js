@@ -1,6 +1,8 @@
 import { actionTypes } from './actionTypes';
 import { AppAPI } from '../../lib';
 import Util from '../../lib/Util';
+import AppConfig from '../../constant/config';
+import ApiConst from '../../constant/api';
 
 import { appStore } from '../store';
 
@@ -188,4 +190,27 @@ export const importUserData = (data) => {
         appStore.dispatch(updateTheme(obj.theme));
         appStore.dispatch(updateItemStatus(obj.itemStatus));
 
+}
+
+export const uploadImageAction = (image) => {
+    return () => new Promise((resolve, reject) => {
+        
+        const formData = new FormData()
+        formData.append('image', image)
+        fetch(ApiConst.imgurHostname, {
+            method: 'POST',
+            body: formData,
+            headers: {
+				'Authorization': `Client-ID ${AppConfig.imgurClientId}`
+			}
+          })
+          .then(response => response.json())
+          .then(res => {
+                return resolve(res);
+          })
+          .catch(err => {
+            return reject(err);
+          })
+
+    });
 }
