@@ -40,7 +40,7 @@ function Skills(props: IProps) {
         <>
             <div className={styles.box} onClick={() => setModalStatus(true)}>
                 <img
-                    src={props.userData.photo}
+                    src={props.userData.photo || 'images/nobody.jpg'}
                     alt="user photo"
                     className={styles.image}
                 />
