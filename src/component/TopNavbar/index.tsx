@@ -11,6 +11,7 @@ import { appStore } from '../../redux/store';
 import { updateTheme, updateItemStatus, exportUserData, importUserData } from '../../redux/core/actions';
 import { Loading } from '@component';
 
+import { APIConfig } from '@constant';
 import styles from './topNavbar.module.scss';
 
 import { IProps, IState } from "./topNavbar";
@@ -103,7 +104,7 @@ class TopNavbar extends React.Component<IProps, IState> {
             body: JSON.stringify(data)
         };
 
-        const res = await fetch('https://api.wtfresume.com/download', req);
+        const res = await fetch(`${APIConfig.hostname}/download`, req);
         const blob = await res.blob();
         this.setState({ gifGenerateStatus: false });
         download(blob, fileName);

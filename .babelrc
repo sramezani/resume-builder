@@ -9,7 +9,8 @@
               "@template": "./src/template",
               "@lib": "./src/lib",
               "@types": "./src/types",
-              "@colors": "./src/theme/colors"
+              "@colors": "./src/theme/colors",
+              "@constant": "./src/constant"
             }
         }],
         ["styled-components", { "ssr": true }]

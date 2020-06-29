@@ -27,6 +27,7 @@
 			"@lib": ["src/lib"],
 			"@types": ["src/types"],
 			"@colors": ["src/theme/colors"],
+			"@constant": ["src/constant"],
 		}
 	},
 	"exclude": [

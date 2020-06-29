@@ -6,6 +6,7 @@ import styles from './style.module.scss';
 import { One } from '@template';
 
 import { Util } from '@lib';
+import { APIConfig } from '@constant';
 import Router from 'next/router';
 
 import { importUserData, exportUserData } from '../../src/redux/core/actions';
@@ -47,7 +48,7 @@ class Home extends React.Component<IProps, IState> {
         const data = Util.getQueryString(window.location, 'data');
         if (exportStatus === 'true' && data) {
 
-            fetch(`https://api.wtfresume.com/download?data=${data}`)
+            fetch(`${APIConfig.hostname}/download?data=${data}`)
             .then(response => response.json())
             .then(res => {
                 importUserData(JSON.parse(JSON.stringify(res)))
@@ -73,7 +74,7 @@ class Home extends React.Component<IProps, IState> {
             body: JSON.stringify(data)
         };
 
-        const res = await fetch('https://api.wtfresume.com/download', req);
+        const res = await fetch(`${APIConfig.hostname}/download`, req);
         const blob = await res.blob();
         this.setState({ gifGenerateStatus: false });
         download(blob, fileName);
