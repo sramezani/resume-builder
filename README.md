@@ -1,7 +1,8 @@
 # WTF Resume (Resume Builder)
 
 Modern real-time design and 100% free resume builder.
-https://wtfresume.com
+### [https://wtfresume.com](https://wtfresume.com "wtfresume")
+
 
 ### Simple demo: 
 
@@ -39,6 +40,10 @@ npm run dev
     │   ├── theme               # general stylys, ...
     │   └── types               # type for typescript
     └── ...
+
+
+
+#### [Go to WTFresume website](https://wtfresume.com "wtfresume")
 
 
 ### Contributing
