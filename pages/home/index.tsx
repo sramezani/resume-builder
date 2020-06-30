@@ -127,7 +127,7 @@ export default function Home() {
                                 <source src="video/resume.mp4" type="video/mp4" />
                                 <source src="video/resume.webm" type="video/webm" />
                             </video> */}
-                            <iframe width="100%" height="600" src="https://www.youtube.com/embed/U5LdPoz5QAk" frameBorder="0" allowFullScreen>
+                            <iframe width="100%" height="600" src="https://www.youtube.com/embed/u5eIsENOLUc?rel=0&showinfo=1" frameBorder="0" allowFullScreen>
                             </iframe>
                         </article>
                     </div>
