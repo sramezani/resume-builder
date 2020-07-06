@@ -11,47 +11,53 @@ const fonts = [
     'Calibri',
     'Cambria',
     'Garamond',
-    'Georgia'
+    'Georgia',
 ];
 
-class Select extends React.Component{
-    
+class Select extends React.Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            value: appStore.getState().theme.fontFamily
-        }
+            value: appStore.getState().theme.fontFamily,
+        };
     }
 
     _onChange = (e) => {
         const value = e && e.target && e.target.value;
         const data = {
-            fontFamily: value
-        }
-        this.setState({ value })
+            fontFamily: value,
+        };
+        this.setState({ value });
         appStore.dispatch(updateTheme(data));
-    }
-    render(){
-
-        return(
+    };
+    render() {
+        return (
             <div className={styles.selectBoxForm}>
-                <select 
+                <select
                     value={this.state.value}
                     onChange={(e) => this._onChange(e)}
-                    ref={c => (this.mySelect = c)} 
+                    ref={(c) => (this.mySelect = c)}
                 >
                     {fonts.map((item, index) => {
-                        return <option value={item} key={index} style={{ fontFamily: item }} >{item}</option>
+                        return (
+                            <option
+                                value={item}
+                                key={index}
+                                style={{ fontFamily: item }}
+                            >
+                                {item}
+                            </option>
+                        );
                     })}
                 </select>
-                <i className={"material-icons " + styles.selectDown}>arrow_drop_down</i>
+                <i className={'material-icons ' + styles.selectDown}>
+                    arrow_drop_down
+                </i>
             </div>
-
-        )
-     }
+        );
+    }
 }
-
 
 // Select.propTypes = {
 //     data: PropTypes.array,
