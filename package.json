@@ -74,6 +74,6 @@
     }
   },
   "lint-staged": {
-    "*.{js,ts,tsx}": "yarn lint:js --cache --fix"
+    "*.{js,ts,tsx}": "yarn lint:js --fix"
   }
 }
