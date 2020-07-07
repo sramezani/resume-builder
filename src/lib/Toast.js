@@ -4,31 +4,32 @@ import { toast, Slide, Zoom, Flip, Bounce } from 'react-toastify';
 import { ToastUndo } from '@component';
 
 const config = {
-    position: "bottom-left",
+    position: 'bottom-left',
     autoClose: 7000,
     // hideProgressBar: true,
     closeOnClick: true,
     pauseOnHover: true,
     draggable: true,
-    transition: Flip
-}
+    transition: Flip,
+};
 
 const Toast = {
-
-	showUndo: (id, data, type, message = 'item removed') => {
+    showUndo: (id, data, type, message = 'item removed') => {
         toast.dismiss();
-        toast(<ToastUndo itemId={id} data={data} message={message} type={type} />, config)
+        toast(
+            <ToastUndo itemId={id} data={data} message={message} type={type} />,
+            config
+        );
     },
 
-	show: (message = '...') => {
+    show: (message = '...') => {
         toast.dismiss();
-        toast(message, config)
+        toast(message, config);
     },
 
-	dismiss: () => {
-        toast.dismiss()
-    }
-
+    dismiss: () => {
+        toast.dismiss();
+    },
 };
 
 /* Export ================================ */

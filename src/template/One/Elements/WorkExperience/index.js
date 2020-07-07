@@ -3,31 +3,34 @@ import React from 'react';
 import { Toast, Util } from '@lib';
 import { Text, Dnd } from '@component';
 
-import { useDispatch } from "react-redux";
+import { useDispatch } from 'react-redux';
 
-import { addNewWorkExperience, updateWorkExperience, deleteWorkExperienceData } from '../../../../redux/core/actions';
+import {
+    addNewWorkExperience,
+    updateWorkExperience,
+    deleteWorkExperienceData,
+} from '../../../../redux/core/actions';
 
 import styles from './experience.module.scss';
 
 function WorkExperience(props) {
-
     const dispatch = useDispatch();
 
     const _updateWorkExperience = (data) => {
         const storeReorder = Util.mapOrder(props.data, data, 'id');
         dispatch(updateWorkExperience(storeReorder));
-    }
+    };
 
     const _addNewItem = () => {
         dispatch(addNewWorkExperience());
-    }
+    };
 
     const _removeItem = (id, data) => {
         Toast.showUndo(id, data, 'workExperience', 'Work Item Removed');
         dispatch(deleteWorkExperienceData(id));
-    }
+    };
 
-    let { data, color } = props;
+    const { data, color } = props;
     return (
         <Dnd
             data={data}
@@ -47,7 +50,10 @@ function WorkExperience(props) {
                         />
                     </div>
                     <div className={styles.RightWork}>
-                        <div className={styles.workDot} style={{ '--circle-color': color }} />
+                        <div
+                            className={styles.workDot}
+                            style={{ '--circle-color': color }}
+                        />
                         <Text
                             value={item.jobTitle}
                             statename="workExperience.jobTitle"
@@ -78,15 +84,13 @@ function WorkExperience(props) {
                                 stateid={item.id}
                                 customclass={styles.companyExplain}
                                 placeholder="- your experience..."
-                                
                             />
                         </div>
                     </div>
                 </div>
             )}
         />
-
-    )
+    );
 }
 
 /* Export Component =============================== */

@@ -4,10 +4,10 @@
         "es6": true
     },
     "extends": [
-        "eslint:recommended",
-        "plugin:react/recommended",
-        "plugin:@typescript-eslint/eslint-recommended"
-        
+      "plugin:react/recommended",
+      "plugin:@typescript-eslint/recommended",
+      "prettier/@typescript-eslint",
+      "plugin:prettier/recommended"
     ],
     "globals": {
         "Atomics": "readonly",
@@ -23,20 +23,25 @@
     },
     "plugins": [
         "react",
-        "@typescript-eslint"
+        "@typescript-eslint",
+        "prettier"
     ],
     "rules": {
         "react/prop-types": "off",
-        
         "react/jsx-indent": ["off", "tab"],
         "indent": ["off", "tab"],
         "no-tabs": "off",
         "react/jsx-indent-props": [2, 4],
         "import/prefer-default-export": "off",
         "import/no-cycle": "off",
-        "no-multi-assign": "off"
+        "no-multi-assign": "off",
+        "prettier/prettier": "error",
+        "@typescript-eslint/no-explicit-any": "off"
     },
     "settings": {
+        "react": {
+          "version": "detect"
+        },
         "import/parsers": {
             "@typescript-eslint/parser": [".ts", ".tsx"]
         },
