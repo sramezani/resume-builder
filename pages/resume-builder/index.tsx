@@ -36,7 +36,7 @@ class Home extends React.Component<IProps, IState> {
 		return (
 			<>
             <Head>
-                <title>resmue builder | wtfresume</title>
+                <title>resume builder | wtfresume</title>
             </Head>
             <div style={{ fontFamily: this.props.theme.fontFamily }}>
                 <div className={styles.loading} style={{ background: this.props.theme.color }}>
