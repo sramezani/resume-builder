@@ -1,5 +1,5 @@
-@import "../../src/theme/colors";
-@import "../../src/theme/fonts";
+@import '../../src/theme/colors';
+@import '../../src/theme/fonts';
 
 // body {
 // 	// background: #0789e0;
@@ -14,8 +14,8 @@
     top: 0;
     left: 0;
     // background: #4CAF50;
-    transition: .3s background ease;
-    transition-delay: .2s;
+    transition: 0.3s background ease;
+    transition-delay: 0.2s;
     font-size: 0;
     line-height: 0;
 }
@@ -23,27 +23,26 @@
 .loading_gradient {
     width: 100%;
     height: 100vh;
-    background: linear-gradient(180deg,rgba(255,255,255,1) 0,rgba(255,255,255,0) 100%);
-    opacity: .3;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 1) 0, rgba(255, 255, 255, 0) 100%);
+    opacity: 0.3;
     position: absolute;
     top: 0;
     left: 0;
 }
 
-.container{
-	// width: 595px;
-	// height: 842px;
-	/* height/width --> 1.4143 */
-	min-height:297mm;
-    width:210mm;
-	background: #fff;
-	position: relative;
-	/* to centre page on screen*/
-	margin-left: auto;
-	margin-right: auto;
-	margin: 70px auto 40px auto;
-	// -webkit-box-shadow: 0px 0px 19px 1px rgba(19,121,189,1);
+.container {
+    // width: 595px;
+    // height: 842px;
+    /* height/width --> 1.4143 */
+    min-height: 297mm;
+    width: 210mm;
+    background: #fff;
+    position: relative;
+    /* to centre page on screen*/
+    margin-left: auto;
+    margin-right: auto;
+    margin: 70px auto 40px auto;
+    // -webkit-box-shadow: 0px 0px 19px 1px rgba(19,121,189,1);
     // -moz-box-shadow: 0px 0px 19px 1px rgba(19,121,189,1);
     // box-shadow: 0px 0px 19px 1px rgba(19,121,189,1);
 }
-

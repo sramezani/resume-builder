@@ -1,29 +1,29 @@
-export interface IProps {
+export interface TProps {
     itemStatus: {
-		// picture: boolean,
+        // picture: boolean,
         // info: boolean,
         // profile: boolean,
         // workExperience: boolean,
         // education: boolean,
         // skills: boolean
-        [key: string]: boolean
-    },
+        [key: string]: boolean;
+    };
     theme: {
-        [key: string]: string
-    },
+        [key: string]: string;
+    };
     userData: {
-        [key: string]: string
-    }
+        [key: string]: string;
+    };
 }
-export interface IState {
-    colorPicker: boolean,
-    bgComplete: boolean,
-    checked: boolean,
-    sectionStatus: boolean,
-    colorStatus: boolean,
-    typoStatus: boolean,
-    saveModal: boolean,
-    loadModal: boolean,
-    uploadErrMsg: boolean,
-    gifGenerateStatus: boolean
+export interface TState {
+    colorPicker: boolean;
+    bgComplete: boolean;
+    checked: boolean;
+    sectionStatus: boolean;
+    colorStatus: boolean;
+    typoStatus: boolean;
+    saveModal: boolean;
+    loadModal: boolean;
+    uploadErrMsg: boolean;
+    gifGenerateStatus: boolean;
 }

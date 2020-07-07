@@ -5,11 +5,7 @@ import { Text, Dnd } from '@component';
 
 import { useDispatch } from 'react-redux';
 
-import {
-    addNewWorkExperience,
-    updateWorkExperience,
-    deleteWorkExperienceData,
-} from '../../../../redux/core/actions';
+import { addNewWorkExperience, updateWorkExperience, deleteWorkExperienceData } from '../../../../redux/core/actions';
 
 import styles from './experience.module.scss';
 
@@ -50,10 +46,7 @@ function WorkExperience(props) {
                         />
                     </div>
                     <div className={styles.RightWork}>
-                        <div
-                            className={styles.workDot}
-                            style={{ '--circle-color': color }}
-                        />
+                        <div className={styles.workDot} style={{ '--circle-color': color }} />
                         <Text
                             value={item.jobTitle}
                             statename="workExperience.jobTitle"

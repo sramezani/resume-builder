@@ -21,11 +21,7 @@ function serialize(obj, prefix) {
         if (p.match(/AwesomeBeautyArray/)) {
             str.push(v);
         } else {
-            str.push(
-                v !== null && typeof v === 'object'
-                    ? serialize(v, k)
-                    : `${encodeURIComponent(k)}=${encodeURIComponent(v)}`
-            );
+            str.push(v !== null && typeof v === 'object' ? serialize(v, k) : `${encodeURIComponent(k)}=${encodeURIComponent(v)}`);
         }
     });
 
@@ -35,15 +31,7 @@ function serialize(obj, prefix) {
 /**
  * Sends requests to the API
  */
-function fetcher(
-    method,
-    inputEndpoint,
-    inputParams,
-    body,
-    token,
-    endpointKey,
-    thirdParty = false
-) {
+function fetcher(method, inputEndpoint, inputParams, body, token, endpointKey, thirdParty = false) {
     const HOSTNAME = thirdParty ? '' : APIConfig.hostname;
 
     let endpoint = inputEndpoint;
@@ -52,10 +40,7 @@ function fetcher(
     return new Promise((resolve, reject) => {
         // After x seconds, let's call it a day!
         const timeoutAfter = 45;
-        const apiTimedOut = setTimeout(
-            () => reject(Labels.error.timeOut),
-            timeoutAfter * 1000
-        );
+        const apiTimedOut = setTimeout(() => reject(Labels.error.timeOut), timeoutAfter * 1000);
 
         if (!method || !endpoint) {
             return reject('Missing params (API.fetcher).');
@@ -80,29 +65,21 @@ function fetcher(
                 // Replace matching params in API routes eg. /recipes/{param}/foo
                 Object.keys(params).forEach((param) => {
                     if (endpoint.includes(`{${param}}`)) {
-                        endpoint = endpoint
-                            .split(`{${param}}`)
-                            .join(params[param]);
+                        endpoint = endpoint.split(`{${param}}`).join(params[param]);
                         delete params[param];
                     }
                 });
 
                 // Check if there's still an 'id' prop, /{id}?
                 if (params.id !== undefined) {
-                    if (
-                        typeof params.id === 'string' ||
-                        typeof params.id === 'number'
-                    ) {
+                    if (typeof params.id === 'string' || typeof params.id === 'number') {
                         urlParams = `/${params.id}`;
                         delete params.id;
                     }
                 }
                 // Add the rest of the params as a query string
                 urlParams = `?${serialize(params)}`;
-            } else if (
-                typeof params === 'string' ||
-                typeof params === 'number'
-            ) {
+            } else if (typeof params === 'string' || typeof params === 'number') {
                 // String or Number - eg. /recipes/23
                 urlParams = `/${params}`;
             } else {
@@ -125,11 +102,7 @@ function fetcher(
                     clearTimeout(apiTimedOut);
 
                     /**skipping 401 as well to handle it inside app and show the message */
-                    if (
-                        !rawResponse ||
-                        (rawResponse.status !== 200 &&
-                            rawResponse.status !== 401)
-                    ) {
+                    if (!rawResponse || (rawResponse.status !== 200 && rawResponse.status !== 401)) {
                         throw JSON.parse(rawResponse._bodyInit);
                         // throw rawResponse ? rawResponse._bodyInit : { message: Labels.error.networkError };
                     }
@@ -181,15 +154,7 @@ const AppAPI = {
 
 APIConfig.endpoints.forEach((endpoint) => {
     AppAPI[endpoint.key] = (params, body, token) =>
-        fetcher(
-            endpoint.method,
-            endpoint.url,
-            params,
-            body,
-            token,
-            endpoint.key,
-            endpoint.thirdParty
-        );
+        fetcher(endpoint.method, endpoint.url, params, body, token, endpoint.key, endpoint.thirdParty);
 });
 
 /* Export ==================================================================== */

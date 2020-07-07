@@ -4,8 +4,7 @@
  * */
 
 const Util = {
-    validateEmail: (email) =>
-        /^([\w\.\-_]+)?\w+@[\w-_]+(\.\w+){1,}$/g.test(email),
+    validateEmail: (email) => /^([\w\.\-_]+)?\w+@[\w-_]+(\.\w+){1,}$/g.test(email),
 
     randomNumber: (min, max) => {
         return Math.floor(Math.random() * (max - min + 1) + min);

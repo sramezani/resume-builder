@@ -1,23 +1,23 @@
-@import "../../theme/colors";
+@import '../../theme/colors';
 
-.selectBoxForm{
-	position:relative;	
+.selectBoxForm {
+    position: relative;
 }
 .selectBoxForm select {
-	border: 0 ;
-	border-radius: 1px;
-	width: 146px;
+    border: 0;
+    border-radius: 1px;
+    width: 146px;
     height: 30px;
-	-webkit-appearance:none;
-	appearance:none;
-	-moz-appearance:none;
-	font-size: 14px;
-	cursor: pointer;
-	background: none;
-	position: relative;
-	z-index:2;
-	background: #fff;
-	padding: 0 5px;
+    -webkit-appearance: none;
+    appearance: none;
+    -moz-appearance: none;
+    font-size: 14px;
+    cursor: pointer;
+    background: none;
+    position: relative;
+    z-index: 2;
+    background: #fff;
+    padding: 0 5px;
 }
 
 .selectBoxForm select option {
@@ -26,21 +26,21 @@
 }
 
 .selectBoxForm select:focus {
-	outline: 0;
+    outline: 0;
 }
 .selectBoxForm select:active {
-	outline: 0;
+    outline: 0;
 }
 .selectBoxForm select:visited {
-  	outline: 0;
+    outline: 0;
 }
 
 .selectDown {
-	position: absolute;
-	right: -5px;
-	top: 0px;
-	color: #3c3a3a;
-	cursor: pointer;
-	text-align: center;
-	z-index: 2;
+    position: absolute;
+    right: -5px;
+    top: 0px;
+    color: #3c3a3a;
+    cursor: pointer;
+    text-align: center;
+    z-index: 2;
 }

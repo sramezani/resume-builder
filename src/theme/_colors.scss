@@ -1,16 +1,16 @@
 // color name got from: http://chir.ag/projects/name-that-color/#6195ED
 
 $colors: (
-    Crusoe:                      #004711,
-    Laurel:                      #719479,
-    Pine_Glade:                  #CCCC99,
-    Mine_Shaft:                  #3e3e3e,
-    MyGray:                      #929292,
-    Scorpion:                    #585858,
-    Alto:                        #D4D4D4,
-    Gallery:                     #EBEBEB,
-    White:                       #FFFFFF,
-    Pomegranate:                 #F22E2E,
+    Crusoe: #004711,
+    Laurel: #719479,
+    Pine_Glade: #cccc99,
+    Mine_Shaft: #3e3e3e,
+    MyGray: #929292,
+    Scorpion: #585858,
+    Alto: #d4d4d4,
+    Gallery: #ebebeb,
+    White: #ffffff,
+    Pomegranate: #f22e2e,
 );
 
 $primary: map-get($colors, Crusoe);
@@ -23,4 +23,3 @@ $gray_dark: map-get($colors, MyGray);
 $gray: map-get($colors, Gallery);
 $white: map-get($colors, White);
 $red: map-get($colors, Pomegranate);
-

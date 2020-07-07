@@ -1,12 +1,12 @@
 .nav {
     height: 60px;
-    background: #1976D2;
-    background: linear-gradient(90deg, #1976D2 0%, #1565C0 100%);
+    background: #1976d2;
+    background: linear-gradient(90deg, #1976d2 0%, #1565c0 100%);
     font-family: 'Roboto';
     font-size: 14px;
     letter-spacing: -0.02em;
     box-shadow: 0px 4px 10px rgba(141, 159, 179, 0.3);
-    transition: all .3s ease-in-out;
+    transition: all 0.3s ease-in-out;
 }
 .logo {
     width: 210px;
@@ -29,8 +29,8 @@
     display: block;
 }
 .navItem a:hover {
-    background-color: #08AEEA;
-    background-image: linear-gradient(90deg, #08AEEA 0%, #2AF598 10%);    
+    background-color: #08aeea;
+    background-image: linear-gradient(90deg, #08aeea 0%, #2af598 10%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }

@@ -89,9 +89,7 @@ export default function core(state = initialState, action) {
         case actionTypes.UPDATE_WORK_EXPERIENCE_DATA:
             if (!action.payload || !action.payloadId) return state;
 
-            const newWorkExperience = JSON.parse(
-                JSON.stringify(state.workExperience)
-            );
+            const newWorkExperience = JSON.parse(JSON.stringify(state.workExperience));
             const index = state.workExperience
                 .map((itm) => {
                     return itm.id;
@@ -111,9 +109,7 @@ export default function core(state = initialState, action) {
             if (!action.payload) return state;
 
             let newWkE = JSON.parse(JSON.stringify(state.workExperience));
-            newWkE = state.workExperience.filter(
-                ({ id }) => id !== action.payload
-            );
+            newWkE = state.workExperience.filter(({ id }) => id !== action.payload);
             return {
                 ...state,
                 workExperience: [...newWkE],

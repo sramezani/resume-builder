@@ -1,12 +1,7 @@
 import React from 'react';
 
 import { appStore } from '../../redux/store';
-import {
-    updateUserData,
-    updateWorkExperienceData,
-    updateEducationData,
-    updateSkillData,
-} from '../../redux/core/actions';
+import { updateUserData, updateWorkExperienceData, updateEducationData, updateSkillData } from '../../redux/core/actions';
 
 import { Util } from '@lib';
 
@@ -69,9 +64,7 @@ class Text extends React.Component {
                     onBlur={(e) => this._onBlur(e.currentTarget)}
                     dangerouslySetInnerHTML={{ __html: value }}
                     // className={"contentEditableContainer " + customclass}
-                    className={
-                        styles.contentEditableContainer + ' ' + customclass
-                    }
+                    className={styles.contentEditableContainer + ' ' + customclass}
                     {...this.props}
                     // placeholder=""
                 />

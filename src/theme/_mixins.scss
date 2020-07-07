@@ -6,20 +6,20 @@
 * how to use: e.g: .box { @include border-radius(5px); }
 */
 @mixin border-radius($radius: $border-radius) {
-	-webkit-border-radius: $radius;
-	   -moz-border-radius: $radius;
-	    -ms-border-radius: $radius;
-	        border-radius: $radius;
+    -webkit-border-radius: $radius;
+    -moz-border-radius: $radius;
+    -ms-border-radius: $radius;
+    border-radius: $radius;
 }
 
 @mixin line-height($text-size) {
-	line-height: $text-size + $additional-line-height;
+    line-height: $text-size + $additional-line-height;
 }
 
 @mixin transition($property: all, $duration: $transition-duration, $ease: $ease-out-quart) {
     -webkit-transition: $property $duration $ease;
-       -moz-transition: $property $duration $ease;
-        -ms-transition: $property $duration $ease;
-         -o-transition: $property $duration $ease;
-            transition: $property $duration $ease;
+    -moz-transition: $property $duration $ease;
+    -ms-transition: $property $duration $ease;
+    -o-transition: $property $duration $ease;
+    transition: $property $duration $ease;
 }

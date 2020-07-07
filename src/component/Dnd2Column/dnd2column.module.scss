@@ -1,26 +1,25 @@
-
 @import '../../theme/colors';
 
 .unselectedDragItems .dragBox {
-    border: 2px dashed rgba(255,255,255,0);
-    transition: all .2s ease-in-out;
+    border: 2px dashed rgba(255, 255, 255, 0);
+    transition: all 0.2s ease-in-out;
 }
 .unselectedDragItems .dragBox:hover {
     border: 2px dashed #d0d0d0;
-    transition-delay: .1s;
+    transition-delay: 0.1s;
 }
 .dragBoxIcon {
     opacity: 0;
     text-align: center;
 }
 .unselectedDragItems .dragBox:hover > .dragBoxIcon {
-    transition-delay: .2s;
+    transition-delay: 0.2s;
     // display: block;
     opacity: 1;
 }
 
 .selectedDragItems .dragBox {
-    border: 2px dashed rgba(255,255,255,0);
+    border: 2px dashed rgba(255, 255, 255, 0);
 }
 
 .dndIcon {

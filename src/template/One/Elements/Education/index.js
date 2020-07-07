@@ -4,11 +4,7 @@ import { useDispatch } from 'react-redux';
 import { Toast, Util } from '@lib';
 import { Text, Dnd } from '@component';
 
-import {
-    addEducation,
-    updateEducation,
-    deleteEducationData,
-} from '../../../../redux/core/actions';
+import { addEducation, updateEducation, deleteEducationData } from '../../../../redux/core/actions';
 
 import styles from './education.module.scss';
 

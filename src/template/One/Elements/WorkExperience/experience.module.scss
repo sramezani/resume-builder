@@ -37,7 +37,7 @@
     border-left: 2px solid #dadada;
     padding: 0 0 0 15px;
 }
-.workExperience .workBox:nth-child(n+2){
+.workExperience .workBox:nth-child(n + 2) {
     padding-top: 5px;
 }
 
@@ -51,7 +51,7 @@
 .workDot:after {
     width: 10px;
     height: 10px;
-    content: "";
+    content: '';
     display: block;
     border-radius: 100%;
     margin: 3px auto;

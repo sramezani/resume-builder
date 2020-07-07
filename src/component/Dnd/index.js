@@ -40,25 +40,15 @@ const getRemoveIconStyle = (isDragging, draggableStyle) => ({
 const getdragedStyle = (isDragging) => ({
     position: 'relative',
     // transform: isDragging ? 'scale(1.07)' : 'scale(1)',
-    '-webkit-box-shadow': isDragging
-        ? '0px 0px 24px 0px rgba(0,0,0,0.16)'
-        : 'none',
-    '-moz-box-shadow': isDragging
-        ? '0px 0px 24px 0px rgba(0,0,0,0.16)'
-        : 'none',
+    '-webkit-box-shadow': isDragging ? '0px 0px 24px 0px rgba(0,0,0,0.16)' : 'none',
+    '-moz-box-shadow': isDragging ? '0px 0px 24px 0px rgba(0,0,0,0.16)' : 'none',
     'box-shadow': isDragging ? '0px 0px 24px 0px rgba(0,0,0,0.16)' : 'none',
 });
 
 const getListStyle = (isDraggingOver) => ({
-    '-webkit-box-shadow': isDraggingOver
-        ? 'inset 0px 0px 18px 0px rgba(0,0,0,0.08)'
-        : 'none',
-    '-moz-box-shadow': isDraggingOver
-        ? 'inset 0px 0px 18px 0px rgba(0,0,0,0.08)'
-        : 'none',
-    'box-shadow': isDraggingOver
-        ? 'inset 0px 0px 18px 0px rgba(0,0,0,0.08)'
-        : 'none',
+    '-webkit-box-shadow': isDraggingOver ? 'inset 0px 0px 18px 0px rgba(0,0,0,0.08)' : 'none',
+    '-moz-box-shadow': isDraggingOver ? 'inset 0px 0px 18px 0px rgba(0,0,0,0.08)' : 'none',
+    'box-shadow': isDraggingOver ? 'inset 0px 0px 18px 0px rgba(0,0,0,0.08)' : 'none',
     background: isDraggingOver ? 'rgba(250,250,250,1)' : '#fff',
 });
 
@@ -96,11 +86,7 @@ class Dnd extends Component {
             return;
         }
 
-        const data = this.reorder(
-            this.state.data,
-            result.source.index,
-            result.destination.index
-        );
+        const data = this.reorder(this.state.data, result.source.index, result.destination.index);
 
         if (!equal(this.state.data, data)) {
             this.props.reorder(data);
@@ -120,121 +106,44 @@ class Dnd extends Component {
                             {...provided.droppableProps}
                             ref={provided.innerRef}
                             style={getListStyle(snapshot.isDraggingOver)}
-                            className={
-                                snapshot.isDraggingOver
-                                    ? styles.selectedDragItems
-                                    : styles.unselectedDragItems
-                            }
+                            className={snapshot.isDraggingOver ? styles.selectedDragItems : styles.unselectedDragItems}
                         >
                             {this.state.data.map((item, index) => (
-                                <Draggable
-                                    key={item.id}
-                                    draggableId={item.id}
-                                    index={index}
-                                >
+                                <Draggable key={item.id} draggableId={item.id} index={index}>
                                     {(provided, snapshot) => (
                                         <div ref={provided.innerRef}>
                                             <div {...provided.draggableProps}>
-                                                <div
-                                                    className={styles.dragBox}
-                                                    style={getdragedStyle(
-                                                        snapshot.isDragging
-                                                    )}
-                                                >
-                                                    {this.props.renderItem(
-                                                        item
-                                                    )}
+                                                <div className={styles.dragBox} style={getdragedStyle(snapshot.isDragging)}>
+                                                    {this.props.renderItem(item)}
                                                     <div
-                                                        style={getAddIconStyle(
-                                                            snapshot.isDragging,
-                                                            provided
-                                                                .draggableProps
-                                                                .style
-                                                        )}
-                                                        className={
-                                                            styles.dragBoxIcon
-                                                        }
-                                                        onClick={() =>
-                                                            this.props.additem()
-                                                        }
+                                                        style={getAddIconStyle(snapshot.isDragging, provided.draggableProps.style)}
+                                                        className={styles.dragBoxIcon}
+                                                        onClick={() => this.props.additem()}
                                                     >
-                                                        <Tooltip
-                                                            title="Add New Item"
-                                                            arrow
-                                                            distance={20}
-                                                        >
-                                                            <i
-                                                                className={
-                                                                    'material-icons ' +
-                                                                    styles.dndIcon
-                                                                }
-                                                            >
-                                                                add
-                                                            </i>
+                                                        <Tooltip title="Add New Item" arrow distance={20}>
+                                                            <i className={'material-icons ' + styles.dndIcon}>add</i>
                                                         </Tooltip>
                                                     </div>
-                                                    {this.state.data.length >
-                                                        1 && (
+                                                    {this.state.data.length > 1 && (
                                                         <div
                                                             {...provided.draggableProps}
                                                             {...provided.dragHandleProps}
-                                                            style={getDragIconStyle(
-                                                                snapshot.isDragging,
-                                                                provided
-                                                                    .draggableProps
-                                                                    .style
-                                                            )}
-                                                            className={
-                                                                styles.dragBoxIcon
-                                                            }
+                                                            style={getDragIconStyle(snapshot.isDragging, provided.draggableProps.style)}
+                                                            className={styles.dragBoxIcon}
                                                         >
-                                                            <Tooltip
-                                                                title="Change Position"
-                                                                arrow
-                                                                distance={20}
-                                                            >
-                                                                <i
-                                                                    className={
-                                                                        'material-icons ' +
-                                                                        styles.dndIcon
-                                                                    }
-                                                                >
-                                                                    drag_handle
-                                                                </i>
+                                                            <Tooltip title="Change Position" arrow distance={20}>
+                                                                <i className={'material-icons ' + styles.dndIcon}>drag_handle</i>
                                                             </Tooltip>
                                                         </div>
                                                     )}
-                                                    {this.state.data.length >
-                                                        1 && (
+                                                    {this.state.data.length > 1 && (
                                                         <div
-                                                            style={getRemoveIconStyle(
-                                                                snapshot.isDragging,
-                                                                provided
-                                                                    .draggableProps
-                                                                    .style
-                                                            )}
-                                                            className={
-                                                                styles.dragBoxIcon
-                                                            }
-                                                            onClick={() =>
-                                                                this.props.removeitem(
-                                                                    item.id
-                                                                )
-                                                            }
+                                                            style={getRemoveIconStyle(snapshot.isDragging, provided.draggableProps.style)}
+                                                            className={styles.dragBoxIcon}
+                                                            onClick={() => this.props.removeitem(item.id)}
                                                         >
-                                                            <Tooltip
-                                                                title="Remove"
-                                                                arrow
-                                                                distance={20}
-                                                            >
-                                                                <i
-                                                                    className={
-                                                                        'material-icons ' +
-                                                                        styles.dndIcon
-                                                                    }
-                                                                >
-                                                                    remove
-                                                                </i>
+                                                            <Tooltip title="Remove" arrow distance={20}>
+                                                                <i className={'material-icons ' + styles.dndIcon}>remove</i>
                                                             </Tooltip>
                                                         </div>
                                                     )}

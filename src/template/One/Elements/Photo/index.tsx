@@ -1,49 +1,42 @@
 import React, { useState } from 'react';
 import Modal from 'react-bootstrap/Modal';
-import { useDispatch } from "react-redux";
+import { useDispatch } from 'react-redux';
 
 import { Loading } from '@component';
 
 import { uploadImageAction, updateUserData } from '../../../../redux/core/actions';
-import { IProps } from "./photo";
+import { TProps } from './photo';
 
 import styles from './photo.module.scss';
 
-function Skills(props: IProps) {
-
+function Skills(props: TProps) {
     const [modalStatus, setModalStatus] = useState(false);
     const [loading, setLoading] = useState(false);
     const dispatch = useDispatch();
 
-
     const _uploadFile = (e: any) => {
-        
         setLoading(true);
         setModalStatus(false);
         const imageFile = e.target.files[0];
-        const uploadRes:any = dispatch(uploadImageAction(imageFile));
-        uploadRes.then((res: any) => {
-            const data = {
-                photo: res.data.link
-            }
-            dispatch(updateUserData(data));
-            setLoading(false);
-        })
-        .catch((err: any) => {
-            console.log(err);
-            setLoading(false);
-        });
-    }
-
+        const uploadRes: any = dispatch(uploadImageAction(imageFile));
+        uploadRes
+            .then((res: any) => {
+                const data = {
+                    photo: res.data.link,
+                };
+                dispatch(updateUserData(data));
+                setLoading(false);
+            })
+            .catch((err: any) => {
+                console.log(err);
+                setLoading(false);
+            });
+    };
 
     return (
         <>
             <div className={styles.box} onClick={() => setModalStatus(true)}>
-                <img
-                    src={props.userData.photo || 'images/nobody.jpg'}
-                    alt="user photo"
-                    className={styles.image}
-                />
+                <img src={props.userData.photo || 'images/nobody.jpg'} alt="user photo" className={styles.image} />
             </div>
 
             <Modal
@@ -54,20 +47,14 @@ function Skills(props: IProps) {
                 centered
             >
                 <Modal.Header closeButton>
-                    <h3 className="modal-title w-100 text-center">
-                        Upload Photo
-                    </h3>
+                    <h3 className="modal-title w-100 text-center">Upload Photo</h3>
                 </Modal.Header>
                 <Modal.Body>
                     <div className={styles.saveModal}>
-                        <p>
-                            Choose your photo
-                        </p>
+                        <p>Choose your photo</p>
 
                         <div className={styles.uploadModalBtn}>
-                            <label htmlFor="uploadFile" >
-                                CHOOSE PHOTO
-                            </label> 
+                            <label htmlFor="uploadFile">CHOOSE PHOTO</label>
                         </div>
 
                         <input
@@ -78,20 +65,18 @@ function Skills(props: IProps) {
                             onChange={(e) => {
                                 _uploadFile(e);
                             }}
-                            onClick={(e: any)=> { 
-                                e.target.value = null
+                            onClick={(e: any) => {
+                                e.target.value = null;
                             }}
                         />
-                        
                     </div>
                 </Modal.Body>
             </Modal>
 
             <Loading show={loading} />
         </>
-    )
+    );
 }
-
 
 /* Export Component =============================== */
 export default Skills;

@@ -10,7 +10,7 @@ export default function Custom404() {
     return (
         <div className={styles.errPage}>
             <Head>
-                <title>404 Not Found  | wtfresume</title>
+                <title>404 Not Found | wtfresume</title>
             </Head>
             <HeaderNavbar />
 
@@ -18,14 +18,12 @@ export default function Custom404() {
                 <div className={styles.insideErr}>
                     <h1>404 | Page Not Found</h1>
                     <Link href="/">
-                        <a>
-                            Home Page
-                        </a>
+                        <a>Home Page</a>
                     </Link>
                 </div>
             </div>
-            
+
             <Footer />
         </div>
-    )
+    );
 }

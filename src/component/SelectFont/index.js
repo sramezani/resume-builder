@@ -5,14 +5,7 @@ import styles from './select.module.scss';
 import { appStore } from '../../redux/store';
 import { updateTheme } from '../../redux/core/actions';
 
-const fonts = [
-    'Source Sans Pro',
-    'Josefin Sans',
-    'Calibri',
-    'Cambria',
-    'Garamond',
-    'Georgia',
-];
+const fonts = ['Source Sans Pro', 'Josefin Sans', 'Calibri', 'Cambria', 'Garamond', 'Georgia'];
 
 class Select extends React.Component {
     constructor(props) {
@@ -34,26 +27,16 @@ class Select extends React.Component {
     render() {
         return (
             <div className={styles.selectBoxForm}>
-                <select
-                    value={this.state.value}
-                    onChange={(e) => this._onChange(e)}
-                    ref={(c) => (this.mySelect = c)}
-                >
+                <select value={this.state.value} onChange={(e) => this._onChange(e)} ref={(c) => (this.mySelect = c)}>
                     {fonts.map((item, index) => {
                         return (
-                            <option
-                                value={item}
-                                key={index}
-                                style={{ fontFamily: item }}
-                            >
+                            <option value={item} key={index} style={{ fontFamily: item }}>
                                 {item}
                             </option>
                         );
                     })}
                 </select>
-                <i className={'material-icons ' + styles.selectDown}>
-                    arrow_drop_down
-                </i>
+                <i className={'material-icons ' + styles.selectDown}>arrow_drop_down</i>
             </div>
         );
     }

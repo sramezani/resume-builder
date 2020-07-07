@@ -16,10 +16,7 @@ const config = {
 const Toast = {
     showUndo: (id, data, type, message = 'item removed') => {
         toast.dismiss();
-        toast(
-            <ToastUndo itemId={id} data={data} message={message} type={type} />,
-            config
-        );
+        toast(<ToastUndo itemId={id} data={data} message={message} type={type} />, config);
     },
 
     show: (message = '...') => {

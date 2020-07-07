@@ -1,11 +1,7 @@
 import React from 'react';
 
 import { appStore } from '../../redux/store';
-import {
-    addDeletedWorkExperienceItem,
-    addDeletedEducationItem,
-    addDeletedSkillItem,
-} from '../../redux/core/actions';
+import { addDeletedWorkExperienceItem, addDeletedEducationItem, addDeletedSkillItem } from '../../redux/core/actions';
 
 import styles from './toastUndo.module.scss';
 

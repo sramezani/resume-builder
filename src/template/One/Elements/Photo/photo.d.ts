@@ -1,5 +1,5 @@
-export interface IProps {
+export interface TProps {
     userData: {
-        [key: string]: string
-    }
+        [key: string]: string;
+    };
 }

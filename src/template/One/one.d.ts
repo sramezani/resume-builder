@@ -1,27 +1,25 @@
-export interface IProps {
+export interface TProps {
     theme: {
-		color: string,
-		fontFamily: string
-    },
+        color: string;
+        fontFamily: string;
+    };
     userData: {
-        name: string,
-        infoTitle: string,
-        address: string,
-        email: string,
-        mobile: string,
-        userData: string,
-        profileTitle: string,
-        profile: string,
-        workExperienceTitle: string,
-        educationTitle: string,
-        skillsTitle: string
-    },
-    workExperience: [],
-    education: [],
-    skills: [],
+        name: string;
+        infoTitle: string;
+        address: string;
+        email: string;
+        mobile: string;
+        userData: string;
+        profileTitle: string;
+        profile: string;
+        workExperienceTitle: string;
+        educationTitle: string;
+        skillsTitle: string;
+    };
+    workExperience: [];
+    education: [];
+    skills: [];
     itemStatus: {
-          [key: string]: boolean
-      },
-}
-export interface IState {
+        [key: string]: boolean;
+    };
 }

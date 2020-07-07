@@ -6,11 +6,7 @@ import { Toast, Util } from '@lib';
 
 import { Text, Dnd2Column } from '@component';
 
-import {
-    addSkill,
-    updateSkill,
-    deleteSkillData,
-} from '../../../../redux/core/actions';
+import { addSkill, updateSkill, deleteSkillData } from '../../../../redux/core/actions';
 
 // import styles from './skills.module.scss';
 
@@ -40,12 +36,7 @@ function Skills(props) {
             removeitem={(e) => _removeItem(e, data)}
             renderItem={(item) => (
                 <div style={{ background: '#fff' }}>
-                    <Text
-                        value={item.title}
-                        statename="skills.title"
-                        stateid={item.id}
-                        placeholder="React Native"
-                    />
+                    <Text value={item.title} statename="skills.title" stateid={item.id} placeholder="React Native" />
                 </div>
             )}
         />

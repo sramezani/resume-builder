@@ -34,13 +34,13 @@
     text-decoration: none;
 }
 .navItem a:hover {
-    background-color: #08AEEA;
-    background-image: linear-gradient(90deg, #08AEEA 0%, #2AF598 10%);    
+    background-color: #08aeea;
+    background-image: linear-gradient(90deg, #08aeea 0%, #2af598 10%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
-.homePage  {
+.homePage {
     overflow: hidden;
     font-family: 'Roboto';
 }
@@ -57,7 +57,6 @@
 
     // background-color: #21D4FD;
     // background-image: linear-gradient(19deg, #21D4FD 0%, #B721FF 100%);
-    
 
     position: absolute;
     overflow: hidden;
@@ -66,17 +65,17 @@
 }
 
 @keyframes colorchange {
-    0%   {
+    0% {
         background-color: #111;
     }
-    25%  {
-        background-color: #E57373;
+    25% {
+        background-color: #e57373;
     }
-    50%  {
-        background-color: #C2185B;
+    50% {
+        background-color: #c2185b;
     }
-    75%  {
-        background-color: #4A148C;
+    75% {
+        background-color: #4a148c;
     }
     100% {
         background: #111;
@@ -116,7 +115,6 @@
 }
 
 .slide1 {
-    
     // position: relative;
 }
 
@@ -201,7 +199,7 @@
     margin: 0 auto;
     text-align: center;
 }
-.slide1Text{
+.slide1Text {
     color: #fff;
     position: absolute;
     bottom: 250px;
@@ -209,7 +207,7 @@
     // text-shadow: -1px 0 #777, 0 1px #777, 1px 0 #777, 0 -1px #777;
 }
 
-.slide1Text p{
+.slide1Text p {
     font-size: 36px;
     font-weight: 600;
 }
@@ -229,7 +227,7 @@
     cursor: pointer;
     text-align: center;
 }
-.scrollDown i{
+.scrollDown i {
     font-size: 30px;
     margin: 7px 0 0 0;
 }
@@ -261,17 +259,16 @@
 
 .crBtn:hover {
     background: #fff;
-    transition: .3s all ease;
+    transition: 0.3s all ease;
 }
 
 .crBtn:hover a {
     color: #333;
-    transition: .3s all ease;
+    transition: 0.3s all ease;
 }
 
-
 @media (max-width: 991px) {
-	.slide1Box {
+    .slide1Box {
         // max-width: 90%;
     }
     .slide1Text {
@@ -290,7 +287,7 @@
 }
 
 @media (max-width: 640px) {
-	.slide1Text h1 {
+    .slide1Text h1 {
         line-height: 60px;
     }
     .slide1Text p {
@@ -302,7 +299,7 @@
 }
 
 @media (max-width: 480px) {
-	.slide1Text {
+    .slide1Text {
         font-size: 20px;
     }
     .slide1Text p {
@@ -320,5 +317,4 @@
 }
 
 @media (max-width: 320px) {
-	
 }
