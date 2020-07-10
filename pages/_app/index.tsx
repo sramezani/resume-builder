@@ -40,7 +40,7 @@ class MyApp extends App {
         return (
             <>
                 <Head>
-                    <title>wtfresume | free resmue builder</title>
+                    <title>wtfresume | free resume builder</title>
                     <meta name="description" content="A modern real time design and 100% free resume builder."></meta>
                 </Head>
                 <Provider store={appStore}>
