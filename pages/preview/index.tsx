@@ -6,7 +6,6 @@ import styles from './style.module.scss';
 import { One } from '@template';
 
 import { Util } from '@lib';
-import { APIConfig } from '@constant';
 import Router from 'next/router';
 
 import { importUserData, exportUserData } from '../../src/redux/core/actions';
@@ -44,13 +43,9 @@ class Home extends React.Component<TProps, TState> {
         const exportStatus = Util.getQueryString(window.location, 'export');
         this.setState({ exportStatus });
 
-        const data = Util.getQueryString(window.location, 'data');
+        const data = window.location.hash.substr(1);
         if (exportStatus === 'true' && data) {
-            fetch(`${APIConfig.hostname}/download?data=${data}`)
-                .then((response) => response.json())
-                .then((res) => {
-                    importUserData(JSON.parse(JSON.stringify(res)));
-                });
+            importUserData(JSON.parse(decodeURIComponent(data)));
         }
     }
 
@@ -70,7 +65,7 @@ class Home extends React.Component<TProps, TState> {
             body: JSON.stringify(data),
         };
 
-        const res = await fetch(`${APIConfig.hostname}/download`, req);
+        const res = await fetch(`${process.env.HOST}/api/download`, req);
         const blob = await res.blob();
         this.setState({ gifGenerateStatus: false });
         download(blob, fileName);
