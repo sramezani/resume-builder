@@ -1,7 +1,7 @@
 const puppeteer = require('puppeteer');
 const { v1: uuidv1 } = require('uuid');
 
-export default function handler(req, res) {
+async function downloadHandler(req, res) {
     if (req.method === 'POST') {
         const uuid = uuidv1();
         const pdfId = { pdfId: uuid };
@@ -25,8 +25,11 @@ export default function handler(req, res) {
             });
             await browser.close();
 
-            res.send(pdf);
+            return pdf;
         };
-        generatePDF();
+        const pdfDoc = await generatePDF();
+        res.send(pdfDoc);
     }
 }
+
+export default downloadHandler;
