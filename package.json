@@ -13,6 +13,7 @@
   "dependencies": {
     "@tippyjs/react": "^4.0.0",
     "bootstrap": "^4.4.1",
+    "chrome-aws-lambda": "^9.1.0",
     "deep-equal": "^2.0.1",
     "downloadjs": "^1.4.7",
     "gsap": "^3.2.6",
@@ -72,8 +73,7 @@
     "typescript": "^3.8.3"
   },
   "husky": {
-    "hooks": {
-    }
+    "hooks": {}
   },
   "lint-staged": {
     "*.{js,ts,tsx}": "yarn lint:js --fix"

@@ -1,4 +1,7 @@
-const puppeteer = require('puppeteer');
+
+const chromium = require('chrome-aws-lambda');
+// const puppeteer = require('puppeteer');
+
 const { v1: uuidv1 } = require('uuid');
 
 export default function handler(req, res) {
@@ -8,10 +11,18 @@ export default function handler(req, res) {
         const data = { ...pdfId, ...req.body };
 
         const generatePDF = async () => {
-            // const browser = await puppeteer.launch();
-            const browser = await puppeteer.launch({
+
+            // const browser = await puppeteer.launch({
+            //     headless: true,
+            //     args: ['--no-sandbox', '--disable-setuid-sandbox'],
+            // });
+
+            const browser = await chromium.puppeteer.launch({
+                args: [...chromium.args, "--hide-scrollbars", "--disable-web-security"],
+                defaultViewport: chromium.defaultViewport,
+                executablePath: await chromium.executablePath,
                 headless: true,
-                args: ['--no-sandbox', '--disable-setuid-sandbox'],
+                ignoreHTTPSErrors: true,
             });
             const page = await browser.newPage();
             await page.goto(`${process.env.HOST}/preview?export=true#${encodeURIComponent(JSON.stringify(data))}`, {
