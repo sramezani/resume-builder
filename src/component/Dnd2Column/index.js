@@ -40,16 +40,16 @@ const getRemoveIconStyle = (isDragging, draggableStyle) => ({
 const getdragedStyle = (isDragging) => ({
     position: 'relative',
     // transform: isDragging ? 'scale(1.07)' : 'scale(1)',
-    '-webkit-box-shadow': isDragging ? '0px 0px 24px 0px rgba(0,0,0,0.16)' : 'none',
-    '-moz-box-shadow': isDragging ? '0px 0px 24px 0px rgba(0,0,0,0.16)' : 'none',
-    'box-shadow': isDragging ? '0px 0px 24px 0px rgba(0,0,0,0.16)' : 'none',
+    WebkitBoxShadow: isDragging ? '0px 0px 24px 0px rgba(0,0,0,0.16)' : 'none',
+    MozBoxShadow: isDragging ? '0px 0px 24px 0px rgba(0,0,0,0.16)' : 'none',
+    boxShadow: isDragging ? '0px 0px 24px 0px rgba(0,0,0,0.16)' : 'none',
 });
 
 const getListStyle = (isDraggingOver) => ({
-    '-webkit-box-shadow': isDraggingOver ? 'inset 0px 0px 18px 0px rgba(0,0,0,0.08)' : 'none',
-    '-moz-box-shadow': isDraggingOver ? 'inset 0px 0px 18px 0px rgba(0,0,0,0.08)' : 'none',
-    'box-shadow': isDraggingOver ? 'inset 0px 0px 18px 0px rgba(0,0,0,0.08)' : 'none',
-    background: isDraggingOver ? 'rgba(250,250,250,1)' : '#fff',
+    WebkitBoxShadow: isDraggingOver ? 'inset 0px 0px 18px 0px rgba(0,0,0,0.08)' : 'none',
+    MozBoxShadow: isDraggingOver ? 'inset 0px 0px 18px 0px rgba(0,0,0,0.08)' : 'none',
+    boxShadow: isDraggingOver ? 'inset 0px 0px 18px 0px rgba(0,0,0,0.08)' : 'none',
+    backgroundColor: isDraggingOver ? 'rgba(250,250,250,1)' : '#fff',
     flex: 1,
 });
 

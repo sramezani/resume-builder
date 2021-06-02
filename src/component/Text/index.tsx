@@ -12,9 +12,9 @@ type DivProps = JSX.IntrinsicElements['p'];
 interface TProps extends DivProps {
     statename: string;
     stateid: number;
-    value: any;
-    customclass: any;
-    tag: any;
+    value: string;
+    customclass: string;
+    tag: string;
     // children: React.ReactNode
 }
 
@@ -36,10 +36,6 @@ function Text(props: TProps) {
         }
         setEditable(false);
     }, []);
-
-    // const _onChange = (e) => {
-    //     console.log(e);
-    // }
 
     const _onBlur = (e: any) => {
         const { statename, stateid } = props;

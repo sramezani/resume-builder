@@ -13,7 +13,7 @@ import { Loading } from '@component';
 
 import styles from './topNavbar.module.scss';
 
-import { TProps, TState } from './topNavbar';
+import { TProps, TState } from './Types';
 
 class TopNavbar extends React.Component<TProps, TState> {
     constructor(props: TProps) {

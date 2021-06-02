@@ -1,17 +1,15 @@
 import React from 'react';
 
-import { Navbar, Nav } from 'react-bootstrap';
+import { Navbar, Nav, NavItem } from 'react-bootstrap';
 import Link from 'next/link';
 import styles from './style.module.scss';
 
 export default function HeaderNavbar() {
     return (
         <Navbar expand="sm" className={styles.nav}>
-            <section className="container">
+            <div className="container">
                 <Link href="/">
-                    <a>
-                        <img src="/images/logo1.png" alt="wtfresume logo (resume builder)" className={styles.logo} />
-                    </a>
+                    <img src="/images/logo1.png" alt="wtfresume logo (resume builder)" className={styles.logo} />
                 </Link>
 
                 <Navbar.Toggle aria-controls="basic-navbar-nav" className={styles.navbarNav}>
@@ -20,22 +18,22 @@ export default function HeaderNavbar() {
 
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="ml-auto">
-                        <div className={styles.navItem}>
-                            <Link href="/resume-builder">
-                                <a>Create My Resume</a>
+                        <NavItem className={styles.navItem}>
+                            <Link href="/resume-builder">Create My Resume</Link>
+                        </NavItem>
+
+                        <NavItem className={styles.navItem}>EN</NavItem>
+
+                        <NavItem className={styles.navItem}>
+                            <Link href="https://github.com/sramezani/resume-builder">
+                                <a target="_blank" rel="noopener noreferrer">
+                                    github
+                                </a>
                             </Link>
-                        </div>
-
-                        <div className={styles.navItem}>EN</div>
-
-                        <div className={styles.navItem}>
-                            <a href="https://github.com/sramezani/resume-builder" target="_blank" rel="noopener noreferrer">
-                                github
-                            </a>
-                        </div>
+                        </NavItem>
                     </Nav>
                 </Navbar.Collapse>
-            </section>
+            </div>
         </Navbar>
     );
 }

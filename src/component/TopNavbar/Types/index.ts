@@ -15,6 +15,7 @@ export interface TProps {
         [key: string]: string;
     };
 }
+
 export interface TState {
     colorPicker: boolean;
     bgComplete: boolean;
