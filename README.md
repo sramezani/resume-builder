@@ -6,6 +6,7 @@ Modern real-time design and 100% free resume builder.
 
 ### Simple demo: 
 
+
 ![demo](https://user-images.githubusercontent.com/33284430/86123944-eab5b500-bb0c-11ea-9e6f-f3d156f2eb41.gif)
 
 
@@ -48,4 +49,5 @@ npm run dev
 
 ### Contributing
 Yes of course! Welcome :)
+
 
