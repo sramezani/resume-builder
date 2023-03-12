@@ -108,10 +108,6 @@ export default function Home() {
                     <h2>How does it work?</h2>
                     <div className="row justify-content-md-center">
                         <article className={['col-md-6 row justify-content-md-center', styles.thirdVideo].join(' ')}>
-                            {/* <video loop poster="/images/resume-pic.jpg" controls>
-                                <source src="video/resume.mp4" type="video/mp4" />
-                                <source src="video/resume.webm" type="video/webm" />
-                            </video> */}
                             <iframe
                                 width="100%"
                                 height="600"
