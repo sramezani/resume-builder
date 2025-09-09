@@ -5,7 +5,7 @@ import { Text } from '@component';
 import { WorkExperience, Education, Skills, Photo } from './Elements';
 import styles from './one.module.scss';
 
-import { TProps } from './one';
+import { TProps } from './Types';
 
 class Template extends React.Component<TProps> {
     constructor(props: TProps) {
@@ -16,9 +16,7 @@ class Template extends React.Component<TProps> {
         const { itemStatus } = this.props;
         return (
             <div className={styles.insideCon}>
-                <div>
-                    <Text value={this.props.userData.name} statename="userData.name" placeholder="Your Name" customclass={styles.name} />
-                </div>
+                <Text value={this.props.userData.name} statename="userData.name" placeholder="Your Name" customclass={styles.name} />
                 <div className={styles.underName} style={{ borderTopColor: this.props.theme.color }} />
 
                 {itemStatus.picture && (
