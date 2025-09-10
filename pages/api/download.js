@@ -18,7 +18,7 @@ export default function handler(req, res) {
             // });
 
             const browser = await chromium.puppeteer.launch({
-                args: [...chromium.args, "--hide-scrollbars", "--disable-web-security"],
+                args: [...chromium.args, "--hide-scrollbars", "--disable-web-security", "--font-render-hinting=none"],
                 defaultViewport: chromium.defaultViewport,
                 executablePath: await chromium.executablePath,
                 headless: true,
